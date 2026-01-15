@@ -103,7 +103,7 @@ export default function Home() {
                 <span className="text-green-400">Central Oregon</span> Home
               </h1>
               <p className="text-xl text-gray-300 mb-8 max-w-lg">
-                Professional lawn care, weed control, pine needle removal, and landscape installation services in Bend, Redmond, Sunriver, Prineville & La Pine.
+                Professional lawn care, weed control, pine needle removal, and landscape installation services in Bend, Redmond, Sunriver, Prineville & La Pine Oregon.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -159,28 +159,31 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image Placeholder */}
+            {/* Hero Image */}
             <div className="hidden lg:block">
               <div className="relative">
-                <div className="w-full aspect-[4/3] bg-gray-800/50 rounded-2xl border border-gray-700 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <svg className="w-24 h-24 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-sm opacity-75">Hero Image Placeholder</p>
-                  </div>
+                <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden">
+                  <Image
+                    src="/hero-lawn.jpg"
+                    alt="Beautiful lawn maintained by Clips Lawncare"
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: '50% 50%' }}
+                    priority
+                  />
                 </div>
-                {/* Floating Stats Card */}
+                {/* Floating Promo Card */}
                 <div className="absolute -bottom-6 -left-6 bg-gray-900 border border-gray-700 rounded-xl shadow-xl p-4">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
                       <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-white">500+</p>
-                      <p className="text-sm text-gray-400">Happy Customers</p>
+                      <p className="text-lg font-bold text-white">Maintenance Packages</p>
+                      <p className="text-sm text-green-400">Starting As Low As $25!</p>
                     </div>
                   </div>
                 </div>
