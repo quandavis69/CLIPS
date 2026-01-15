@@ -174,16 +174,16 @@ export default function Home() {
                   />
                 </div>
                 {/* Floating Promo Card */}
-                <div className="absolute -bottom-6 -left-6 bg-gray-900 border border-gray-700 rounded-xl shadow-xl p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="absolute -top-4 -right-4 bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center">
+                      <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-lg font-bold text-white">Maintenance Packages</p>
-                      <p className="text-sm text-green-400">Starting As Low As $25!</p>
+                      <p className="text-xl font-bold text-white">Maintenance Packages</p>
+                      <p className="text-lg text-green-400">Starting As Low As $25!</p>
                     </div>
                   </div>
                 </div>
