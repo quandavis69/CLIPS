@@ -82,12 +82,12 @@ export default function GalleryPage() {
     : galleryItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-black">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-green-300 font-semibold text-sm uppercase tracking-wider">Our Work</span>
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Our Work</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               Project Gallery
             </h1>
@@ -99,7 +99,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 bg-white border-b sticky top-20 z-40">
+      <section className="py-8 bg-gray-900 border-b border-gray-800 sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
@@ -108,8 +108,8 @@ export default function GalleryPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-colors ${
                   activeCategory === category
-                    ? "bg-green-700 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-green-500 text-white"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }`}
               >
                 {category}
@@ -120,19 +120,19 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelectedImage(item.id)}
               >
                 {/* Image Placeholder */}
-                <div className="relative aspect-[4/3] bg-gray-200">
+                <div className="relative aspect-[4/3] bg-gray-800">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-gray-400">
+                    <div className="text-center text-gray-500">
                       <svg className="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
@@ -143,7 +143,7 @@ export default function GalleryPage() {
                   {/* Before/After Badge */}
                   {item.before && (
                     <div className="absolute top-4 left-4 flex gap-2">
-                      <span className="bg-gray-900/80 text-white text-xs font-medium px-3 py-1 rounded-full">
+                      <span className="bg-green-500/90 text-white text-xs font-medium px-3 py-1 rounded-full">
                         Before & After
                       </span>
                     </div>
@@ -163,9 +163,9 @@ export default function GalleryPage() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <span className="text-green-700 text-sm font-medium">{item.category}</span>
-                  <h3 className="text-lg font-bold text-gray-900 mt-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm mt-1">{item.description}</p>
+                  <span className="text-green-400 text-sm font-medium">{item.category}</span>
+                  <h3 className="text-lg font-bold text-white mt-1">{item.title}</h3>
+                  <p className="text-gray-400 text-sm mt-1">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -194,9 +194,9 @@ export default function GalleryPage() {
             </svg>
           </button>
 
-          <div className="max-w-4xl w-full bg-gray-800 rounded-2xl p-8" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video bg-gray-700 rounded-lg flex items-center justify-center mb-4">
-              <div className="text-center text-gray-400">
+          <div className="max-w-4xl w-full bg-gray-900 rounded-2xl p-8 border border-gray-800" onClick={(e) => e.stopPropagation()}>
+            <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center mb-4">
+              <div className="text-center text-gray-500">
                 <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>

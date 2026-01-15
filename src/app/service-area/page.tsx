@@ -36,12 +36,12 @@ const serviceAreas = [
 
 export default function ServiceAreaPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-black">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-green-300 font-semibold text-sm uppercase tracking-wider">Service Area</span>
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Service Area</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               Proudly Serving Central Oregon
             </h1>
@@ -53,12 +53,12 @@ export default function ServiceAreaPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Map Placeholder */}
-            <div className="w-full aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
-              <div className="text-center text-gray-400 p-8">
+            <div className="w-full aspect-square bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-700">
+              <div className="text-center text-gray-500 p-8">
                 <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
@@ -68,23 +68,23 @@ export default function ServiceAreaPage() {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Coverage Area</h2>
-              <p className="text-gray-600 text-lg mb-8">
+              <h2 className="text-3xl font-bold text-white mb-6">Our Coverage Area</h2>
+              <p className="text-gray-300 text-lg mb-8">
                 We proudly serve homeowners and businesses across Central Oregon. Our service area includes:
               </p>
 
               <div className="space-y-4">
                 {serviceAreas.map((area) => (
-                  <div key={area.city} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-green-50 transition-colors">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-700 flex-shrink-0">
+                  <div key={area.city} className="flex items-center gap-4 p-4 bg-gray-900 rounded-xl border border-gray-800 hover:border-green-500/50 transition-colors">
+                    <div className="w-12 h-12 bg-green-900/50 rounded-full flex items-center justify-center text-green-400 flex-shrink-0">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{area.city}, Oregon</h3>
-                      <p className="text-sm text-gray-600">Full lawn care services available</p>
+                      <h3 className="font-semibold text-white">{area.city}, Oregon</h3>
+                      <p className="text-sm text-gray-400">Full lawn care services available</p>
                     </div>
                   </div>
                 ))}
@@ -95,32 +95,32 @@ export default function ServiceAreaPage() {
       </section>
 
       {/* Detailed Areas */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Areas We Serve</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Areas We Serve</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Learn more about our services in each community.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {serviceAreas.map((area) => (
-              <div key={area.city} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-700 mb-6">
+              <div key={area.city} className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-colors">
+                <div className="w-14 h-14 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 mb-6">
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{area.city}, OR</h3>
-                <p className="text-gray-600 mb-6">{area.description}</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{area.city}, OR</h3>
+                <p className="text-gray-400 mb-6">{area.description}</p>
 
                 <div>
-                  <p className="text-sm font-medium text-gray-700 mb-2">Areas include:</p>
+                  <p className="text-sm font-medium text-gray-300 mb-2">Areas include:</p>
                   <div className="flex flex-wrap gap-2">
                     {area.highlights.map((highlight) => (
-                      <span key={highlight} className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">
+                      <span key={highlight} className="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">
                         {highlight}
                       </span>
                     ))}
@@ -133,15 +133,15 @@ export default function ServiceAreaPage() {
       </section>
 
       {/* Not in Area Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-black">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Don&apos;t See Your Area?</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-2xl font-bold text-white mb-4">Don&apos;t See Your Area?</h2>
+          <p className="text-gray-400 mb-6">
             We may still be able to help! Contact us to discuss your location and lawn care needs. We&apos;re always looking to expand our service area.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center text-green-700 font-semibold hover:text-green-800 transition-colors"
+            className="inline-flex items-center text-green-400 font-semibold hover:text-green-300 transition-colors"
           >
             Contact Us to Ask
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

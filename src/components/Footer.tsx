@@ -30,7 +30,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-black text-white border-t border-gray-800">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -38,11 +38,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/logo.webp"
+                src="/logo.png"
                 alt="Clips Lawncare"
-                width={140}
-                height={56}
-                className="h-14 w-auto brightness-0 invert"
+                width={180}
+                height={72}
+                className="h-16 w-auto"
               />
             </Link>
             <p className="text-gray-400 mb-6">

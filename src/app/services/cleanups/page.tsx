@@ -53,7 +53,7 @@ const cleanupTypes = [
 
 export default function CleanupsPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-black">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,21 +103,21 @@ export default function CleanupsPage() {
       </section>
 
       {/* Cleanup Types */}
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Cleanup Options</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Cleanup Options</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Choose the cleanup service that fits your needs.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {cleanupTypes.map((type) => (
-              <div key={type.title} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{type.title}</h3>
-                <p className="text-gray-600 mb-4">{type.description}</p>
-                <p className="text-sm text-green-700 font-medium">{type.ideal}</p>
+              <div key={type.title} className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3">{type.title}</h3>
+                <p className="text-gray-400 mb-4">{type.description}</p>
+                <p className="text-sm text-green-400 font-medium">{type.ideal}</p>
               </div>
             ))}
           </div>
@@ -125,25 +125,25 @@ export default function CleanupsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What&apos;s Included</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What&apos;s Included</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Our cleanup services are comprehensive - we handle everything to restore your property.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature) => (
-              <div key={feature.title} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-700 mb-4">
+              <div key={feature.title} className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+                <div className="w-12 h-12 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 mb-4">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -151,51 +151,51 @@ export default function CleanupsPage() {
       </section>
 
       {/* Before/After */}
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">See the Transformation</h2>
-              <p className="text-gray-600 text-lg mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">See the Transformation</h2>
+              <p className="text-gray-300 text-lg mb-8">
                 Our cleanup services make a dramatic difference. Whether your yard is overgrown, covered in leaves, or just needs some attention, we&apos;ll restore it to its full potential.
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-green-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Remove all debris and yard waste</span>
+                  <span className="text-gray-300">Remove all debris and yard waste</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-green-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Edge along walkways and beds</span>
+                  <span className="text-gray-300">Edge along walkways and beds</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-green-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Trim and shape overgrown plants</span>
+                  <span className="text-gray-300">Trim and shape overgrown plants</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <svg className="w-6 h-6 text-green-700 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span className="text-gray-700">Haul away everything we collect</span>
+                  <span className="text-gray-300">Haul away everything we collect</span>
                 </li>
               </ul>
             </div>
 
             {/* Before/After Placeholder */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="aspect-square bg-gray-200 rounded-xl flex items-center justify-center">
-                <div className="text-center text-gray-400">
+              <div className="aspect-square bg-gray-800 rounded-xl flex items-center justify-center border border-gray-700">
+                <div className="text-center text-gray-500">
                   <p className="text-sm font-medium">Before</p>
                 </div>
               </div>
-              <div className="aspect-square bg-gray-200 rounded-xl flex items-center justify-center">
-                <div className="text-center text-gray-400">
+              <div className="aspect-square bg-gray-800 rounded-xl flex items-center justify-center border border-gray-700">
+                <div className="text-center text-gray-500">
                   <p className="text-sm font-medium">After</p>
                 </div>
               </div>

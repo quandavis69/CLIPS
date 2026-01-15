@@ -74,12 +74,12 @@ const testimonials = [
 
 export default function TestimonialsPage() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-20 bg-black">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-green-300 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
             <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               What Our Customers Say
             </h1>
@@ -91,35 +91,35 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-white border-b">
+      <section className="py-12 bg-gray-900 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold text-green-700">500+</p>
-              <p className="text-gray-600">Happy Customers</p>
+              <p className="text-4xl font-bold text-green-400">500+</p>
+              <p className="text-gray-400">Happy Customers</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-green-700">5.0</p>
-              <p className="text-gray-600">Average Rating</p>
+              <p className="text-4xl font-bold text-green-400">5.0</p>
+              <p className="text-gray-400">Average Rating</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-green-700">100%</p>
-              <p className="text-gray-600">Satisfaction Rate</p>
+              <p className="text-4xl font-bold text-green-400">100%</p>
+              <p className="text-gray-400">Satisfaction Rate</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-green-700">5</p>
-              <p className="text-gray-600">Cities Served</p>
+              <p className="text-4xl font-bold text-green-400">5</p>
+              <p className="text-gray-400">Cities Served</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -130,18 +130,18 @@ export default function TestimonialsPage() {
                 </div>
 
                 {/* Service Badge */}
-                <span className="inline-block bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full mb-4">
+                <span className="inline-block bg-green-900/50 text-green-400 text-sm font-medium px-3 py-1 rounded-full mb-4">
                   {testimonial.service}
                 </span>
 
-                <p className="text-gray-600 mb-6">&quot;{testimonial.text}&quot;</p>
+                <p className="text-gray-300 mb-6">&quot;{testimonial.text}&quot;</p>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <span className="text-green-700 font-bold text-lg">{testimonial.name.charAt(0)}</span>
+                  <div className="w-12 h-12 bg-green-900/50 rounded-full flex items-center justify-center">
+                    <span className="text-green-400 font-bold text-lg">{testimonial.name.charAt(0)}</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
                     <p className="text-sm text-gray-500">{testimonial.location}</p>
                   </div>
                 </div>
