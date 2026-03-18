@@ -5,11 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const services = [
-  { name: "Premium Lawn Care", href: "/services/lawn-care" },
-  { name: "Weed Control", href: "/services/weed-control" },
-  { name: "Pine Needle Removal", href: "/services/pine-control" },
-  { name: "Cleanups", href: "/services/cleanups" },
-  { name: "Installation", href: "/services/installation" },
+  { name: "Lawn Care Packages", href: "/services/lawn-care-packages" },
+  { name: "Landscape", href: "/services/landscape" },
+  { name: "Extra Services", href: "/services/extra-services" },
 ];
 
 const navLinks = [
