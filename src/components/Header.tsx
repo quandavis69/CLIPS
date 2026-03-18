@@ -61,7 +61,7 @@ export default function Header() {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
+                <div className="absolute top-full left-0 pt-2 w-56 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
                   {services.map((service) => (
                     <Link
                       key={service.href}
