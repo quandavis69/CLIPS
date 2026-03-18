@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "Clips Lawncare | Premium Lawn Care Services in Central Oregon",
   description: "Professional lawn care, weed control, pine needle removal, cleanups and installation services in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
   keywords: "lawn care, landscaping, weed control, pine needle removal, Bend Oregon, Redmond, Sunriver, Prineville, La Pine",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({
