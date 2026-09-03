@@ -1,12 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { getGooglePlaceReviews } from "@/lib/googleReviews";
 
 export const metadata: Metadata = {
   title: "Testimonials | Clips Lawncare - Customer Reviews",
   description: "See what our customers in Bend, Redmond, Sunriver, Prineville, and La Pine are saying about Clips Lawncare services.",
 };
 
-const testimonials = [
+// Used until GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured, or if
+// the Google Places API request fails.
+const fallbackTestimonials = [
   {
     name: "Sarah M.",
     location: "Bend, OR",
@@ -72,7 +75,29 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsPage() {
+export default async function TestimonialsPage() {
+  const googleData = await getGooglePlaceReviews();
+  const usingGoogleReviews = Boolean(googleData?.reviews.length);
+
+  const displayTestimonials = usingGoogleReviews
+    ? googleData!.reviews.map((review) => ({
+        name: review.authorName,
+        subtext: review.relativeTime || "Google review",
+        text: review.text,
+        rating: review.rating,
+        badge: null as string | null,
+      }))
+    : fallbackTestimonials.map((testimonial) => ({
+        name: testimonial.name,
+        subtext: testimonial.location,
+        text: testimonial.text,
+        rating: testimonial.rating,
+        badge: testimonial.service as string | null,
+      }));
+
+  const averageRating = googleData?.rating ?? 5.0;
+  const totalReviews = googleData?.userRatingCount;
+
   return (
     <div className="min-h-screen pt-20 bg-black">
       {/* Hero Section */}
@@ -95,11 +120,13 @@ export default function TestimonialsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold text-green-400">500+</p>
+              <p className="text-4xl font-bold text-green-400">
+                {totalReviews ? `${totalReviews}+` : "500+"}
+              </p>
               <p className="text-gray-400">Happy Customers</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-green-400">5.0</p>
+              <p className="text-4xl font-bold text-green-400">{averageRating.toFixed(1)}</p>
               <p className="text-gray-400">Average Rating</p>
             </div>
             <div>
@@ -111,6 +138,18 @@ export default function TestimonialsPage() {
               <p className="text-gray-400">Cities Served</p>
             </div>
           </div>
+          {googleData?.mapsUri && (
+            <div className="text-center mt-8">
+              <a
+                href={googleData.mapsUri}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium"
+              >
+                See all our reviews on Google →
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -118,11 +157,11 @@ export default function TestimonialsPage() {
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {displayTestimonials.map((testimonial, index) => (
               <div key={index} className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-gray-700 transition-colors">
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {[...Array(Math.round(testimonial.rating))].map((_, i) => (
                     <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
@@ -130,9 +169,11 @@ export default function TestimonialsPage() {
                 </div>
 
                 {/* Service Badge */}
-                <span className="inline-block bg-green-900/50 text-green-400 text-sm font-medium px-3 py-1 rounded-full mb-4">
-                  {testimonial.service}
-                </span>
+                {testimonial.badge && (
+                  <span className="inline-block bg-green-900/50 text-green-400 text-sm font-medium px-3 py-1 rounded-full mb-4">
+                    {testimonial.badge}
+                  </span>
+                )}
 
                 <p className="text-gray-300 mb-6">&quot;{testimonial.text}&quot;</p>
 
@@ -142,7 +183,9 @@ export default function TestimonialsPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-white">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.location}</p>
+                    {testimonial.subtext && (
+                      <p className="text-sm text-gray-500">{testimonial.subtext}</p>
+                    )}
                   </div>
                 </div>
               </div>

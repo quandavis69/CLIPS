@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getGooglePlaceReviews } from "@/lib/googleReviews";
 
 const services = [
   {
@@ -54,7 +55,9 @@ const services = [
   },
 ];
 
-const testimonials = [
+// Used until GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured, or if
+// the Google Places API request fails.
+const fallbackTestimonials = [
   {
     name: "Sarah M.",
     location: "Bend, OR",
@@ -82,7 +85,17 @@ const trustBadges = [
   { title: "5-Star Service", icon: "star" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const googleData = await getGooglePlaceReviews();
+  const homeTestimonials = googleData?.reviews.length
+    ? googleData.reviews.slice(0, 3).map((review) => ({
+        name: review.authorName,
+        location: review.relativeTime || "Google review",
+        text: review.text,
+        rating: review.rating,
+      }))
+    : fallbackTestimonials;
+
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
@@ -349,11 +362,11 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {homeTestimonials.map((testimonial, index) => (
               <div key={index} className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
+                  {[...Array(Math.round(testimonial.rating))].map((_, i) => (
                     <svg key={i} className="w-5 h-5 text-green-400 fill-current" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
