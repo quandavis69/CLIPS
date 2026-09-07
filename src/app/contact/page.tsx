@@ -20,24 +20,39 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [deliveryMethod, setDeliveryMethod] = useState<"sms" | "email" | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone}\n` +
-      `Service: ${formData.service}\n` +
-      `Address: ${formData.address}\n\n` +
-      `Message:\n${formData.message}`
-    );
+    let deliveredBySms = false;
+    try {
+      const res = await fetch("/api/quote-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      deliveredBySms = res.ok;
+    } catch {
+      deliveredBySms = false;
+    }
 
-    window.location.href = `mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${body}`;
+    if (!deliveredBySms) {
+      // Fall back to opening the visitor's own email client.
+      const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone}\n` +
+        `Service: ${formData.service}\n` +
+        `Address: ${formData.address}\n\n` +
+        `Message:\n${formData.message}`
+      );
+      window.location.href = `mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${body}`;
+    }
 
+    setDeliveryMethod(deliveredBySms ? "sms" : "email");
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({
@@ -143,10 +158,21 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">Email Client Opened!</h3>
-                    <p className="text-gray-400 mb-6">
-                      Please send the email that opened in your email client. We&apos;ll get back to you within 24 hours.
-                    </p>
+                    {deliveryMethod === "sms" ? (
+                      <>
+                        <h3 className="text-xl font-bold text-white mb-2">Quote Request Sent!</h3>
+                        <p className="text-gray-400 mb-6">
+                          We&apos;ve texted your request straight to our team. We&apos;ll get back to you within 24 hours.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h3 className="text-xl font-bold text-white mb-2">Email Client Opened!</h3>
+                        <p className="text-gray-400 mb-6">
+                          Please send the email that opened in your email client. We&apos;ll get back to you within 24 hours.
+                        </p>
+                      </>
+                    )}
                     <button
                       onClick={() => setIsSubmitted(false)}
                       className="text-green-400 font-semibold hover:text-green-300"
@@ -255,7 +281,7 @@ export default function ContactPage() {
                       disabled={isSubmitting}
                       className="w-full bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Opening Email..." : "Send Quote Request"}
+                      {isSubmitting ? "Sending..." : "Send Quote Request"}
                     </button>
 
                     <p className="text-sm text-gray-500 text-center">
