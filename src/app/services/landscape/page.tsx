@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Landscape Services | Clips Lawncare - Bend, OR",
-  description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, hydroseeding, and sod.",
+  description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod.",
 };
 
 const services = [
@@ -16,7 +15,7 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     ),
-    features: ["Various mulch types available", "Weed barrier installation", "Edge trimming and bed preparation", "Rock & mulch glue available to prevent washout"],
+    features: ["Various mulch types available", "Weed barrier installation", "Edge trimming and bed preparation"],
   },
   {
     title: "Rock Installation",
@@ -26,7 +25,7 @@ const services = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 20l5-9 4 5 3-4 6 8H3z" />
       </svg>
     ),
-    features: ["Decorative river rock", "Lava rock and specialty stones", "Proper base and weed barrier prep", "Rock & mulch glue available to prevent washout"],
+    features: ["Decorative river rock", "Lava rock and specialty stones", "Proper base and weed barrier prep"],
   },
   {
     title: "Garden Beds",
@@ -100,37 +99,6 @@ const services = [
   },
 ];
 
-const specialtyServices = [
-  {
-    title: "Hydroseeding",
-    tagline: "Grow a Lush Green Lawn in Just a Few Weeks!",
-    description: "Transform bare or patchy areas into vibrant green lawns quickly and effectively with our professional hydroseeding service.",
-    image: "/hydroseeding-promo.jpg",
-    features: [
-      "Fast & effective",
-      "Spray-on solution",
-      "Even growth",
-      "Cost-effective alternative to sod",
-      "Perfect for large areas",
-      "Erosion control",
-    ],
-  },
-  {
-    title: "Rock & Mulch Glue",
-    tagline: "Keep Rocks & Mulch in Place",
-    description: "Our specialized glue keeps your decorative rocks and mulch exactly where they belong, preventing washout and maintaining your landscape's appearance.",
-    image: "/mulch-glue-promo.jpg",
-    features: [
-      "Toxic-free formula",
-      "Clear spray-on adhesion",
-      "Prevents washout",
-      "Long-lasting protection",
-      "Safe for plants and pets",
-      "Maintains curb appeal",
-    ],
-  },
-];
-
 const benefits = [
   "Free on-site consultations and estimates",
   "Licensed and insured professionals",
@@ -168,10 +136,10 @@ export default function LandscapePage() {
                 Get Free Quote
               </Link>
               <a
-                href="tel:541-508-9047"
+                href="tel:541-305-8500"
                 className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors"
               >
-                541-508-9047
+                541-305-8500
               </a>
             </div>
           </div>
@@ -212,45 +180,6 @@ export default function LandscapePage() {
           </div>
         </div>
       </section>
-
-      {/* Specialty Services */}
-      {specialtyServices.map((service, index) => (
-        <section key={service.title} className={`py-20 ${index % 2 === 0 ? "bg-gray-900" : "bg-black"}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
-              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{service.title}</h2>
-                <p className="text-2xl text-green-400 mb-6 font-semibold">{service.tagline}</p>
-                <p className="text-gray-300 text-lg mb-8">{service.description}</p>
-
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors"
-                >
-                  Learn More & Get Quote
-                </Link>
-              </div>
-
-              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
-                  <Image src={service.image} alt={service.title} fill className="object-cover" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
 
       {/* Benefits Section */}
       <section className="py-20 bg-gray-900">
@@ -316,10 +245,10 @@ export default function LandscapePage() {
               Get Your Free Quote
             </Link>
             <a
-              href="tel:541-508-9047"
+              href="tel:541-305-8500"
               className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-colors"
             >
-              Call 541-508-9047
+              Call 541-305-8500
             </a>
           </div>
         </div>

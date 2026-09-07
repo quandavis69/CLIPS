@@ -76,7 +76,7 @@ export default function ContactPage() {
               <h2 className="text-2xl font-bold text-white mb-6">Get In Touch</h2>
 
               <div className="space-y-6">
-                <a href="tel:541-508-9047" className="flex items-start gap-4 group">
+                <a href="tel:541-305-8500" className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 flex-shrink-0 group-hover:bg-green-500 group-hover:text-white transition-colors">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -84,7 +84,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-white">Phone</h3>
-                    <p className="text-gray-300">541-508-9047</p>
+                    <p className="text-gray-300">541-305-8500</p>
                     <p className="text-sm text-gray-500">Call or text anytime</p>
                   </div>
                 </a>
