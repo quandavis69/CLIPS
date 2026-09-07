@@ -2,11 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const services = [
-  { name: "Premium Lawn Care", href: "/services/lawn-care" },
-  { name: "Weed Control", href: "/services/weed-control" },
-  { name: "Pine Needle Removal", href: "/services/pine-control" },
-  { name: "Cleanups", href: "/services/cleanups" },
-  { name: "Installation", href: "/services/installation" },
+  { name: "Residential", href: "/services/residential" },
+  { name: "Commercial", href: "/services/commercial" },
+  { name: "Landscape", href: "/services/landscape" },
 ];
 
 const quickLinks = [

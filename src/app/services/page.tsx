@@ -3,62 +3,40 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Services | Clips Lawncare - Central Oregon Lawn Care",
-  description: "Professional lawn care services including premium lawn maintenance, weed control, pine needle removal, cleanups, and landscape installation in Central Oregon.",
+  description: "Residential and commercial lawn maintenance plans plus a dedicated landscape crew, serving Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
 };
 
-const services = [
+const divisions = [
   {
-    title: "Premium Lawn Care",
-    description: "Keep your lawn looking its best with our comprehensive lawn care services. Regular mowing, edging, and maintenance tailored to Central Oregon's unique climate.",
-    href: "/services/lawn-care",
-    features: ["Weekly/Bi-weekly mowing", "Precision edging", "Trimming around obstacles", "Grass clipping cleanup", "Seasonal adjustments"],
+    title: "Residential",
+    description: "Home lawn care built around two maintenance plans - Basic and Premium - with optional add-on packages for weed control, trimming, and irrigation.",
+    href: "/services/residential",
+    features: ["Basic & Premium maintenance plans", "Weed, trimming & irrigation add-ons", "Standalone aeration & dethatching", "Monthly cleanup subscriptions"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
       </svg>
     ),
   },
   {
-    title: "Weed Control",
-    description: "Eliminate unsightly weeds and prevent new growth with our targeted weed control treatments. We use effective methods to keep your lawn weed-free.",
-    href: "/services/weed-control",
-    features: ["Weed identification", "Targeted treatments", "Prevention programs", "Safe for pets & kids", "Ongoing maintenance"],
+    title: "Commercial",
+    description: "The same reliable Basic and Premium maintenance plans, scaled for businesses, HOAs, and commercial properties throughout Central Oregon.",
+    href: "/services/commercial",
+    features: ["Basic & Premium maintenance plans", "Weed, trimming & irrigation add-ons", "Standalone aeration & dethatching", "Monthly cleanup subscriptions"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21h18M5 21V7l8-4v18M13 21V11l6 3v7M9 9v.01M9 12v.01M9 15v.01" />
       </svg>
     ),
   },
   {
-    title: "Pine Needle Removal",
-    description: "Living among the pines? We specialize in thorough pine needle removal to protect your lawn, reduce fire hazards, and keep your property looking clean.",
-    href: "/services/pine-control",
-    features: ["Complete needle removal", "Roof & gutter clearing", "Fire hazard reduction", "Regular maintenance plans", "Debris hauling"],
+    title: "Landscape",
+    description: "A dedicated landscape crew for project-based work: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, hydroseeding, and sod.",
+    href: "/services/landscape",
+    features: ["Mulching & rock installation", "Garden beds & planting", "Pressure washing", "Restoration & cleanup projects"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
-  },
-  {
-    title: "Cleanups",
-    description: "Seasonal or one-time cleanups to restore your property's appearance. From spring refresh to fall preparation, we handle it all.",
-    href: "/services/cleanups",
-    features: ["Spring cleanups", "Fall leaf removal", "Storm debris cleanup", "Property restoration", "Yard waste hauling"],
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-      </svg>
-    ),
-  },
-  {
-    title: "Installation",
-    description: "Transform your outdoor space with professional landscape installation. From new sod to complete garden bed installations, we bring your vision to life.",
-    href: "/services/installation",
-    features: ["Sod installation", "Mulch & rock beds", "Plant installation", "Landscape design", "Irrigation setup"],
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3l4 5h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8l4-5z" />
       </svg>
     ),
   },
@@ -76,30 +54,30 @@ export default function ServicesPage() {
               Complete Lawn Care Solutions
             </h1>
             <p className="text-xl text-green-100">
-              From regular maintenance to complete landscape transformations, we provide professional lawn care services tailored to Central Oregon&apos;s unique climate.
+              We organize our work into three divisions - Residential, Commercial, and Landscape - so every property gets a crew and a plan built for it.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Services List */}
+      {/* Divisions List */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
-            {services.map((service, index) => (
+            {divisions.map((division, index) => (
               <div
-                key={service.href}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                key={division.href}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}
               >
-                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                   <div className="w-16 h-16 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 mb-6">
-                    {service.icon}
+                    {division.icon}
                   </div>
-                  <h2 className="text-3xl font-bold text-white mb-4">{service.title}</h2>
-                  <p className="text-gray-300 text-lg mb-6">{service.description}</p>
+                  <h2 className="text-3xl font-bold text-white mb-4">{division.title}</h2>
+                  <p className="text-gray-300 text-lg mb-6">{division.description}</p>
 
                   <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
+                    {division.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
                         <svg className="w-5 h-5 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -110,7 +88,7 @@ export default function ServicesPage() {
                   </ul>
 
                   <Link
-                    href={service.href}
+                    href={division.href}
                     className="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors"
                   >
                     Learn More
@@ -121,13 +99,13 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Image Placeholder */}
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                   <div className="w-full aspect-[4/3] bg-gray-800 rounded-2xl flex items-center justify-center border border-gray-700">
                     <div className="text-center text-gray-500">
                       <svg className="w-20 h-20 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <p className="text-sm">{service.title} Photo</p>
+                      <p className="text-sm">{division.title} Photo</p>
                     </div>
                   </div>
                 </div>
@@ -144,7 +122,7 @@ export default function ServicesPage() {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-green-100 mb-8">
-            Contact us today for a free quote. We&apos;ll assess your property and recommend the best services for your needs.
+            Contact us today for a free quote. We&apos;ll assess your property and recommend the best plan for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 const services = [
-  { name: "Lawn Care Packages", href: "/services/lawn-care-packages" },
+  { name: "Residential", href: "/services/residential" },
+  { name: "Commercial", href: "/services/commercial" },
   { name: "Landscape", href: "/services/landscape" },
-  { name: "Extra Services", href: "/services/extra-services" },
 ];
 
 const navLinks = [

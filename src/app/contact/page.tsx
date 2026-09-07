@@ -3,11 +3,9 @@
 import { useState } from "react";
 
 const services = [
-  "Premium Lawn Care",
-  "Weed Control",
-  "Pine Needle Removal",
-  "Cleanups",
-  "Installation",
+  "Residential Maintenance",
+  "Commercial Maintenance",
+  "Landscape Services",
   "Other",
 ];
 

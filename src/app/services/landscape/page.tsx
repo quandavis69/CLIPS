@@ -1,112 +1,132 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Landscape Services | Clips Lawncare - Bend, OR",
-  description: "Professional landscape installation, design, and maintenance services in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, hydroseeding, and sod.",
 };
 
 const services = [
   {
-    title: "Landscape Installation",
-    description: "Transform your outdoor space with professional landscape installation including sod, plants, trees, and hardscape features.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
-    features: [
-      "Sod installation for instant lawns",
-      "Tree and shrub planting",
-      "Garden bed design and installation",
-      "Mulch and decorative rock placement",
-      "Irrigation system installation",
-      "Hardscape features (pavers, pathways)",
-    ],
-  },
-  {
-    title: "Mulch & Rock Installation",
-    description: "Enhance your property's curb appeal and protect your plants with professional mulch and decorative rock installation.",
+    title: "Mulching",
+    description: "Fresh mulch beds that lock in moisture, suppress weeds, and finish off your landscape design.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
       </svg>
     ),
-    features: [
-      "Various mulch types available",
-      "Decorative river rock",
-      "Lava rock and specialty stones",
-      "Proper weed barrier installation",
-      "Edge trimming and bed preparation",
-      "Professional spreading and grading",
-    ],
+    features: ["Various mulch types available", "Weed barrier installation", "Edge trimming and bed preparation", "Rock & mulch glue available to prevent washout"],
   },
   {
-    title: "Planting Services",
-    description: "Expert plant selection and installation tailored to Central Oregon's high desert climate for beautiful, thriving landscapes.",
+    title: "Rock Installation",
+    description: "Decorative rock beds and borders that hold up to Central Oregon's wind and weather.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 20l5-9 4 5 3-4 6 8H3z" />
+      </svg>
+    ),
+    features: ["Decorative river rock", "Lava rock and specialty stones", "Proper base and weed barrier prep", "Rock & mulch glue available to prevent washout"],
+  },
+  {
+    title: "Garden Beds",
+    description: "New garden beds designed and installed to fit your property and plant choices.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 20h16M8 20V10a4 4 0 018 0v10" />
+      </svg>
+    ),
+    features: ["Design consultation", "Bed excavation & edging", "Soil preparation", "Plant placement"],
+  },
+  {
+    title: "Planting",
+    description: "Trees, shrubs, and perennials selected and installed for Central Oregon's high desert climate.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
       </svg>
     ),
-    features: [
-      "Native and drought-tolerant plants",
-      "Flowering perennials and annuals",
-      "Ornamental trees and shrubs",
-      "Proper spacing and placement",
-      "Soil preparation and amendments",
-      "Seasonal planting recommendations",
-    ],
+    features: ["Native & drought-tolerant plants", "Ornamental trees and shrubs", "Soil preparation and amendments", "Seasonal planting recommendations"],
   },
   {
-    title: "Sod Removal & Installation",
-    description: "Complete sod removal and replacement services to give your lawn a fresh start or remove unwanted grass areas.",
+    title: "Pressure Washing",
+    description: "Restore driveways, patios, walkways, and other hardscape surfaces.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21c-4.418 0-8-3.14-8-7 0-4 8-13 8-13s8 9 8 13c0 3.86-3.582 7-8 7z" />
       </svg>
     ),
-    features: [
-      "Old sod removal and disposal",
-      "Ground leveling and preparation",
-      "Premium quality sod installation",
-      "Soil amendments as needed",
-      "Proper rolling and watering",
-      "Installation timing for best results",
-    ],
+    features: ["Driveways & walkways", "Patios & decks", "Building exteriors", "Fences & retaining walls"],
   },
   {
-    title: "Landscape Maintenance",
-    description: "Keep your landscape looking its best year-round with our comprehensive maintenance services.",
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-      </svg>
-    ),
-    features: [
-      "Seasonal pruning and trimming",
-      "Mulch replenishment",
-      "Weed control in beds",
-      "Plant health monitoring",
-      "Fertilization programs",
-      "Irrigation system adjustments",
-    ],
-  },
-  {
-    title: "Seasonal Cleanups",
-    description: "Prepare your landscape for the changing seasons with thorough cleanup services that keep your property pristine.",
+    title: "Cleanups",
+    description: "One-time or seasonal cleanups to reset a yard that's gotten overgrown or neglected.",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
       </svg>
     ),
+    features: ["Spring & fall cleanups", "Leaf & debris removal", "Storm debris cleanup", "Yard waste hauling"],
+  },
+  {
+    title: "Restoration Projects",
+    description: "Bring a neglected or storm-damaged landscape back to life with a full property restoration.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
+    features: ["Overgrowth removal", "Regrading & soil restoration", "New sod, plants, or beds", "Complete property makeovers"],
+  },
+  {
+    title: "Pine Needle Removal",
+    description: "Thorough pine needle removal to protect your lawn, clear roofs and gutters, and reduce fire hazards.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3l4 5h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8l4-5z" />
+      </svg>
+    ),
+    features: ["Lawn, roof & gutter clearing", "Fire hazard reduction", "Deck & patio cleaning", "Debris hauling"],
+  },
+  {
+    title: "Sod Installation & Removal",
+    description: "Complete sod replacement services, from removing old grass to installing a fresh, lush lawn.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z" />
+      </svg>
+    ),
+    features: ["Old sod removal & disposal", "Ground leveling & preparation", "Premium quality sod installation", "Soil amendments as needed"],
+  },
+];
+
+const specialtyServices = [
+  {
+    title: "Hydroseeding",
+    tagline: "Grow a Lush Green Lawn in Just a Few Weeks!",
+    description: "Transform bare or patchy areas into vibrant green lawns quickly and effectively with our professional hydroseeding service.",
+    image: "/hydroseeding-promo.jpg",
     features: [
-      "Spring and fall cleanup services",
-      "Leaf and debris removal",
-      "Bed edging and refreshing",
-      "Gutter cleaning",
-      "Pine needle removal",
-      "Property-wide debris hauling",
+      "Fast & effective",
+      "Spray-on solution",
+      "Even growth",
+      "Cost-effective alternative to sod",
+      "Perfect for large areas",
+      "Erosion control",
+    ],
+  },
+  {
+    title: "Rock & Mulch Glue",
+    tagline: "Keep Rocks & Mulch in Place",
+    description: "Our specialized glue keeps your decorative rocks and mulch exactly where they belong, preventing washout and maintaining your landscape's appearance.",
+    image: "/mulch-glue-promo.jpg",
+    features: [
+      "Toxic-free formula",
+      "Clear spray-on adhesion",
+      "Prevents washout",
+      "Long-lasting protection",
+      "Safe for plants and pets",
+      "Maintains curb appeal",
     ],
   },
 ];
@@ -133,11 +153,12 @@ export default function LandscapePage() {
               </svg>
               Back to Services
             </Link>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Landscape Crew</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
               Landscape Services
             </h1>
             <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-              Transform your outdoor space with professional landscape design, installation, and maintenance services tailored to Central Oregon&apos;s unique high desert environment.
+              Project-based landscaping for Central Oregon properties - from a fresh mulch bed to a full property restoration.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -191,6 +212,45 @@ export default function LandscapePage() {
           </div>
         </div>
       </section>
+
+      {/* Specialty Services */}
+      {specialtyServices.map((service, index) => (
+        <section key={service.title} className={`py-20 ${index % 2 === 0 ? "bg-gray-900" : "bg-black"}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{service.title}</h2>
+                <p className="text-2xl text-green-400 mb-6 font-semibold">{service.tagline}</p>
+                <p className="text-gray-300 text-lg mb-8">{service.description}</p>
+
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <svg className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors"
+                >
+                  Learn More & Get Quote
+                </Link>
+              </div>
+
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image src={service.image} alt={service.title} fill className="object-cover" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
 
       {/* Benefits Section */}
       <section className="py-20 bg-gray-900">
