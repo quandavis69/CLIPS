@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getGooglePlaceReviews } from "@/lib/googleReviews";
+import { curatedGoogleReviews } from "@/data/googleReviews";
 
 const services = [
   {
@@ -55,29 +56,6 @@ const services = [
   },
 ];
 
-// Used until GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured, or if
-// the Google Places API request fails.
-const fallbackTestimonials = [
-  {
-    name: "Sarah M.",
-    location: "Bend, OR",
-    text: "Clips transformed our overgrown yard into a beautiful outdoor space. Their attention to detail is amazing!",
-    rating: 5,
-  },
-  {
-    name: "Mike T.",
-    location: "Redmond, OR",
-    text: "Best lawn care service in Central Oregon. Reliable, professional, and always on time.",
-    rating: 5,
-  },
-  {
-    name: "Jennifer L.",
-    location: "Sunriver, OR",
-    text: "Their pine needle removal service saved us so much time. Highly recommend!",
-    rating: 5,
-  },
-];
-
 const trustBadges = [
   { title: "Licensed & Insured", icon: "shield" },
   { title: "Free Estimates", icon: "document" },
@@ -94,7 +72,12 @@ export default async function Home() {
         text: review.text,
         rating: review.rating,
       }))
-    : fallbackTestimonials;
+    : curatedGoogleReviews.slice(0, 3).map((review) => ({
+        name: review.name,
+        location: review.relativeTime,
+        text: review.text,
+        rating: review.rating,
+      }));
 
   return (
     <div className="min-h-screen bg-black">
@@ -359,6 +342,15 @@ export default async function Home() {
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Don&apos;t just take our word for it - hear from our satisfied customers throughout Central Oregon.
             </p>
+            <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-400">
+              <svg className="w-4 h-4" viewBox="0 0 18 18">
+                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" />
+                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" />
+                <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z" />
+                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.581C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z" />
+              </svg>
+              <span>Real reviews from Google</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">

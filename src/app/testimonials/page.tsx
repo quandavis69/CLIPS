@@ -1,79 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getGooglePlaceReviews } from "@/lib/googleReviews";
+import { curatedGoogleReviews } from "@/data/googleReviews";
 
 export const metadata: Metadata = {
   title: "Testimonials | Clips Lawncare - Customer Reviews",
   description: "See what our customers in Bend, Redmond, Sunriver, Prineville, and La Pine are saying about Clips Lawncare services.",
 };
-
-// Used until GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured, or if
-// the Google Places API request fails.
-const fallbackTestimonials = [
-  {
-    name: "Sarah M.",
-    location: "Bend, OR",
-    text: "Clips transformed our overgrown yard into a beautiful outdoor space. Their attention to detail is amazing! They showed up on time, worked efficiently, and left our property looking better than we ever imagined.",
-    rating: 5,
-    service: "Yard Cleanup",
-  },
-  {
-    name: "Mike T.",
-    location: "Redmond, OR",
-    text: "Best lawn care service in Central Oregon. Reliable, professional, and always on time. They've been maintaining our lawn for months now and it's never looked better.",
-    rating: 5,
-    service: "Premium Lawn Care",
-  },
-  {
-    name: "Jennifer L.",
-    location: "Sunriver, OR",
-    text: "Their pine needle removal service saved us so much time. Living among the pines means constant cleanup, but Clips handles it all. Highly recommend!",
-    rating: 5,
-    service: "Pine Needle Removal",
-  },
-  {
-    name: "David R.",
-    location: "Prineville, OR",
-    text: "Professional, affordable, and thorough. They tackled our weed problem and now our lawn is the envy of the neighborhood. Great communication throughout the process.",
-    rating: 5,
-    service: "Weed Control",
-  },
-  {
-    name: "Amanda K.",
-    location: "Bend, OR",
-    text: "We hired Clips for a complete landscape installation and couldn't be happier. They helped us design the perfect outdoor space and executed it flawlessly.",
-    rating: 5,
-    service: "Installation",
-  },
-  {
-    name: "Robert H.",
-    location: "La Pine, OR",
-    text: "Living in La Pine, we deal with a lot of pine needles and debris. Clips Lawncare has been a lifesaver. They're always responsive and do excellent work.",
-    rating: 5,
-    service: "Cleanups",
-  },
-  {
-    name: "Lisa P.",
-    location: "Redmond, OR",
-    text: "I've tried several lawn care companies over the years, but Clips is by far the best. Fair pricing, quality work, and they actually show up when they say they will!",
-    rating: 5,
-    service: "Premium Lawn Care",
-  },
-  {
-    name: "Tom S.",
-    location: "Sunriver, OR",
-    text: "The team at Clips is fantastic. They're knowledgeable about what works best in our Central Oregon climate and it shows in the results. Our yard has never looked better.",
-    rating: 5,
-    service: "Weed Control",
-  },
-  {
-    name: "Karen W.",
-    location: "Bend, OR",
-    text: "From the first estimate to the completed job, Clips was professional and easy to work with. They transformed our neglected backyard into a beautiful space we actually want to use.",
-    rating: 5,
-    service: "Yard Cleanup",
-  },
-];
 
 export default async function TestimonialsPage() {
   const googleData = await getGooglePlaceReviews();
@@ -87,12 +20,12 @@ export default async function TestimonialsPage() {
         rating: review.rating,
         badge: null as string | null,
       }))
-    : fallbackTestimonials.map((testimonial) => ({
-        name: testimonial.name,
-        subtext: testimonial.location,
-        text: testimonial.text,
-        rating: testimonial.rating,
-        badge: testimonial.service as string | null,
+    : curatedGoogleReviews.map((review) => ({
+        name: review.name,
+        subtext: review.relativeTime,
+        text: review.text,
+        rating: review.rating,
+        badge: (review.service ?? null) as string | null,
       }));
 
   const averageRating = googleData?.rating ?? 5.0;
@@ -111,6 +44,15 @@ export default async function TestimonialsPage() {
             <p className="text-xl text-green-100">
               Don&apos;t just take our word for it - hear from homeowners throughout Central Oregon who trust Clips Lawncare.
             </p>
+            <div className="flex items-center gap-2 mt-4 text-sm text-green-100">
+              <svg className="w-4 h-4" viewBox="0 0 18 18">
+                <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" />
+                <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" />
+                <path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707s.102-1.167.282-1.707V4.961H.957C.347 6.175 0 7.55 0 9s.348 2.825.957 4.039l3.007-2.332z" />
+                <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.581C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.961L3.964 7.293C4.672 5.166 6.656 3.58 9 3.58z" />
+              </svg>
+              <span>Real reviews from Google</span>
+            </div>
           </div>
         </div>
       </section>
