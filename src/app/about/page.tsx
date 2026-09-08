@@ -103,8 +103,71 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values */}
+      {/* Meet the Founder */}
       <section className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Meet the Founder</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">A Letter From Our Owner</h2>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-12 items-start">
+            <div className="lg:col-span-1 lg:sticky lg:top-28">
+              <div className="relative aspect-[3/4] max-w-sm mx-auto rounded-2xl overflow-hidden">
+                <Image
+                  src="/team/will-carney.png"
+                  alt="Will Carney, owner and founder of Clips Lawn Care"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: "50% 20%" }}
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse farthest-corner at 50% 30%, transparent 30%, #111827 100%)" }}
+                />
+              </div>
+              <div className="text-center mt-4">
+                <p className="text-white font-semibold">Will Carney</p>
+                <p className="text-gray-400 text-sm">Owner & Founder</p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-2 space-y-4 text-gray-300 text-lg">
+              <p>
+                Clips Lawn Care was built with a simple purpose: to provide people with dependable, professional, and honest lawn care and landscaping they can truly count on.
+              </p>
+              <p>
+                I was born and raised in Bend, Oregon, and I&apos;ve always wanted to build a business of my own. From a young age, I knew I wanted to lead people, create opportunities, and build something that could provide value to the community around me.
+              </p>
+              <p>
+                I started working in landscaping at 16 while I was still in high school. What began as a job quickly became something I genuinely enjoyed and wanted to pursue as a career. After graduating, I decided to take that experience and build something of my own.
+              </p>
+              <p>
+                In 2026, I started Clips Lawn Care with the goal of bringing a different standard of service to Central Oregon. I had heard the same frustrations from homeowners and businesses over and over again&mdash;poor communication, unreliable service, inconsistent quality, and companies that simply didn&apos;t seem to care.
+              </p>
+              <p>
+                I believe landscaping should be more than just showing up, doing the work, and sending an invoice. It should be about earning trust, taking pride in the work, communicating clearly, and creating a service that genuinely makes people&apos;s lives easier.
+              </p>
+              <p>
+                Our long-term goal is to build Clips into a company that can serve homeowners, businesses, HOAs, and commercial properties throughout Central Oregon while creating meaningful opportunities for the people who work alongside us.
+              </p>
+              <p>
+                We&apos;re not building Clips simply to make money. We&apos;re building it to create something that provides for our employees, serves our customers, and contributes to the community we call home.
+              </p>
+              <p>
+                We&apos;re proud to be local, proud to be growing, and committed to doing things the right way&mdash;one property and one customer at a time.
+              </p>
+              <div className="pt-4">
+                <p className="text-white font-semibold">&mdash; Will Carney</p>
+                <p className="text-gray-500">Owner &amp; Founder, Clips Lawn Care</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values */}
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Our Values</span>
@@ -129,7 +192,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Commitment */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Work Photo */}
