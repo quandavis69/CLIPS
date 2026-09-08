@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendQuoteRequestSms } from "@/lib/twilio";
+import { sendQuoteRequestEmail } from "@/lib/email";
 
 export async function POST(request: Request) {
   const data = await request.json().catch(() => null);
@@ -16,18 +17,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
   }
 
-  const sent = await sendQuoteRequestSms({
+  const payload = {
     name: data.name,
     email: data.email,
     phone: typeof data.phone === "string" ? data.phone : "",
     service: typeof data.service === "string" ? data.service : "",
     address: typeof data.address === "string" ? data.address : "",
     message: data.message,
-  });
+  };
 
-  if (!sent) {
-    return NextResponse.json({ error: "SMS delivery is not available." }, { status: 503 });
+  const [smsSent, emailSent] = await Promise.all([
+    sendQuoteRequestSms(payload),
+    sendQuoteRequestEmail(payload),
+  ]);
+
+  if (!smsSent && !emailSent) {
+    return NextResponse.json({ error: "No delivery method is available." }, { status: 503 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, sms: smsSent, email: emailSent });
 }

@@ -20,26 +20,26 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [deliveryMethod, setDeliveryMethod] = useState<"sms" | "email" | null>(null);
+  const [deliveryMethod, setDeliveryMethod] = useState<"sent" | "email-client" | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    let deliveredBySms = false;
+    let delivered = false;
     try {
       const res = await fetch("/api/quote-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-      deliveredBySms = res.ok;
+      delivered = res.ok;
     } catch {
-      deliveredBySms = false;
+      delivered = false;
     }
 
-    if (!deliveredBySms) {
-      // Fall back to opening the visitor's own email client.
+    if (!delivered) {
+      // Last resort: open the visitor's own email client.
       const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
@@ -52,7 +52,7 @@ export default function ContactPage() {
       window.location.href = `mailto:michaelclipslawncare@gmail.com?subject=${subject}&body=${body}`;
     }
 
-    setDeliveryMethod(deliveredBySms ? "sms" : "email");
+    setDeliveryMethod(delivered ? "sent" : "email-client");
     setIsSubmitting(false);
     setIsSubmitted(true);
     setFormData({
@@ -158,11 +158,11 @@ export default function ContactPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    {deliveryMethod === "sms" ? (
+                    {deliveryMethod === "sent" ? (
                       <>
                         <h3 className="text-xl font-bold text-white mb-2">Quote Request Sent!</h3>
                         <p className="text-gray-400 mb-6">
-                          We&apos;ve texted your request straight to our team. We&apos;ll get back to you within 24 hours.
+                          We&apos;ve received your request and will get back to you within 24 hours.
                         </p>
                       </>
                     ) : (
