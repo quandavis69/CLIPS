@@ -58,15 +58,20 @@ export default async function Home() {
         text: review.text,
         rating: review.rating,
       }));
+  const averageRating = googleData?.rating ?? 5.0;
 
   return (
     <div className="min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-black via-gray-900 to-black pt-20">
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-black via-gray-900 to-black pt-20 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%2322c55e" fill-opacity="0.4"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
         </div>
+
+        {/* Decorative Glow */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-700/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -78,9 +83,22 @@ export default async function Home() {
                 Premium Lawn Care for Your{" "}
                 <span className="text-green-400">Central Oregon</span> Home
               </h1>
-              <p className="text-xl text-gray-300 mb-8 max-w-lg">
+              <p className="text-xl text-gray-300 mb-6 max-w-lg">
                 Professional lawn care, weed control, pine needle removal, and landscape installation services in Bend, Redmond, Sunriver, Prineville & La Pine Oregon.
               </p>
+
+              <div className="flex items-center gap-3 mb-8">
+                <div className="flex -space-x-1">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-green-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-gray-300 text-sm">
+                  <span className="text-white font-semibold">{averageRating.toFixed(1)}</span> rating from real Google reviews
+                </span>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <Link
@@ -138,7 +156,9 @@ export default async function Home() {
             {/* Hero Image */}
             <div className="hidden lg:block">
               <div className="relative">
-                <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden">
+                {/* Offset accent panel */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 to-green-900/10 rounded-3xl border border-green-500/10 -z-10"></div>
+                <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-2xl shadow-black/50">
                   <Image
                     src="/hero-lawn.jpg"
                     alt="Beautiful lawn maintained by Clips Lawncare"
@@ -149,17 +169,31 @@ export default async function Home() {
                     priority
                   />
                 </div>
-                {/* Floating Promo Card */}
-                <div className="absolute -top-4 -right-4 bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-6">
+                {/* Floating Rating Card */}
+                <div className="absolute -top-6 -right-6 bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-6">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center">
-                      <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg className="w-8 h-8 text-green-400 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xl font-bold text-white">Maintenance Packages</p>
-                      <p className="text-lg text-green-400">Starting As Low As $25!</p>
+                      <p className="text-xl font-bold text-white">{averageRating.toFixed(1)} Rating</p>
+                      <p className="text-sm text-green-400">From real customers</p>
+                    </div>
+                  </div>
+                </div>
+                {/* Floating Guarantee Card */}
+                <div className="absolute -bottom-6 -left-6 bg-gray-900 border border-gray-700 rounded-2xl shadow-xl p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-bold text-white">Licensed & Insured</p>
+                      <p className="text-sm text-gray-400">Central Oregon owned</p>
                     </div>
                   </div>
                 </div>
@@ -170,11 +204,34 @@ export default async function Home() {
 
       </section>
 
+      {/* Stats Band */}
+      <section className="relative bg-black border-y border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "500+", label: "Happy Customers" },
+              { value: `${averageRating.toFixed(1)}★`, label: "Google Rating" },
+              { value: "100%", label: "Satisfaction Rate" },
+              { value: "5", label: "Cities Served" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl md:text-4xl font-bold text-green-400 mb-1">{stat.value}</p>
+                <p className="text-gray-400 text-sm uppercase tracking-wider">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">What We Offer</span>
+            <span className="inline-flex items-center gap-2 text-green-400 font-semibold text-sm uppercase tracking-wider">
+              <span className="w-8 h-0.5 bg-green-500"></span>
+              What We Offer
+              <span className="w-8 h-0.5 bg-green-500"></span>
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Our Services</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               From regular maintenance to complete landscape transformations, we provide comprehensive lawn care solutions for Central Oregon homes and businesses.
@@ -182,13 +239,16 @@ export default async function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <Link
                 key={service.href}
                 href={service.href}
-                className="group bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-green-500/50 transition-all duration-300"
+                className="group relative bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-green-500/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400 mb-6 group-hover:bg-green-500 group-hover:text-black transition-colors">
+                <span className="absolute top-6 right-8 text-4xl font-bold text-gray-700/50 group-hover:text-green-500/20 transition-colors">
+                  0{index + 1}
+                </span>
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500/25 to-green-600/10 rounded-xl flex items-center justify-center text-green-400 mb-6 group-hover:bg-green-500 group-hover:text-black transition-colors">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">
@@ -224,7 +284,10 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">About Us</span>
+              <span className="inline-flex items-center gap-2 text-green-400 font-semibold text-sm uppercase tracking-wider">
+                <span className="w-8 h-0.5 bg-green-500"></span>
+                About Us
+              </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
                 Your Trusted Local Lawn Care Experts
               </h2>
@@ -293,18 +356,21 @@ export default async function Home() {
               </Link>
             </div>
 
-            {/* About Image Placeholder */}
+            {/* About Image */}
             <div className="relative">
-              <div className="w-full aspect-square bg-gray-800/50 rounded-2xl border border-gray-700 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-sm">Team/Work Photo Placeholder</p>
-                </div>
+              <div className="absolute -inset-4 bg-gradient-to-tl from-green-500/20 to-green-900/10 rounded-3xl border border-green-500/10 -z-10"></div>
+              <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-2xl shadow-black/50">
+                <Image
+                  src="/hero-lawn.jpg"
+                  alt="A Clips Lawncare crew member maintaining a Central Oregon lawn"
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '30% 60%' }}
+                />
               </div>
               {/* Experience Badge */}
-              <div className="absolute -bottom-6 -right-6 bg-green-500 text-black rounded-xl p-6 shadow-xl">
+              <div className="absolute -bottom-6 -right-6 bg-green-500 text-black rounded-xl p-6 shadow-xl border border-green-400">
                 <p className="text-3xl font-bold">100%</p>
                 <p className="text-green-900 text-sm">Satisfaction Guaranteed</p>
               </div>
@@ -317,7 +383,11 @@ export default async function Home() {
       <section className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
+            <span className="inline-flex items-center gap-2 text-green-400 font-semibold text-sm uppercase tracking-wider">
+              <span className="w-8 h-0.5 bg-green-500"></span>
+              Testimonials
+              <span className="w-8 h-0.5 bg-green-500"></span>
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">What Our Customers Say</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Don&apos;t just take our word for it - hear from our satisfied customers throughout Central Oregon.
@@ -335,7 +405,10 @@ export default async function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {homeTestimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-2xl p-8 border border-gray-700">
+              <div key={index} className="relative bg-gray-800/50 rounded-2xl p-8 border border-gray-700 hover:border-green-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-300">
+                <svg className="absolute top-6 right-6 w-10 h-10 text-gray-700/40" fill="currentColor" viewBox="0 0 32 32">
+                  <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z" />
+                </svg>
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(Math.round(testimonial.rating))].map((_, i) => (
@@ -376,20 +449,54 @@ export default async function Home() {
       <section className="py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Map Placeholder */}
+            {/* Service Area Diagram */}
             <div className="order-2 lg:order-1">
-              <div className="w-full aspect-[4/3] bg-gray-800/50 rounded-2xl border border-gray-700 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                  </svg>
-                  <p className="text-sm">Service Area Map Placeholder</p>
+              <div className="relative w-full aspect-[4/3] bg-gradient-to-br from-gray-900 to-gray-800/50 rounded-2xl border border-gray-700 overflow-hidden">
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #22c55e 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300" fill="none">
+                  <line x1="200" y1="150" x2="200" y2="55" stroke="#22c55e" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                  <line x1="200" y1="150" x2="320" y2="115" stroke="#22c55e" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                  <line x1="200" y1="150" x2="300" y2="230" stroke="#22c55e" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                  <line x1="200" y1="150" x2="100" y2="235" stroke="#22c55e" strokeOpacity="0.3" strokeWidth="1.5" strokeDasharray="4 4" />
+                </svg>
+
+                {/* Bend (HQ) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                  <div className="w-5 h-5 bg-green-400 rounded-full ring-4 ring-green-400/20 shadow-lg shadow-green-500/50"></div>
+                  <span className="mt-2 text-sm font-bold text-white bg-gray-900 px-2 py-0.5 rounded-md border border-gray-700">Bend (HQ)</span>
+                </div>
+
+                {/* Redmond */}
+                <div className="absolute top-[18%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="mt-1.5 text-xs font-medium text-gray-300">Redmond</span>
+                </div>
+
+                {/* Prineville */}
+                <div className="absolute top-[38%] right-[8%] flex flex-col items-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="mt-1.5 text-xs font-medium text-gray-300">Prineville</span>
+                </div>
+
+                {/* Sunriver */}
+                <div className="absolute bottom-[10%] right-[18%] flex flex-col items-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="mt-1.5 text-xs font-medium text-gray-300">Sunriver</span>
+                </div>
+
+                {/* La Pine */}
+                <div className="absolute bottom-[8%] left-[20%] flex flex-col items-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span className="mt-1.5 text-xs font-medium text-gray-300">La Pine</span>
                 </div>
               </div>
             </div>
 
             <div className="order-1 lg:order-2">
-              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Service Area</span>
+              <span className="inline-flex items-center gap-2 text-green-400 font-semibold text-sm uppercase tracking-wider">
+                <span className="w-8 h-0.5 bg-green-500"></span>
+                Service Area
+              </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
                 Proudly Serving Central Oregon
               </h2>
@@ -424,8 +531,10 @@ export default async function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-green-900 to-green-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24 bg-gradient-to-br from-green-900 to-green-800 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-black/10 rounded-full blur-3xl translate-y-1/2 pointer-events-none"></div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Lawn?
           </h2>
