@@ -71,6 +71,14 @@ const galleryItems = [
     image: "/gallery/patio-before-after.jpg",
     before: true,
   },
+  {
+    id: 9,
+    category: "Landscape",
+    title: "Pressure Washing",
+    description: "Exterior siding and equipment cleaning for a commercial property",
+    image: "/gallery/pressure-washing.jpg",
+    before: false,
+  },
 ];
 
 export default function GalleryPage() {
