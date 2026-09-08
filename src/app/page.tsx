@@ -160,12 +160,12 @@ export default async function Home() {
                 <div className="absolute -inset-4 bg-gradient-to-br from-green-500/20 to-green-900/10 rounded-3xl border border-green-500/10 -z-10"></div>
                 <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-2xl shadow-black/50">
                   <Image
-                    src="/hero-lawn.jpg"
-                    alt="Beautiful lawn maintained by Clips Lawncare"
+                    src="/gallery/lawn-lake.png"
+                    alt="Crisply striped lawn maintained by Clips Lawncare along a Central Oregon waterfront"
                     width={600}
                     height={600}
                     className="w-full h-full object-cover object-center"
-                    style={{ objectPosition: '50% 50%' }}
+                    style={{ objectPosition: '50% 40%' }}
                     priority
                   />
                 </div>
@@ -361,12 +361,12 @@ export default async function Home() {
               <div className="absolute -inset-4 bg-gradient-to-tl from-green-500/20 to-green-900/10 rounded-3xl border border-green-500/10 -z-10"></div>
               <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-2xl shadow-black/50">
                 <Image
-                  src="/hero-lawn.jpg"
-                  alt="A Clips Lawncare crew member maintaining a Central Oregon lawn"
+                  src="/gallery/mower-equipment.png"
+                  alt="Clips Lawncare mowing equipment on a striped lawn"
                   width={600}
                   height={600}
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: '30% 60%' }}
+                  style={{ objectPosition: '50% 60%' }}
                 />
               </div>
               {/* Experience Badge */}

@@ -2,71 +2,73 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-const categories = ["All", "Lawn Care", "Cleanups", "Installation", "Before & After"];
+const categories = ["All", "Lawn Care", "Landscape", "Before & After"];
 
 const galleryItems = [
   {
     id: 1,
     category: "Lawn Care",
-    title: "Premium Lawn Maintenance",
-    description: "Regular mowing and edging in Bend",
-    before: true,
+    title: "Lakeside Lawn Care",
+    description: "Precision striping along a Central Oregon waterfront",
+    image: "/gallery/lawn-lake.png",
+    before: false,
   },
   {
     id: 2,
-    category: "Cleanups",
-    title: "Spring Cleanup",
-    description: "Full yard cleanup in Redmond",
-    before: true,
+    category: "Lawn Care",
+    title: "Mowing Equipment in Action",
+    description: "Clean, crisp lines with professional-grade mowers",
+    image: "/gallery/mower-equipment.png",
+    before: false,
   },
   {
     id: 3,
-    category: "Installation",
-    title: "New Sod Installation",
-    description: "Complete lawn renovation in Sunriver",
-    before: true,
+    category: "Lawn Care",
+    title: "Backyard Mowing",
+    description: "Corner-to-corner stripes on a Central Oregon lawn",
+    image: "/gallery/striped-lawn-playground.png",
+    before: false,
   },
   {
     id: 4,
-    category: "Lawn Care",
-    title: "Weed Control Treatment",
-    description: "Weed-free lawn in Prineville",
+    category: "Landscape",
+    title: "Sod Installation",
+    description: "Rolling out fresh sod for a full lawn renovation",
+    image: "/gallery/sod-installation.png",
     before: false,
   },
   {
     id: 5,
-    category: "Cleanups",
-    title: "Pine Needle Removal",
-    description: "Pine needle cleanup in La Pine",
-    before: true,
+    category: "Landscape",
+    title: "Landscape Bed Refresh",
+    description: "New mulch beds and clean stone edging",
+    image: "/gallery/landscape-bed.png",
+    before: false,
   },
   {
     id: 6,
-    category: "Installation",
-    title: "Mulch Installation",
-    description: "Fresh mulch beds in Bend",
+    category: "Landscape",
+    title: "Landscape Prep Work",
+    description: "Grading and site prep ahead of installation",
+    image: "/gallery/landscape-prep.png",
     before: false,
   },
   {
     id: 7,
-    category: "Lawn Care",
-    title: "Edge Trimming",
-    description: "Crisp edges along walkways",
-    before: false,
-  },
-  {
-    id: 8,
-    category: "Cleanups",
-    title: "Fall Leaf Removal",
-    description: "Seasonal cleanup in Redmond",
+    category: "Before & After",
+    title: "Backyard Lawn Transformation",
+    description: "From bare dirt to a lush, healthy lawn",
+    image: "/gallery/lawn-before-after.png",
     before: true,
   },
   {
-    id: 9,
-    category: "Installation",
-    title: "Landscape Design",
-    description: "Complete landscape makeover",
+    id: 8,
+    category: "Before & After",
+    title: "Patio Restoration",
+    description: "Weeds cleared, stone reset, ready to relax",
+    image: "/gallery/patio-before-after.jpg",
     before: true,
   },
 ];
@@ -94,6 +96,21 @@ export default function GalleryPage() {
             <p className="text-xl text-green-100">
               Browse our portfolio of lawn care and landscaping projects throughout Central Oregon.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Banner */}
+      <section className="bg-black py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative w-full aspect-[1100/230] rounded-2xl overflow-hidden border border-gray-800 shadow-xl">
+            <Image
+              src="/gallery/services-collage.png"
+              alt="Clips Lawncare services: lawn maintenance, landscape installation, cleanups, and weed control"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1280px) 100vw, 1280px"
+            />
           </div>
         </div>
       </section>
@@ -129,16 +146,15 @@ export default function GalleryPage() {
                 className="group bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300 cursor-pointer"
                 onClick={() => setSelectedImage(item.id)}
               >
-                {/* Image Placeholder */}
+                {/* Project Photo */}
                 <div className="relative aspect-[4/3] bg-gray-800">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-gray-500">
-                      <svg className="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <p className="text-sm">Project Photo</p>
-                    </div>
-                  </div>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
 
                   {/* Before/After Badge */}
                   {item.before && (
@@ -195,13 +211,14 @@ export default function GalleryPage() {
           </button>
 
           <div className="max-w-4xl w-full bg-gray-900 rounded-2xl p-8 border border-gray-800" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center mb-4">
-              <div className="text-center text-gray-500">
-                <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <p>Full Size Image Placeholder</p>
-              </div>
+            <div className="relative aspect-video bg-gray-800 rounded-lg mb-4 overflow-hidden">
+              <Image
+                src={galleryItems.find(item => item.id === selectedImage)?.image ?? ""}
+                alt={galleryItems.find(item => item.id === selectedImage)?.title ?? ""}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1024px) 100vw, 900px"
+              />
             </div>
             <h3 className="text-xl font-bold text-white">
               {galleryItems.find(item => item.id === selectedImage)?.title}
