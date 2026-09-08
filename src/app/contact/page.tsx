@@ -49,7 +49,7 @@ export default function ContactPage() {
         `Address: ${formData.address}\n\n` +
         `Message:\n${formData.message}`
       );
-      window.location.href = `mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:michaelclipslawncare@gmail.com?subject=${subject}&body=${body}`;
     }
 
     setDeliveryMethod(deliveredBySms ? "sms" : "email");
