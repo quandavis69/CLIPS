@@ -115,7 +115,7 @@ export default function LandscapePage() {
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Link href="/services" className="inline-flex items-center text-green-300 hover:text-white mb-4 transition-colors">
+            <Link href="/services" className="flex items-center justify-center text-green-300 hover:text-white mb-4 transition-colors">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>

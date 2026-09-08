@@ -9,6 +9,8 @@ const corePlans = [
     name: "Basic Maintenance",
     tagline: "Reliable weekly upkeep to keep your property clean and healthy.",
     icon: "🌱",
+    priceWeek: 45,
+    priceMonth: 180,
     features: [
       "Weekly or bi-weekly lawn mowing",
       "Precision lawn edging",
@@ -20,6 +22,8 @@ const corePlans = [
     tagline: "Complete season-long care for a lawn that thrives year-round.",
     icon: "⭐",
     popular: true,
+    priceWeek: 60,
+    priceMonth: 240,
     features: [
       "Everything in Basic Maintenance",
       "Spring aeration",
@@ -35,6 +39,7 @@ const corePlans = [
 const addOnPackages = [
   {
     name: "Weed Package",
+    priceMonth: 25,
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -48,6 +53,7 @@ const addOnPackages = [
   },
   {
     name: "Trimming Package",
+    priceMonth: 25,
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -61,6 +67,7 @@ const addOnPackages = [
   },
   {
     name: "Irrigation Package",
+    priceMonth: 30,
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21c-4.418 0-8-3.14-8-7 0-4 8-13 8-13s8 9 8 13c0 3.86-3.582 7-8 7z" />
@@ -70,6 +77,7 @@ const addOnPackages = [
       "Spring water turn-on & system test",
       "Fall irrigation blow-out",
       "Free inspections & quotes on irrigation repairs",
+      "Free adjustments & setting updates",
     ],
   },
 ];
@@ -89,6 +97,8 @@ const standaloneServices = [
     name: "Cleanup Maintenance Package",
     badge: "Monthly subscription",
     description: "Once-monthly property clean-ups to keep things tidy between seasons.",
+    priceMonth: 200,
+    priceQualifier: "Starting at",
   },
 ];
 
@@ -113,7 +123,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Link href="/services" className="inline-flex items-center text-green-300 hover:text-white mb-4 transition-colors">
+          <Link href="/services" className="flex items-center justify-center text-green-300 hover:text-white mb-4 transition-colors">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -166,7 +176,12 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                 <div className="text-center mb-6">
                   <div className="text-5xl mb-4">{plan.icon}</div>
                   <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-green-400 font-medium">{plan.tagline}</p>
+                  <p className="text-green-400 font-medium mb-4">{plan.tagline}</p>
+                  <div>
+                    <span className="text-4xl font-bold text-white">${plan.priceWeek}</span>
+                    <span className="text-gray-400">/week</span>
+                    <p className="text-sm text-gray-500 mt-1">Starting at ${plan.priceMonth}/month</p>
+                  </div>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature) => (
@@ -212,7 +227,8 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                 <div className="w-14 h-14 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 mb-6">
                   {addOn.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-4">{addOn.name}</h3>
+                <h3 className="text-xl font-bold text-white mb-1">{addOn.name}</h3>
+                <p className="text-green-400 font-semibold mb-4">+${addOn.priceMonth}/month add-on</p>
                 <ul className="space-y-2">
                   {addOn.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
@@ -246,6 +262,11 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                 </span>
                 <h3 className="text-xl font-bold text-white mb-3">{service.name}</h3>
                 <p className="text-gray-400">{service.description}</p>
+                {service.priceMonth && (
+                  <p className="text-green-400 font-semibold mt-3">
+                    {service.priceQualifier} ${service.priceMonth}/month
+                  </p>
+                )}
               </div>
             ))}
           </div>
