@@ -25,8 +25,8 @@ const divisions = [
     title: "Commercial",
     description: "The same reliable Basic and Premium maintenance plans, scaled for businesses, HOAs, and commercial properties throughout Central Oregon.",
     href: "/services/commercial",
-    image: null,
-    imageAlt: "",
+    image: "/gallery/commercial-maintenance.png",
+    imageAlt: "Clips Lawncare crew member maintaining landscape beds at a commercial HOA entrance",
     features: ["Basic & Premium maintenance plans", "Weed, trimming & irrigation add-ons", "Standalone aeration & dethatching", "Monthly cleanup subscriptions"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
