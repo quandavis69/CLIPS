@@ -186,7 +186,7 @@ export default function LandscapePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Why Choose Clips for Your Landscape?
               </h2>
               <p className="text-gray-300 text-lg mb-8">
@@ -231,7 +231,7 @@ export default function LandscapePage() {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-green-800 to-green-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             Ready to Transform Your Landscape?
           </h2>
           <p className="text-xl text-green-100 mb-8">

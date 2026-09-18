@@ -130,7 +130,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
             Back to Services
           </Link>
           <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">{copy.eyebrow}</span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">{copy.title}</h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">{copy.title}</h1>
           <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">{copy.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -154,7 +154,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Step 1</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Choose Your Core Plan</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Choose Your Core Plan</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Every maintenance program starts with one of these two plans. All add-ons below build on top of them.
             </p>
@@ -210,7 +210,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Step 2</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Maintenance Add-Ons</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Maintenance Add-Ons</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Add these packages on top of your plan - billed together with your subscription.
             </p>
@@ -248,7 +248,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Available Separately</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">No Plan Required</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">No Plan Required</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               These services don&apos;t require a Basic or Premium plan and can be booked on their own.
             </p>
@@ -276,7 +276,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-green-800 to-green-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-green-100 mb-8">
             Contact us today for a free quote and let us help you choose the right plan for your property.
           </p>

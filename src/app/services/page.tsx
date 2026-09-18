@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import Accordion from "@/components/Accordion";
 
 export const metadata: Metadata = {
   title: "Our Services | Clips Lawncare - Central Oregon Lawn Care",
@@ -49,6 +50,33 @@ const divisions = [
   },
 ];
 
+const faqs = [
+  {
+    question: "What's the difference between the Basic and Premium plans?",
+    answer: "Basic covers weekly or bi-weekly mowing, precision edging, and leaf blowing. Premium includes everything in Basic plus spring aeration, overseed, and fertilizer, summer fertilization with soil strengthener, fall fertilization and reseed, and 10% off all add-on packages.",
+  },
+  {
+    question: "Do I need a maintenance plan before adding the Weed, Trimming, or Irrigation package?",
+    answer: "Yes, those add-on packages require an active Basic or Premium plan. Aeration, dethatching, and the Cleanup Maintenance Package are available on their own, no plan required.",
+  },
+  {
+    question: "Is aeration or dethatching available without a subscription?",
+    answer: "Yes, both are offered as one-time services and don't require a maintenance plan.",
+  },
+  {
+    question: "What's included in a landscape project?",
+    answer: "Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, and sod installation and removal.",
+  },
+  {
+    question: "How is Commercial different from Residential?",
+    answer: "The same Basic and Premium maintenance plans and add-on packages, scaled for businesses, HOAs, and multi-unit properties throughout Central Oregon.",
+  },
+  {
+    question: "Do you offer one-time cleanups, or only recurring service?",
+    answer: "Both. The Cleanup Maintenance Package is a monthly subscription, and our Landscape division also handles one-time cleanup and restoration projects.",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <div className="min-h-screen pt-20 bg-black">
@@ -57,7 +85,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Our Services</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
               Complete Lawn Care Solutions
             </h1>
             <p className="text-xl text-green-100">
@@ -108,13 +136,13 @@ export default function ServicesPage() {
                 {/* Division Image */}
                 <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                   {division.image ? (
-                    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
+                    <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-700 shadow-xl hover:shadow-2xl hover:shadow-green-500/10 transition-shadow duration-300">
                       <Image
                         src={division.image}
                         alt={division.imageAlt}
                         width={800}
                         height={600}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   ) : (
@@ -131,10 +159,29 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="relative py-20 bg-gray-900 overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-24 bg-black rounded-bl-[100px] hidden md:block"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="inline-flex items-center gap-2 text-green-400 font-semibold text-sm uppercase tracking-wider">
+              <span className="w-8 h-0.5 bg-green-500"></span>
+              FAQ
+              <span className="w-8 h-0.5 bg-green-500"></span>
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Questions About Our Services</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              More detail on how our plans and packages work.
+            </p>
+          </div>
+          <Accordion items={faqs} />
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-green-800 to-green-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>
           <p className="text-xl text-green-100 mb-8">
