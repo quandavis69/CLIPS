@@ -316,7 +316,7 @@ export default async function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               {
-                value: "500+",
+                value: "200+",
                 label: "Happy Customers",
                 icon: (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

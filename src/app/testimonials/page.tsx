@@ -63,7 +63,7 @@ export default async function TestimonialsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <p className="text-4xl font-bold text-green-400">
-                {totalReviews ? `${totalReviews}+` : "500+"}
+                {totalReviews ? `${totalReviews}+` : "200+"}
               </p>
               <p className="text-gray-400">Happy Customers</p>
             </div>
