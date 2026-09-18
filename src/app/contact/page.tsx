@@ -9,12 +9,37 @@ const services = [
   "Other",
 ];
 
+const estimateTypes = [
+  {
+    value: "in-person",
+    label: "In-Person Estimate",
+    description: "We'll visit your property to walk the site and give you an accurate quote.",
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  },
+  {
+    value: "virtual",
+    label: "Virtual Estimate",
+    description: "Send us photos or a quick video of your property and we'll quote it remotely - no visit required.",
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+];
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     service: "",
+    estimateType: "in-person",
     address: "",
     message: "",
   });
@@ -41,11 +66,13 @@ export default function ContactPage() {
     if (!delivered) {
       // Last resort: open the visitor's own email client.
       const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
+      const estimateTypeLabel = estimateTypes.find((t) => t.value === formData.estimateType)?.label || formData.estimateType;
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
         `Email: ${formData.email}\n` +
         `Phone: ${formData.phone}\n` +
         `Service: ${formData.service}\n` +
+        `Estimate Type: ${estimateTypeLabel}\n` +
         `Address: ${formData.address}\n\n` +
         `Message:\n${formData.message}`
       );
@@ -60,6 +87,7 @@ export default function ContactPage() {
       email: "",
       phone: "",
       service: "",
+      estimateType: "in-person",
       address: "",
       message: "",
     });
@@ -244,6 +272,40 @@ export default function ContactPage() {
                             </option>
                           ))}
                         </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Estimate Type *
+                      </label>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {estimateTypes.map((type) => (
+                          <button
+                            key={type.value}
+                            type="button"
+                            onClick={() => setFormData({ ...formData, estimateType: type.value })}
+                            className={`text-left p-4 rounded-lg border-2 transition-colors ${
+                              formData.estimateType === type.value
+                                ? "border-green-500 bg-green-900/20"
+                                : "border-gray-700 bg-gray-800 hover:border-gray-600"
+                            }`}
+                          >
+                            <div className="flex items-center gap-3 mb-1.5">
+                              <div
+                                className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                                  formData.estimateType === type.value
+                                    ? "bg-green-500 text-black"
+                                    : "bg-gray-700 text-green-400"
+                                }`}
+                              >
+                                {type.icon}
+                              </div>
+                              <span className="font-semibold text-white">{type.label}</span>
+                            </div>
+                            <p className="text-sm text-gray-400">{type.description}</p>
+                          </button>
+                        ))}
                       </div>
                     </div>
 

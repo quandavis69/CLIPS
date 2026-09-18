@@ -3,6 +3,7 @@ interface QuoteRequestPayload {
   email: string;
   phone: string;
   service: string;
+  estimateType: string;
   address: string;
   message: string;
 }
@@ -28,6 +29,7 @@ export async function sendQuoteRequestSms(payload: QuoteRequestPayload): Promise
   if (payload.phone) lines.push(`Phone: ${payload.phone}`);
   lines.push(`Email: ${payload.email}`);
   if (payload.service) lines.push(`Service: ${payload.service}`);
+  lines.push(`Estimate Type: ${payload.estimateType}`);
   if (payload.address) lines.push(`Address: ${payload.address}`);
   lines.push("", payload.message);
   const body = lines.join("\n").slice(0, 1500);

@@ -22,6 +22,7 @@ export async function POST(request: Request) {
     email: data.email,
     phone: typeof data.phone === "string" ? data.phone : "",
     service: typeof data.service === "string" ? data.service : "",
+    estimateType: data.estimateType === "virtual" ? "Virtual Estimate" : "In-Person Estimate",
     address: typeof data.address === "string" ? data.address : "",
     message: data.message,
   };
