@@ -5,9 +5,18 @@ interface QuoteRequestPayload {
   email: string;
   phone: string;
   service: string;
+  propertyType: string;
+  contactMethod: string;
   estimateType: string;
   address: string;
+  city: string;
   message: string;
+}
+
+interface EmailAttachment {
+  filename: string;
+  content: Buffer;
+  contentType?: string;
 }
 
 const DEFAULT_TO_EMAIL = "michaelclipslawncare@gmail.com";
@@ -37,7 +46,7 @@ function getTransporter() {
 // Requires GMAIL_USER and GMAIL_APP_PASSWORD - see .env.example. Returns
 // false (rather than throwing) whenever email isn't configured or the send
 // fails, so the caller can fall back to another delivery method.
-export async function sendQuoteRequestEmail(payload: QuoteRequestPayload): Promise<boolean> {
+export async function sendQuoteRequestEmail(payload: QuoteRequestPayload, attachments: EmailAttachment[] = []): Promise<boolean> {
   const transporter = getTransporter();
   if (!transporter) {
     return false;
@@ -49,9 +58,15 @@ export async function sendQuoteRequestEmail(payload: QuoteRequestPayload): Promi
   if (payload.phone) lines.push(`Phone: ${payload.phone}`);
   lines.push(`Email: ${payload.email}`);
   if (payload.service) lines.push(`Service: ${payload.service}`);
+  if (payload.propertyType) lines.push(`Property Type: ${payload.propertyType}`);
+  if (payload.contactMethod) lines.push(`Preferred Contact Method: ${payload.contactMethod}`);
   lines.push(`Estimate Type: ${payload.estimateType}`);
   if (payload.address) lines.push(`Address: ${payload.address}`);
+  if (payload.city) lines.push(`City: ${payload.city}`);
   lines.push("", payload.message);
+  if (attachments.length > 0) {
+    lines.push("", `(${attachments.length} photo${attachments.length > 1 ? "s" : ""} attached)`);
+  }
 
   try {
     await transporter.sendMail({
@@ -60,6 +75,7 @@ export async function sendQuoteRequestEmail(payload: QuoteRequestPayload): Promi
       replyTo: payload.email,
       subject: `${payload.estimateType} Request - ${payload.service || "General Inquiry"}`,
       text: lines.join("\n"),
+      attachments,
     });
     return true;
   } catch (error) {

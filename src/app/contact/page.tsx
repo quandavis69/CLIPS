@@ -9,6 +9,9 @@ const services = [
   "Other",
 ];
 
+const propertyTypes = ["Residential", "Commercial", "HOA"];
+const contactMethods = ["Phone", "Email", "Text"];
+
 const estimateTypes = [
   {
     value: "in-person",
@@ -33,30 +36,70 @@ const estimateTypes = [
   },
 ];
 
+const MAX_FILES = 4;
+const MAX_TOTAL_BYTES = 4 * 1024 * 1024; // 4MB combined, to stay under typical serverless body limits
+
+function formatBytes(bytes: number) {
+  return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
+}
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     service: "",
+    propertyType: "",
+    contactMethod: "",
     estimateType: "in-person",
     address: "",
+    city: "",
     message: "",
   });
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<"sent" | "email-client" | null>(null);
+
+  const totalFileBytes = files.reduce((sum, f) => sum + f.size, 0);
+
+  const handleFilesSelected = (selected: FileList | null) => {
+    if (!selected || selected.length === 0) return;
+    const incoming = Array.from(selected);
+    const combined = [...files, ...incoming];
+
+    if (combined.length > MAX_FILES) {
+      setFileError(`You can attach up to ${MAX_FILES} files.`);
+      return;
+    }
+    const combinedBytes = combined.reduce((sum, f) => sum + f.size, 0);
+    if (combinedBytes > MAX_TOTAL_BYTES) {
+      setFileError(`Attached files must total under ${formatBytes(MAX_TOTAL_BYTES)}. Photos usually work better than video here.`);
+      return;
+    }
+    setFileError("");
+    setFiles(combined);
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+    setFileError("");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const submission = new FormData();
+    Object.entries(formData).forEach(([key, value]) => submission.append(key, value));
+    files.forEach((file) => submission.append("photos", file));
+
     let delivered = false;
     try {
       const res = await fetch("/api/quote-request", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: submission,
       });
       delivered = res.ok;
     } catch {
@@ -64,19 +107,27 @@ export default function ContactPage() {
     }
 
     if (!delivered) {
-      // Last resort: open the visitor's own email client.
-      const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
+      // Last resort: open the visitor's own email client. Can't carry attachments this way.
       const estimateTypeLabel = estimateTypes.find((t) => t.value === formData.estimateType)?.label || formData.estimateType;
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Phone: ${formData.phone}\n` +
-        `Service: ${formData.service}\n` +
-        `Estimate Type: ${estimateTypeLabel}\n` +
-        `Address: ${formData.address}\n\n` +
-        `Message:\n${formData.message}`
-      );
-      window.location.href = `mailto:michaelclipslawncare@gmail.com?subject=${subject}&body=${body}`;
+      const subject = encodeURIComponent(`Quote Request - ${formData.service || 'General Inquiry'}`);
+      const bodyLines = [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Service: ${formData.service}`,
+        `Property Type: ${formData.propertyType}`,
+        `Preferred Contact Method: ${formData.contactMethod}`,
+        `Estimate Type: ${estimateTypeLabel}`,
+        `Address: ${formData.address}`,
+        `City: ${formData.city}`,
+        "",
+        "Message:",
+        formData.message,
+      ];
+      if (files.length > 0) {
+        bodyLines.push("", `Note: ${files.length} photo(s) could not be attached automatically - please reply to this email with them attached.`);
+      }
+      window.location.href = `mailto:michaelclipslawncare@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
     }
 
     setDeliveryMethod(delivered ? "sent" : "email-client");
@@ -87,10 +138,15 @@ export default function ContactPage() {
       email: "",
       phone: "",
       service: "",
+      propertyType: "",
+      contactMethod: "",
       estimateType: "in-person",
       address: "",
+      city: "",
       message: "",
     });
+    setFiles([]);
+    setFileError("");
   };
 
   return (
@@ -275,6 +331,88 @@ export default function ContactPage() {
                       </div>
                     </div>
 
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="address" className="block text-sm font-medium text-gray-300 mb-2">
+                          Property Address
+                        </label>
+                        <input
+                          type="text"
+                          id="address"
+                          value={formData.address}
+                          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-white placeholder-gray-500"
+                          placeholder="123 Main St"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="city" className="block text-sm font-medium text-gray-300 mb-2">
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          id="city"
+                          list="cities"
+                          value={formData.city}
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                          className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-white placeholder-gray-500"
+                          placeholder="Bend"
+                        />
+                        <datalist id="cities">
+                          <option value="Bend" />
+                          <option value="Redmond" />
+                          <option value="Sunriver" />
+                          <option value="Prineville" />
+                          <option value="La Pine" />
+                        </datalist>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                          Property Type
+                        </label>
+                        <div className="flex gap-2">
+                          {propertyTypes.map((type) => (
+                            <button
+                              key={type}
+                              type="button"
+                              onClick={() => setFormData({ ...formData, propertyType: type })}
+                              className={`flex-1 px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                                formData.propertyType === type
+                                  ? "border-green-500 bg-green-900/20 text-white"
+                                  : "border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-600"
+                              }`}
+                            >
+                              {type}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-300 mb-2">
+                          Preferred Contact Method
+                        </label>
+                        <div className="flex gap-2">
+                          {contactMethods.map((method) => (
+                            <button
+                              key={method}
+                              type="button"
+                              onClick={() => setFormData({ ...formData, contactMethod: method })}
+                              className={`flex-1 px-3 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                                formData.contactMethod === method
+                                  ? "border-green-500 bg-green-900/20 text-white"
+                                  : "border-gray-700 bg-gray-800 text-gray-300 hover:border-gray-600"
+                              }`}
+                            >
+                              {method}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
                     <div>
                       <label className="block text-sm font-medium text-gray-300 mb-2">
                         Estimate Type *
@@ -310,17 +448,56 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="address" className="block text-sm font-medium text-gray-300 mb-2">
-                        Property Address
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
+                        Photos or Video <span className="text-gray-500 font-normal">(optional - helpful for virtual estimates)</span>
                       </label>
-                      <input
-                        type="text"
-                        id="address"
-                        value={formData.address}
-                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-white placeholder-gray-500"
-                        placeholder="123 Main St, Bend, OR 97701"
-                      />
+                      <label
+                        htmlFor="photos"
+                        className="flex flex-col items-center justify-center gap-2 w-full px-4 py-6 bg-gray-800 border-2 border-dashed border-gray-700 rounded-lg cursor-pointer hover:border-green-500/50 transition-colors text-center"
+                      >
+                        <svg className="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <span className="text-gray-300 text-sm font-medium">Click to upload photos</span>
+                        <span className="text-gray-500 text-xs">Up to {MAX_FILES} files, {formatBytes(MAX_TOTAL_BYTES)} total</span>
+                        <input
+                          type="file"
+                          id="photos"
+                          multiple
+                          accept="image/*,video/*"
+                          className="hidden"
+                          onChange={(e) => {
+                            handleFilesSelected(e.target.files);
+                            e.target.value = "";
+                          }}
+                        />
+                      </label>
+
+                      {fileError && <p className="text-red-400 text-sm mt-2">{fileError}</p>}
+
+                      {files.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          {files.map((file, index) => (
+                            <div key={`${file.name}-${index}`} className="flex items-center justify-between gap-3 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2">
+                              <span className="text-sm text-gray-300 truncate">{file.name}</span>
+                              <div className="flex items-center gap-3 flex-shrink-0">
+                                <span className="text-xs text-gray-500">{formatBytes(file.size)}</span>
+                                <button
+                                  type="button"
+                                  onClick={() => removeFile(index)}
+                                  className="text-gray-500 hover:text-red-400 transition-colors"
+                                  aria-label={`Remove ${file.name}`}
+                                >
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                          <p className="text-xs text-gray-500">{formatBytes(totalFileBytes)} of {formatBytes(MAX_TOTAL_BYTES)} used</p>
+                        </div>
+                      )}
                     </div>
 
                     <div>
@@ -340,7 +517,7 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      disabled={isSubmitting}
+                      disabled={isSubmitting || !!fileError}
                       className="w-full bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? "Sending..." : "Send Quote Request"}
