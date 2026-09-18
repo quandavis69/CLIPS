@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Clips Lawncare",
+  title: "Privacy Policy | Clips Lawn Care",
   description: "Learn how Clips Lawn Care LLC collects, uses, and protects your personal information, including our SMS/text messaging practices.",
 };
 

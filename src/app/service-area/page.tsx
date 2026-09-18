@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Service Area | Clips Lawncare - Central Oregon Coverage",
-  description: "Clips Lawncare serves Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon with premium lawn care services.",
+  title: "Lawn Care Service Area | Bend, Redmond, Sunriver & Central Oregon",
+  description: "Clips Lawn Care serves Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon with residential and commercial lawn care and landscaping.",
 };
 
 const serviceAreas = [
@@ -43,7 +42,7 @@ export default function ServiceAreaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Service Area</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
               Proudly Serving Central Oregon
             </h1>
             <p className="text-xl text-green-100">
@@ -57,14 +56,14 @@ export default function ServiceAreaPage() {
       <section className="py-16 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Central Oregon Photo */}
-            <div className="w-full aspect-square rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
-              <Image
-                src="/gallery/lawn-lake.png"
-                alt="A striped lawn along a Central Oregon waterfront"
-                width={800}
-                height={800}
-                className="w-full h-full object-cover"
+            {/* Service Area Map */}
+            <div className="relative w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-xl">
+              <iframe
+                src="https://maps.google.com/maps?q=Bend,+Oregon&z=9&output=embed"
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Clips Lawncare service area map centered on Bend, Oregon"
               />
             </div>
 
@@ -99,7 +98,7 @@ export default function ServiceAreaPage() {
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Areas We Serve</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Areas We Serve</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Learn more about our services in each community.
             </p>

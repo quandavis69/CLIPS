@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Clips Lawncare | Premium Lawn Care Services in Central Oregon",
-  description: "Professional lawn care, weed control, pine needle removal, cleanups and installation services in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
-  keywords: "lawn care, landscaping, weed control, pine needle removal, Bend Oregon, Redmond, Sunriver, Prineville, La Pine",
+  title: "Lawn Care & Landscaping in Bend, Redmond & Central Oregon | Clips Lawn Care",
+  description: "Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  keywords: "lawn care Bend Oregon, lawn care Redmond Oregon, lawn care Central Oregon, landscaping Bend Oregon, commercial landscaping Bend Oregon, HOA landscaping Bend Oregon, lawn maintenance Bend Oregon, landscape installation Central Oregon",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",

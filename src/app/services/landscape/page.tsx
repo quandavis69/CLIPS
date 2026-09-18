@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Landscape Services | Clips Lawncare - Bend, OR",
+  title: "Landscape Installation & Projects in Bend, OR | Clips Lawn Care",
   description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod.",
 };
 
@@ -122,7 +122,7 @@ export default function LandscapePage() {
               Back to Services
             </Link>
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Landscape Crew</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
               Landscape Services
             </h1>
             <p className="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
@@ -150,7 +150,7 @@ export default function LandscapePage() {
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Landscape Services</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Our Landscape Services</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
               Comprehensive landscaping solutions to create and maintain beautiful outdoor spaces in Central Oregon.
             </p>

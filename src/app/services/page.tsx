@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Accordion from "@/components/Accordion";
 
 export const metadata: Metadata = {
-  title: "Our Services | Clips Lawncare - Central Oregon Lawn Care",
+  title: "Lawn Care & Landscaping Services | Clips Lawn Care - Central Oregon",
   description: "Residential and commercial lawn maintenance plans plus a dedicated landscape crew, serving Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
 };
 

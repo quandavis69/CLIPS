@@ -3,8 +3,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Clips Lawncare - Central Oregon Lawn Care Experts",
-  description: "Learn about Clips Lawncare, your trusted local lawn care experts serving Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  title: "About Clips Lawn Care | Bend, Oregon Lawn Care & Landscaping Crew",
+  description: "Meet Clips Lawn Care, a Bend, Oregon-based lawn care and landscaping company serving Bend, Redmond, Sunriver, Prineville, and La Pine.",
 };
 
 const values = [
@@ -55,7 +55,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">About Us</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
               Your Trusted Central Oregon Lawn Care Partner
             </h1>
             <p className="text-xl text-green-100">

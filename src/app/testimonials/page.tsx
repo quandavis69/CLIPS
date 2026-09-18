@@ -4,8 +4,8 @@ import { getGooglePlaceReviews } from "@/lib/googleReviews";
 import { curatedGoogleReviews } from "@/data/googleReviews";
 
 export const metadata: Metadata = {
-  title: "Testimonials | Clips Lawncare - Customer Reviews",
-  description: "See what our customers in Bend, Redmond, Sunriver, Prineville, and La Pine are saying about Clips Lawncare services.",
+  title: "Customer Reviews | Clips Lawn Care - Bend, OR",
+  description: "See what our customers in Bend, Redmond, Sunriver, Prineville, and La Pine are saying about Clips Lawn Care's lawn care and landscaping services.",
 };
 
 export default async function TestimonialsPage() {
@@ -38,7 +38,7 @@ export default async function TestimonialsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
               What Our Customers Say
             </h1>
             <p className="text-xl text-green-100">
