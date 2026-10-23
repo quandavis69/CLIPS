@@ -12,6 +12,45 @@ export interface CuratedReview {
 
 export const curatedGoogleReviews: CuratedReview[] = [
   {
+    name: "Amy King",
+    rating: 5,
+    text: "Great price",
+    relativeTime: "a week ago",
+  },
+  {
+    name: "Jason Job",
+    rating: 5,
+    text: "Will is professional and responsive and just great person to work with.",
+    relativeTime: "a week ago",
+  },
+  {
+    name: "Jennifer Williams",
+    rating: 5,
+    text: "Clips Lawn Care did our sprinkler blowout... They were super professional, had great communication and knew exactly what they were doing. Would def recommend them and will use them again in the future!",
+    relativeTime: "a week ago",
+    service: "Irrigation",
+  },
+  {
+    name: "Thor Erickson",
+    rating: 5,
+    text: "Great work, done in a professional and timely manner. Will and Conrad are top notch!",
+    relativeTime: "a week ago",
+  },
+  {
+    name: "RAF",
+    rating: 5,
+    text: "Mason, did an exceptional job in removing our debris piles from our property. Thank You Mason and Clips Lawn Care",
+    relativeTime: "3 weeks ago",
+    service: "Cleanup",
+  },
+  {
+    name: "Jodi Satko",
+    rating: 5,
+    text: "Will and his crew are AMAZING and have worked with me in Brasada on many projects personally and with my clients as well. I highly recommend him and CLIPS for all your landscaping needs. He gets the job done \"right\" and for a reasonable and fair price! He is FULL SERVICE and reliable too! Call him today!!",
+    relativeTime: "a month ago",
+    service: "Landscaping",
+  },
+  {
     name: "Sue Carroll",
     rating: 5,
     text: "Clips has kept our lawn and edging in tip top shape this summer! Will has been great about communicating any changes or updates. He responds quickly and professionally. We couldn't be happier!",
