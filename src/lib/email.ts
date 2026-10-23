@@ -19,7 +19,7 @@ interface EmailAttachment {
   contentType?: string;
 }
 
-const DEFAULT_TO_EMAIL = "michaelclipslawncare@gmail.com";
+const DEFAULT_TO_EMAIL = "clipslawncarebend@gmail.com";
 
 let cachedTransporter: ReturnType<typeof nodemailer.createTransport> | null = null;
 

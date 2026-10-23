@@ -127,7 +127,7 @@ export default function ContactForm() {
       if (files.length > 0) {
         bodyLines.push("", `Note: ${files.length} photo(s) could not be attached automatically - please reply to this email with them attached.`);
       }
-      window.location.href = `mailto:michaelclipslawncare@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      window.location.href = `mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
     }
 
     setDeliveryMethod(delivered ? "sent" : "email-client");

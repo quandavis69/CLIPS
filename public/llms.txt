@@ -1,0 +1,27 @@
+# Clips Lawn Care
+
+> Clips Lawn Care LLC is a residential and commercial lawn care and landscaping company based in Bend, Oregon, serving Bend, Redmond, Sunriver, Prineville, and La Pine.
+
+Clips Lawn Care offers recurring lawn maintenance plans (Basic and Premium) for residential and commercial/HOA properties, add-on packages (weed control, trimming, irrigation), standalone aeration and dethatching, a monthly cleanup maintenance subscription, a separate weekly maintenance sign-up program, and project-based landscape work including mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
+
+## Services
+
+- [Residential Lawn Care](https://clipslawncare.com/services/residential): Basic and Premium weekly/bi-weekly maintenance plans for homes, with add-on packages for weed control, trimming, and irrigation.
+- [Commercial & HOA Lawn Care](https://clipslawncare.com/services/commercial): The same Basic and Premium maintenance plans, scaled for businesses, HOAs, and multi-unit properties.
+- [Landscape Projects](https://clipslawncare.com/services/landscape): Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
+- [All Services Overview](https://clipslawncare.com/services): Summary of the Residential, Commercial, and Landscape divisions.
+- [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Choose a Basic or Premium weekly maintenance package and submit property details directly.
+
+## Company
+
+- [Homepage](https://clipslawncare.com/): Overview of services, service area, and customer trust information.
+- [About](https://clipslawncare.com/about): Company story and a letter from the founder, Will Carney.
+- [Gallery](https://clipslawncare.com/gallery): Real before-and-after project photos.
+- [Testimonials](https://clipslawncare.com/testimonials): Customer reviews, including live Google reviews.
+- [Service Area](https://clipslawncare.com/service-area): Details on the cities served - Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.
+- [Contact / Get a Quote](https://clipslawncare.com/contact): Request a free in-person or virtual estimate.
+
+## Optional
+
+- [Privacy Policy](https://clipslawncare.com/privacy-policy)
+- [Terms of Service](https://clipslawncare.com/terms-of-service)

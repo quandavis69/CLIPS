@@ -201,6 +201,12 @@ export default function ServicesPage() {
               Call 541-305-8500
             </a>
           </div>
+          <p className="text-green-100 mt-6">
+            Ready to start weekly service right away?{" "}
+            <Link href="/maintenance-signup" className="underline font-semibold hover:text-white transition-colors">
+              Sign up for weekly maintenance
+            </Link>
+          </p>
         </div>
       </section>
     </div>

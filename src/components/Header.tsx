@@ -59,7 +59,7 @@ export default function Header() {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-0 pt-2 w-56 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
+                <div className="absolute top-full left-0 pt-2 w-60 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
                   {services.map((service) => (
                     <Link
                       key={service.href}
@@ -70,6 +70,12 @@ export default function Header() {
                     </Link>
                   ))}
                   <div className="border-t border-gray-700 mt-2 pt-2">
+                    <Link
+                      href="/maintenance-signup"
+                      className="block px-4 py-2 text-gray-300 hover:bg-gray-800 hover:text-green-400 transition-colors"
+                    >
+                      Weekly Maintenance Sign-Up
+                    </Link>
                     <Link
                       href="/services"
                       className="block px-4 py-2 text-green-400 font-medium hover:bg-gray-800 transition-colors"
@@ -173,6 +179,13 @@ export default function Header() {
                     {service.name}
                   </Link>
                 ))}
+                <Link
+                  href="/maintenance-signup"
+                  className="block text-gray-400 hover:text-green-400 transition-colors py-1.5 pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Weekly Maintenance Sign-Up
+                </Link>
               </div>
 
               {/* Mobile Contact */}
