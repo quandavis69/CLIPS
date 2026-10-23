@@ -3,7 +3,7 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 
 export const metadata: Metadata = {
   title: "Sprinkler Startup, Blow-Out & Monitoring in Bend, OR | Clips Lawn Care",
-  description: "Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring from Clips Lawn Care for properties in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  description: "Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring from Clips Lawn Care for properties in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
 };
 
 export default function IrrigationPage() {

@@ -5,7 +5,7 @@ import { curatedGoogleReviews } from "@/data/googleReviews";
 
 export const metadata: Metadata = {
   title: "Customer Reviews | Clips Lawn Care - Bend, OR",
-  description: "See what our customers in Bend, Redmond, Sunriver, Prineville, and La Pine are saying about Clips Lawn Care's lawn care and landscaping services.",
+  description: "See what our customers in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine are saying about Clips Lawn Care's lawn care and landscaping services.",
 };
 
 export default async function TestimonialsPage() {

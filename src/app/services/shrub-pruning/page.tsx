@@ -3,7 +3,7 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 
 export const metadata: Metadata = {
   title: "Shrub Pruning & Hedging in Bend, OR | Clips Lawn Care",
-  description: "Scheduled shrub and hedge trimming from Clips Lawn Care, available as an add-on to Basic Maintenance in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  description: "Scheduled shrub and hedge trimming from Clips Lawn Care, available as an add-on to Basic Maintenance in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
 };
 
 export default function ShrubPruningPage() {

@@ -559,6 +559,7 @@ export default function MaintenanceSignupForm() {
                     <option value="Redmond" />
                     <option value="Sunriver" />
                     <option value="Prineville" />
+                    <option value="Powell Butte" />
                     <option value="La Pine" />
                   </datalist>
                 </div>

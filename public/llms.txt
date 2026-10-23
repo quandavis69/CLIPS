@@ -1,6 +1,6 @@
 # Clips Lawn Care
 
-> Clips Lawn Care LLC is a residential and commercial lawn care and landscaping company based in Bend, Oregon, serving Bend, Redmond, Sunriver, Prineville, and La Pine.
+> Clips Lawn Care LLC is a residential and commercial lawn care and landscaping company based in Bend, Oregon, serving Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.
 
 Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residential and commercial/HOA/property-manager properties, a Build Your Own Premium Package of add-on services (lawn fertilization, weed control, aeration, dethatching, seasonal cleanups, irrigation, shrub pruning), each with its own detailed service page, a weekly maintenance sign-up/package-builder form, and project-based landscape work including mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
 
@@ -27,7 +27,7 @@ Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residenti
 - [About](https://clipslawncare.com/about): Company story and a letter from the founder, Will Carney.
 - [Gallery](https://clipslawncare.com/gallery): Real before-and-after project photos.
 - [Testimonials](https://clipslawncare.com/testimonials): Customer reviews, including live Google reviews.
-- [Service Area](https://clipslawncare.com/service-area): Details on the cities served - Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.
+- [Service Area](https://clipslawncare.com/service-area): Details on the cities served - Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.
 - [Contact / Get a Quote](https://clipslawncare.com/contact): Request a free in-person or virtual estimate.
 
 ## Optional

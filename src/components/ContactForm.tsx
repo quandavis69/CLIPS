@@ -211,7 +211,7 @@ export default function ContactForm() {
                   <div>
                     <h3 className="font-semibold text-white">Service Area</h3>
                     <p className="text-gray-300">Central Oregon</p>
-                    <p className="text-sm text-gray-500">Bend, Redmond, Sunriver, Prineville, La Pine</p>
+                    <p className="text-sm text-gray-500">Bend, Redmond, Sunriver, Prineville, Powell Butte, La Pine</p>
                   </div>
                 </div>
 
@@ -363,6 +363,7 @@ export default function ContactForm() {
                           <option value="Redmond" />
                           <option value="Sunriver" />
                           <option value="Prineville" />
+                          <option value="Powell Butte" />
                           <option value="La Pine" />
                         </datalist>
                       </div>

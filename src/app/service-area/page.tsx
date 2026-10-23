@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Lawn Care Service Area | Bend, Redmond, Sunriver & Central Oregon",
-  description: "Clips Lawn Care serves Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon with residential and commercial lawn care and landscaping.",
+  description: "Clips Lawn Care serves Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon with residential and commercial lawn care and landscaping.",
 };
 
 const serviceAreas = [
@@ -26,6 +26,11 @@ const serviceAreas = [
     city: "Prineville",
     description: "Quality lawn care services extending to Prineville and the surrounding areas.",
     highlights: ["Downtown Prineville", "Meadow Lakes", "Crook County"],
+  },
+  {
+    city: "Powell Butte",
+    description: "Reliable lawn care and landscaping for homes and rural properties in Powell Butte.",
+    highlights: ["Crook County", "Rural & Acreage Properties"],
   },
   {
     city: "La Pine",

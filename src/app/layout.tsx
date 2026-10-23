@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Lawn Care & Landscaping in Bend, Redmond & Central Oregon | Clips Lawn Care",
-  description: "Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  description: "Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
   keywords: "lawn care Bend Oregon, lawn care Redmond Oregon, lawn care Central Oregon, landscaping Bend Oregon, commercial landscaping Bend Oregon, HOA landscaping Bend Oregon, lawn maintenance Bend Oregon, landscape installation Central Oregon",
   icons: {
     icon: "/icon.png",

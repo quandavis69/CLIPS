@@ -119,7 +119,7 @@ const galleryTeaser = [
 const faqs = [
   {
     question: "What areas does Clips Lawn Care serve?",
-    answer: "We serve Bend, Redmond, Sunriver, Prineville, La Pine, and the surrounding Central Oregon area.",
+    answer: "We serve Bend, Redmond, Sunriver, Prineville, Powell Butte, La Pine, and the surrounding Central Oregon area.",
   },
   {
     question: "Do you offer recurring lawn maintenance?",
@@ -191,7 +191,7 @@ export default async function Home() {
                 Central Oregon&apos;s Lawn Care &amp; Landscape Crew
               </h1>
               <p className="text-xl text-gray-300 mb-6 max-w-lg">
-                Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, and La Pine.
+                Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.
               </p>
 
               <div className="flex items-center gap-3 mb-8">
@@ -648,7 +648,7 @@ export default async function Home() {
               </p>
 
               <div className="grid grid-cols-2 gap-4 mb-8">
-                {["Bend", "Redmond", "Sunriver", "Prineville", "La Pine"].map((city) => (
+                {["Bend", "Redmond", "Sunriver", "Prineville", "Powell Butte", "La Pine"].map((city) => (
                   <div key={city} className="flex items-center gap-3 bg-gray-800/50 border border-gray-700 rounded-lg p-4">
                     <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />

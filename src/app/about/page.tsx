@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Clips Lawn Care | Bend, Oregon Lawn Care & Landscaping Crew",
-  description: "Meet Clips Lawn Care, a Bend, Oregon-based lawn care and landscaping company serving Bend, Redmond, Sunriver, Prineville, and La Pine.",
+  description: "Meet Clips Lawn Care, a Bend, Oregon-based lawn care and landscaping company serving Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.",
 };
 
 const values = [
@@ -82,7 +82,7 @@ export default function AboutPage() {
                   Based in Bend, Oregon, we understand the unique challenges of maintaining beautiful outdoor spaces in our high desert climate. From hot, dry summers to cold, snowy winters, we know what your lawn needs to thrive in every season.
                 </p>
                 <p>
-                  What started as a commitment to excellence has grown into a trusted local business serving homeowners throughout Bend, Redmond, Sunriver, Prineville, and La Pine.
+                  What started as a commitment to excellence has grown into a trusted local business serving homeowners throughout Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.
                 </p>
               </div>
             </div>

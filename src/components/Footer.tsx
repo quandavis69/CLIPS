@@ -22,6 +22,7 @@ const serviceAreas = [
   "Redmond",
   "Sunriver",
   "Prineville",
+  "Powell Butte",
   "La Pine",
 ];
 
