@@ -52,7 +52,7 @@ export async function sendQuoteRequestEmail(payload: QuoteRequestPayload, attach
     return false;
   }
 
-  const to = process.env.QUOTE_REQUEST_TO_EMAIL || DEFAULT_TO_EMAIL;
+  const to = DEFAULT_TO_EMAIL;
 
   const lines: string[] = [`New quote request from ${payload.name}`];
   if (payload.phone) lines.push(`Phone: ${payload.phone}`);

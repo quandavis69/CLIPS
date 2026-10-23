@@ -57,6 +57,7 @@ const individualServices = [
   { title: "Aeration", href: "/services/aeration" },
   { title: "Dethatching", href: "/services/dethatching" },
   { title: "Spring & Fall Cleanups", href: "/services/seasonal-cleanups" },
+  { title: "Cleanup Maintenance", href: "/services/cleanup-maintenance" },
   { title: "Irrigation Services", href: "/services/irrigation" },
   { title: "Shrub Pruning & Hedging", href: "/services/shrub-pruning" },
   { title: "Landscape Projects", href: "/services/landscape" },
@@ -64,12 +65,12 @@ const individualServices = [
 
 const faqs = [
   {
-    question: "What's the difference between Basic Maintenance and the Premium Package?",
-    answer: "Basic Maintenance starts at $60 per visit for mowing, edging, and blowing. The Build Your Own Premium Package starts with Basic Maintenance and adds any combination of fertilization, weed control, aeration, dethatching, seasonal cleanups, irrigation, and shrub pruning - each custom quoted for your property.",
+    question: "What's the difference between Basic Maintenance and a Premium Package?",
+    answer: "Basic Maintenance starts at $60 per visit for mowing, edging, and blowing. A Premium Package starts with Basic Maintenance and adds any combination of fertilization, weed control, aeration, dethatching, cleanups, irrigation, and shrub pruning - each custom quoted for your property. Build one on our Weekly Maintenance Sign-Up page.",
   },
   {
     question: "Do I need a maintenance plan before adding other services?",
-    answer: "Add-on services like fertilization, weed control, and shrub pruning build on top of Basic Maintenance. Aeration, dethatching, and seasonal cleanups can also be requested on their own.",
+    answer: "Add-on services like fertilization, weed control, and shrub pruning build on top of Basic Maintenance. Aeration, dethatching, and cleanups can also be requested on their own.",
   },
   {
     question: "What's included in a landscape project?",
@@ -77,11 +78,11 @@ const faqs = [
   },
   {
     question: "How is Commercial different from Residential?",
-    answer: "Commercial, HOA, and property-manager accounts are built as custom contracts rather than a fixed package - every contract still starts with Basic Maintenance, with add-on services scoped to the property.",
+    answer: "Commercial, HOA, and property-manager accounts are built as custom contracts rather than a self-serve package - every contract still starts with Basic Maintenance, with services scoped to the property.",
   },
   {
-    question: "Do you offer one-time cleanups, or only recurring service?",
-    answer: "Both. Spring and Fall Cleanups are offered as seasonal services, and our Landscape division also handles one-time cleanup and restoration projects.",
+    question: "What's the difference between Spring & Fall Cleanups and Cleanup Maintenance?",
+    answer: "Spring & Fall Cleanups are one-time seasonal services. Cleanup Maintenance is a recurring service, once a month and twice a month from October through November, starting at $250 and ranging to $449 per visit.",
   },
 ];
 

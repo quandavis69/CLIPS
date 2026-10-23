@@ -14,6 +14,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/services/aeration", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/dethatching", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/seasonal-cleanups", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/services/cleanup-maintenance", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/irrigation", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/shrub-pruning", priority: 0.8, changeFrequency: "monthly" },
   { path: "/maintenance-signup", priority: 0.9, changeFrequency: "monthly" },

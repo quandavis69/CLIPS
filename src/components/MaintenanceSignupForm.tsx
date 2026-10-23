@@ -10,22 +10,24 @@ type CleanupChoice = "spring" | "fall" | "both" | "assess";
 
 interface Selections {
   fertilization: YesNo | "";
-  bedWeedControl: YesNo | "";
+  weedControl: YesNo | "";
   aeration: AerationChoice | "";
   dethatching: DethatchChoice | "";
   cleanups: CleanupChoice | "";
   sprinklerStartup: YesNo | "";
+  sprinklerBlowOut: YesNo | "";
   irrigationMonitoring: YesNo | "";
   shrubPruning: YesNo | "";
 }
 
 const initialSelections: Selections = {
   fertilization: "",
-  bedWeedControl: "",
+  weedControl: "",
   aeration: "",
   dethatching: "",
   cleanups: "",
   sprinklerStartup: "",
+  sprinklerBlowOut: "",
   irrigationMonitoring: "",
   shrubPruning: "",
 };
@@ -114,7 +116,7 @@ export default function MaintenanceSignupForm() {
   const buildSummary = () => {
     const lines = ["Basic Maintenance: Included (starting at $60/visit)"];
     if (selections.fertilization) lines.push(`Lawn Fertilization: ${selections.fertilization === "yes" ? "Yes" : "No"}`);
-    if (selections.bedWeedControl) lines.push(`Landscape Bed Weed Control: ${selections.bedWeedControl === "yes" ? "Yes" : "No"}`);
+    if (selections.weedControl) lines.push(`Weed Control: ${selections.weedControl === "yes" ? "Yes" : "No"}`);
     if (selections.aeration) {
       const label = { spring: "Spring", fall: "Fall", both: "Both spring and fall", no: "No" }[selections.aeration];
       lines.push(`Aeration: ${label}`);
@@ -128,6 +130,7 @@ export default function MaintenanceSignupForm() {
       lines.push(`Seasonal Cleanups: ${label}`);
     }
     if (selections.sprinklerStartup) lines.push(`Sprinkler System Startup: ${selections.sprinklerStartup === "yes" ? "Yes" : "No"}`);
+    if (selections.sprinklerBlowOut) lines.push(`Sprinkler System Blow-Out: ${selections.sprinklerBlowOut === "yes" ? "Yes" : "No"}`);
     if (selections.irrigationMonitoring) lines.push(`Seasonal Irrigation Monitoring: ${selections.irrigationMonitoring === "yes" ? "Yes" : "No"}`);
     if (selections.shrubPruning) lines.push(`Shrub Pruning & Hedging: ${selections.shrubPruning === "yes" ? "Yes" : "No"}`);
     return lines;
@@ -306,18 +309,18 @@ export default function MaintenanceSignupForm() {
 
               <AddOnSection
                 eyebrow="Lawn Health & Weed Control"
-                title="Landscape Bed Weed Control"
+                title="Weed Control"
                 body={[
-                  "Target weeds in eligible landscape beds with scheduled treatments as needed. Extensive hand weeding, heavily overgrown areas, and major weed-removal projects are quoted separately. Applications are only offered when performed by appropriately licensed personnel.",
+                  "Pre-emergent and seasonal weed control to keep your lawn healthy: a spring pre-emergent application, two summer herbicide applications, and two fall herbicide applications.",
                 ]}
-                pricing="Custom quote based on the size and condition of the beds, treatment requirements, and materials."
+                pricing="Custom quote based on lawn size and treatment schedule."
                 learnMoreHref="/services/weed-control"
               >
-                <p className="text-white font-medium mb-3">Would you like to add landscape bed weed control?</p>
+                <p className="text-white font-medium mb-3">Would you like to add weed control?</p>
                 <ChoiceButtons<YesNo>
                   options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
-                  value={selections.bedWeedControl}
-                  onChange={(v) => update("bedWeedControl", v)}
+                  value={selections.weedControl}
+                  onChange={(v) => update("weedControl", v)}
                 />
               </AddOnSection>
 
@@ -400,6 +403,23 @@ export default function MaintenanceSignupForm() {
                   options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
                   value={selections.sprinklerStartup}
                   onChange={(v) => update("sprinklerStartup", v)}
+                />
+              </AddOnSection>
+
+              <AddOnSection
+                eyebrow="Irrigation Services"
+                title="Sprinkler System Blow-Out"
+                body={[
+                  "Clear water from your irrigation lines before winter to help protect your system from freeze damage.",
+                ]}
+                pricing="Starting at $60."
+                learnMoreHref="/services/irrigation"
+              >
+                <p className="text-white font-medium mb-3">Would you like sprinkler blow-out?</p>
+                <ChoiceButtons<YesNo>
+                  options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
+                  value={selections.sprinklerBlowOut}
+                  onChange={(v) => update("sprinklerBlowOut", v)}
                 />
               </AddOnSection>
 

@@ -6,16 +6,17 @@ Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residenti
 
 ## Services
 
-- [Residential Lawn Care](https://clipslawncare.com/services/residential): Basic Maintenance plus a Build Your Own Premium Package of add-on services for homes.
+- [Residential Lawn Care](https://clipslawncare.com/services/residential): Overview of every maintenance and landscape service available for homes.
 - [Commercial, HOA & Property Manager Lawn Care](https://clipslawncare.com/services/commercial): Custom maintenance contracts for businesses, HOAs, and property managers, built around Basic Maintenance.
 - [Landscape Projects](https://clipslawncare.com/services/landscape): Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
 - [Lawn Mowing, Edging & Blowing](https://clipslawncare.com/services/lawn-mowing): Basic Maintenance detail page.
 - [Lawn Fertilization](https://clipslawncare.com/services/lawn-fertilization): Spring, midseason, and fall fertilization add-on.
-- [Weed Control](https://clipslawncare.com/services/weed-control): Landscape bed weed control add-on.
+- [Weed Control](https://clipslawncare.com/services/weed-control): Spring pre-emergent plus seasonal summer and fall herbicide treatments.
 - [Aeration](https://clipslawncare.com/services/aeration): Spring and fall core aeration.
 - [Dethatching](https://clipslawncare.com/services/dethatching): Removal of built-up thatch.
-- [Spring & Fall Cleanups](https://clipslawncare.com/services/seasonal-cleanups): Seasonal property cleanups.
-- [Irrigation Services](https://clipslawncare.com/services/irrigation): Sprinkler system startup and seasonal irrigation monitoring.
+- [Spring & Fall Cleanups](https://clipslawncare.com/services/seasonal-cleanups): One-time seasonal property cleanups.
+- [Cleanup Maintenance](https://clipslawncare.com/services/cleanup-maintenance): Recurring monthly cleanups, twice a month October-November.
+- [Irrigation Services](https://clipslawncare.com/services/irrigation): Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring.
 - [Shrub Pruning & Hedging](https://clipslawncare.com/services/shrub-pruning): Scheduled shrub and hedge trimming.
 - [All Services Overview](https://clipslawncare.com/services): Summary of every division and individual service.
 - [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Build a custom Premium Package by selecting add-on services.

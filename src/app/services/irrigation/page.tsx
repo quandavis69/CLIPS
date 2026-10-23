@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 
 export const metadata: Metadata = {
-  title: "Sprinkler System Startup & Monitoring in Bend, OR | Clips Lawn Care",
-  description: "Sprinkler system startup and seasonal irrigation monitoring from Clips Lawn Care for properties in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  title: "Sprinkler Startup, Blow-Out & Monitoring in Bend, OR | Clips Lawn Care",
+  description: "Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring from Clips Lawn Care for properties in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
 };
 
 export default function IrrigationPage() {
@@ -11,7 +11,7 @@ export default function IrrigationPage() {
     <ServiceDetailLayout
       eyebrow="Irrigation Services"
       title="Irrigation Services"
-      intro="Get your irrigation system ready for the growing season and keep it running smoothly throughout."
+      intro="Get your irrigation system ready for the growing season, protect it over winter, and keep it running smoothly in between."
       sections={[
         {
           heading: "Sprinkler System Startup",
@@ -22,6 +22,12 @@ export default function IrrigationPage() {
           ],
         },
         {
+          heading: "Sprinkler System Blow-Out",
+          body: [
+            "Clear water from your irrigation lines before winter to help protect your system from freeze damage.",
+          ],
+        },
+        {
           heading: "Seasonal Irrigation Monitoring",
           body: [
             "Routine inspections during the growing season can help identify visible leaks, poorly adjusted heads, and timer issues.",
@@ -29,7 +35,7 @@ export default function IrrigationPage() {
           ],
         },
       ]}
-      pricingNote="Sprinkler System Startup starts at $70 for up to seven zones, plus $5 per additional zone. Seasonal Irrigation Monitoring is customized according to the inspection schedule and scope of service."
+      pricingNote="Sprinkler System Startup starts at $70 for up to seven zones, plus $5 per additional zone. Sprinkler System Blow-Out starts at $60. Seasonal Irrigation Monitoring is customized according to the inspection schedule and scope of service."
       relatedServices={[
         { title: "Basic Maintenance (Mowing, Edging & Blowing)", href: "/services/lawn-mowing" },
         { title: "Lawn Fertilization", href: "/services/lawn-fertilization" },
