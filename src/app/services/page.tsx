@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 const divisions = [
   {
     title: "Residential",
-    description: "Home lawn care built around two maintenance plans - Basic and Premium - with optional add-on packages for weed control, trimming, and irrigation.",
+    description: "Home lawn care built around Basic Maintenance, with a Build Your Own Premium Package of add-on services for fertilization, weed control, aeration, dethatching, cleanups, irrigation, and shrub pruning.",
     href: "/services/residential",
     image: "/gallery/mower-equipment.png",
     imageAlt: "Clips Lawncare mowing equipment on a residential lawn",
-    features: ["Basic & Premium maintenance plans", "Weed, trimming & irrigation add-ons", "Standalone aeration & dethatching", "Monthly cleanup subscriptions"],
+    features: ["Basic Maintenance plan", "Build Your Own Premium Package", "Fertilization, weed control, aeration & dethatching", "Seasonal cleanups, irrigation & shrub pruning"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -24,11 +24,11 @@ const divisions = [
   },
   {
     title: "Commercial",
-    description: "The same reliable Basic and Premium maintenance plans, scaled for businesses, HOAs, and commercial properties throughout Central Oregon.",
+    description: "Custom maintenance contracts for businesses, HOAs, and properties managed by a property management company throughout Central Oregon - built around Basic Maintenance plus the services your property needs.",
     href: "/services/commercial",
     image: "/gallery/commercial-maintenance.png",
     imageAlt: "Clips Lawncare crew member maintaining landscape beds at a commercial HOA entrance",
-    features: ["Basic & Premium maintenance plans", "Weed, trimming & irrigation add-ons", "Standalone aeration & dethatching", "Monthly cleanup subscriptions"],
+    features: ["Custom maintenance contracts", "HOAs & property managers welcome", "Built around Basic Maintenance", "Add-on services scoped to your property"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21h18M5 21V7l8-4v18M13 21V11l6 3v7M9 9v.01M9 12v.01M9 15v.01" />
@@ -50,18 +50,26 @@ const divisions = [
   },
 ];
 
+const individualServices = [
+  { title: "Mowing, Edging & Blowing", href: "/services/lawn-mowing" },
+  { title: "Lawn Fertilization", href: "/services/lawn-fertilization" },
+  { title: "Weed Control", href: "/services/weed-control" },
+  { title: "Aeration", href: "/services/aeration" },
+  { title: "Dethatching", href: "/services/dethatching" },
+  { title: "Spring & Fall Cleanups", href: "/services/seasonal-cleanups" },
+  { title: "Irrigation Services", href: "/services/irrigation" },
+  { title: "Shrub Pruning & Hedging", href: "/services/shrub-pruning" },
+  { title: "Landscape Projects", href: "/services/landscape" },
+];
+
 const faqs = [
   {
-    question: "What's the difference between the Basic and Premium plans?",
-    answer: "Basic is a flat $50/service for mowing, edging, and blowing. Premium is billed at $70/man-hour with a weekly man-hour cap you set, and adds pre/post emergent weed control in beds and lawn fertilization in spring, mid-summer, and fall on top of mowing, edging, and blowing.",
+    question: "What's the difference between Basic Maintenance and the Premium Package?",
+    answer: "Basic Maintenance starts at $60 per visit for mowing, edging, and blowing. The Build Your Own Premium Package starts with Basic Maintenance and adds any combination of fertilization, weed control, aeration, dethatching, seasonal cleanups, irrigation, and shrub pruning - each custom quoted for your property.",
   },
   {
-    question: "Do I need a maintenance plan before adding the Weed, Trimming, or Irrigation package?",
-    answer: "Yes, those add-on packages require an active Basic or Premium plan. Aeration, dethatching, and the Cleanup Maintenance Package are available on their own, no plan required.",
-  },
-  {
-    question: "Is aeration or dethatching available without a subscription?",
-    answer: "Yes, both are offered as one-time services and don't require a maintenance plan.",
+    question: "Do I need a maintenance plan before adding other services?",
+    answer: "Add-on services like fertilization, weed control, and shrub pruning build on top of Basic Maintenance. Aeration, dethatching, and seasonal cleanups can also be requested on their own.",
   },
   {
     question: "What's included in a landscape project?",
@@ -69,11 +77,11 @@ const faqs = [
   },
   {
     question: "How is Commercial different from Residential?",
-    answer: "The same Basic and Premium maintenance plans and add-on packages, scaled for businesses, HOAs, and multi-unit properties throughout Central Oregon.",
+    answer: "Commercial, HOA, and property-manager accounts are built as custom contracts rather than a fixed package - every contract still starts with Basic Maintenance, with add-on services scoped to the property.",
   },
   {
     question: "Do you offer one-time cleanups, or only recurring service?",
-    answer: "Both. The Cleanup Maintenance Package is a monthly subscription, and our Landscape division also handles one-time cleanup and restoration projects.",
+    answer: "Both. Spring and Fall Cleanups are offered as seasonal services, and our Landscape division also handles one-time cleanup and restoration projects.",
   },
 ];
 
@@ -154,6 +162,30 @@ export default function ServicesPage() {
                   )}
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Individual Services */}
+      <section className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Browse by Service</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Every Service We Offer</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Each service below has its own page with a detailed description and pricing.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {individualServices.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="inline-flex items-center bg-gray-800 border border-gray-700 text-gray-200 px-5 py-2.5 rounded-full hover:border-green-500 hover:text-white transition-colors"
+              >
+                {service.title}
+              </Link>
             ))}
           </div>
         </div>

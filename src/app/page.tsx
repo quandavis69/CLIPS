@@ -7,13 +7,13 @@ import Accordion from "@/components/Accordion";
 const services = [
   {
     title: "Residential",
-    description: "Home lawn care built around Basic and Premium maintenance plans, with add-ons for weed control, trimming, and irrigation.",
+    description: "Home lawn care built around Basic Maintenance, with a Build Your Own Premium Package for fertilization, weed control, aeration, cleanups, irrigation, and more.",
     href: "/services/residential",
     image: "/gallery/mower-equipment.png",
   },
   {
     title: "Commercial & HOA",
-    description: "The same reliable maintenance plans, scaled for businesses, HOAs, and multi-unit properties throughout Central Oregon.",
+    description: "Custom maintenance contracts for businesses, HOAs, and property managers throughout Central Oregon.",
     href: "/services/commercial",
     image: "/gallery/commercial-maintenance.png",
   },
@@ -123,11 +123,11 @@ const faqs = [
   },
   {
     question: "Do you offer recurring lawn maintenance?",
-    answer: "Yes. Our Basic and Premium maintenance plans cover mowing, edging, and seasonal care, with add-on packages available for weed control, trimming, and irrigation.",
+    answer: "Yes. Basic Maintenance covers mowing, edging, and blowing, and you can build a Premium Package on top of it with fertilization, weed control, aeration, cleanups, irrigation, and shrub pruning.",
   },
   {
-    question: "Do you work with commercial properties and HOAs?",
-    answer: "Yes. Our Commercial division offers the same maintenance plans, scaled for businesses, HOAs, and multi-unit properties throughout Central Oregon.",
+    question: "Do you work with commercial properties, HOAs, and property managers?",
+    answer: "Yes. Our Commercial division builds custom maintenance contracts for businesses, HOAs, and properties managed by a property management company throughout Central Oregon.",
   },
   {
     question: "Do you provide landscape projects?",

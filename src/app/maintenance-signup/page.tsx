@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import MaintenanceSignupForm from "@/components/MaintenanceSignupForm";
 
 export const metadata: Metadata = {
-  title: "Weekly Maintenance Sign-Up | Clips Lawn Care - Bend, OR",
-  description: "Sign up for Basic or Premium weekly lawn maintenance with Clips Lawn Care in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
+  title: "Build Your Own Premium Maintenance Package | Clips Lawn Care - Bend, OR",
+  description: "Start with Basic Maintenance and customize your 2027 package with lawn fertilization, weed control, aeration, cleanups, irrigation, and shrub pruning in Bend, Redmond, Sunriver, Prineville, and La Pine, Oregon.",
 };
 
 export default function MaintenanceSignupPage() {

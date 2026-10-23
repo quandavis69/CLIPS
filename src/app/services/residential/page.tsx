@@ -3,7 +3,7 @@ import MaintenancePlans from "@/components/MaintenancePlans";
 
 export const metadata: Metadata = {
   title: "Residential Lawn Care & Maintenance in Bend, OR | Clips Lawn Care",
-  description: "Residential lawn maintenance plans in Central Oregon, from Basic and Premium subscriptions to weed, trimming, and irrigation add-ons, plus aeration, dethatching, and monthly cleanups.",
+  description: "Residential lawn maintenance in Central Oregon - Basic Maintenance plus a Build Your Own Premium Package with fertilization, weed control, aeration, dethatching, cleanups, irrigation, and shrub pruning add-ons.",
 };
 
 export default function ResidentialServicesPage() {

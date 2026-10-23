@@ -2,15 +2,23 @@
 
 > Clips Lawn Care LLC is a residential and commercial lawn care and landscaping company based in Bend, Oregon, serving Bend, Redmond, Sunriver, Prineville, and La Pine.
 
-Clips Lawn Care offers recurring lawn maintenance plans (Basic and Premium) for residential and commercial/HOA properties, add-on packages (weed control, trimming, irrigation), standalone aeration and dethatching, a monthly cleanup maintenance subscription, a separate weekly maintenance sign-up program, and project-based landscape work including mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
+Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residential and commercial/HOA/property-manager properties, a Build Your Own Premium Package of add-on services (lawn fertilization, weed control, aeration, dethatching, seasonal cleanups, irrigation, shrub pruning), each with its own detailed service page, a weekly maintenance sign-up/package-builder form, and project-based landscape work including mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
 
 ## Services
 
-- [Residential Lawn Care](https://clipslawncare.com/services/residential): Basic and Premium weekly/bi-weekly maintenance plans for homes, with add-on packages for weed control, trimming, and irrigation.
-- [Commercial & HOA Lawn Care](https://clipslawncare.com/services/commercial): The same Basic and Premium maintenance plans, scaled for businesses, HOAs, and multi-unit properties.
+- [Residential Lawn Care](https://clipslawncare.com/services/residential): Basic Maintenance plus a Build Your Own Premium Package of add-on services for homes.
+- [Commercial, HOA & Property Manager Lawn Care](https://clipslawncare.com/services/commercial): Custom maintenance contracts for businesses, HOAs, and property managers, built around Basic Maintenance.
 - [Landscape Projects](https://clipslawncare.com/services/landscape): Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod installation/removal.
-- [All Services Overview](https://clipslawncare.com/services): Summary of the Residential, Commercial, and Landscape divisions.
-- [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Choose a Basic or Premium weekly maintenance package and submit property details directly.
+- [Lawn Mowing, Edging & Blowing](https://clipslawncare.com/services/lawn-mowing): Basic Maintenance detail page.
+- [Lawn Fertilization](https://clipslawncare.com/services/lawn-fertilization): Spring, midseason, and fall fertilization add-on.
+- [Weed Control](https://clipslawncare.com/services/weed-control): Landscape bed weed control add-on.
+- [Aeration](https://clipslawncare.com/services/aeration): Spring and fall core aeration.
+- [Dethatching](https://clipslawncare.com/services/dethatching): Removal of built-up thatch.
+- [Spring & Fall Cleanups](https://clipslawncare.com/services/seasonal-cleanups): Seasonal property cleanups.
+- [Irrigation Services](https://clipslawncare.com/services/irrigation): Sprinkler system startup and seasonal irrigation monitoring.
+- [Shrub Pruning & Hedging](https://clipslawncare.com/services/shrub-pruning): Scheduled shrub and hedge trimming.
+- [All Services Overview](https://clipslawncare.com/services): Summary of every division and individual service.
+- [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Build a custom Premium Package by selecting add-on services.
 
 ## Company
 
