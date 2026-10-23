@@ -7,10 +7,11 @@ interface MaintenancePlansProps {
 const corePlans = [
   {
     name: "Basic Maintenance",
-    tagline: "Reliable weekly upkeep to keep your property clean and healthy.",
+    tagline: "Strictly mow, edge & blow service.",
     icon: "🌱",
-    priceWeek: 45,
-    priceMonth: 180,
+    priceDisplay: "$50",
+    priceUnit: "/ service",
+    priceNote: "Flat rate per visit.",
     features: [
       "Weekly or bi-weekly lawn mowing",
       "Precision lawn edging",
@@ -19,19 +20,18 @@ const corePlans = [
   },
   {
     name: "Premium Maintenance",
-    tagline: "Complete season-long care for a lawn that thrives year-round.",
+    tagline: "A comprehensive approach to season-long landscape care.",
     icon: "⭐",
     popular: true,
-    priceWeek: 60,
-    priceMonth: 240,
+    priceDisplay: "$70",
+    priceUnit: "/ man-hour",
+    priceNote: "Billed for time spent on your property. Standard crews are two members; a weekly man-hour cap is set at sign-up.",
     features: [
-      "Everything in Basic Maintenance",
-      "Spring aeration",
-      "Spring overseed",
-      "Spring fertilizer application",
-      "Summer fertilization with soil strengthener",
-      "Fall fertilization & reseed",
-      "10% off all add-on packages",
+      "Mowing",
+      "Edging - completed as necessary, not on a strict weekly schedule",
+      "Blowing of landscape, patios, driveways & walkways",
+      "Pre/post emergent weed control in beds",
+      "Lawn fertilization - spring, mid-summer & fall",
     ],
   },
 ];
@@ -178,9 +178,9 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                   <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                   <p className="text-green-400 font-medium mb-4">{plan.tagline}</p>
                   <div>
-                    <span className="text-4xl font-bold text-white">${plan.priceWeek}</span>
-                    <span className="text-gray-400">/week</span>
-                    <p className="text-sm text-gray-500 mt-1">Starting at ${plan.priceMonth}/month</p>
+                    <span className="text-4xl font-bold text-white">{plan.priceDisplay}</span>
+                    <span className="text-gray-400">{plan.priceUnit}</span>
+                    <p className="text-sm text-gray-500 mt-1">{plan.priceNote}</p>
                   </div>
                 </div>
                 <ul className="space-y-3 mb-8">
@@ -194,7 +194,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                   ))}
                 </ul>
                 <Link
-                  href="/contact"
+                  href="/maintenance-signup"
                   className="block w-full text-center bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 transition-colors"
                 >
                   Choose {plan.name}
@@ -217,7 +217,7 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
           </div>
           <div className="max-w-2xl mx-auto mb-12">
             <div className="bg-green-900/30 border border-green-800 rounded-xl px-6 py-4 text-center text-green-200">
-              A Basic or Premium plan is required before add-on packages can be purchased. Premium subscribers get 10% off every add-on.
+              A Basic or Premium plan is required before add-on packages can be purchased.
             </div>
           </div>
 

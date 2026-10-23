@@ -53,7 +53,7 @@ const divisions = [
 const faqs = [
   {
     question: "What's the difference between the Basic and Premium plans?",
-    answer: "Basic covers weekly or bi-weekly mowing, precision edging, and leaf blowing. Premium includes everything in Basic plus spring aeration, overseed, and fertilizer, summer fertilization with soil strengthener, fall fertilization and reseed, and 10% off all add-on packages.",
+    answer: "Basic is a flat $50/service for mowing, edging, and blowing. Premium is billed at $70/man-hour with a weekly man-hour cap you set, and adds pre/post emergent weed control in beds and lawn fertilization in spring, mid-summer, and fall on top of mowing, edging, and blowing.",
   },
   {
     question: "Do I need a maintenance plan before adding the Weed, Trimming, or Irrigation package?",
