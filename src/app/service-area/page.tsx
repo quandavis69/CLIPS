@@ -11,31 +11,37 @@ const serviceAreas = [
     city: "Bend",
     description: "Our home base. We provide comprehensive lawn care services throughout Bend, from the Old Mill District to the westside neighborhoods.",
     highlights: ["Downtown Bend", "Northwest Crossing", "Old Mill District", "Summit West", "Awbrey Butte"],
+    fullService: true,
   },
   {
     city: "Redmond",
     description: "Serving the growing Redmond community with reliable lawn care and landscaping services.",
     highlights: ["Downtown Redmond", "Eagle Crest", "Canyon Rim", "Dry Canyon"],
+    fullService: true,
   },
   {
     city: "Sunriver",
-    description: "Expert pine needle removal and lawn care for the Sunriver resort community.",
+    description: "Landscaping and one-time services, including pine needle removal, for the Sunriver resort community. Commercial and HOA properties can get full maintenance service.",
     highlights: ["Sunriver Resort", "Caldera Springs", "Crosswater"],
+    fullService: false,
   },
   {
     city: "Prineville",
-    description: "Quality lawn care services extending to Prineville and the surrounding areas.",
+    description: "Landscaping and one-time services extending to Prineville and the surrounding areas. Commercial and HOA properties can get full maintenance service.",
     highlights: ["Downtown Prineville", "Meadow Lakes", "Crook County"],
+    fullService: false,
   },
   {
     city: "Powell Butte",
     description: "Reliable lawn care and landscaping for homes and rural properties in Powell Butte.",
     highlights: ["Crook County", "Rural & Acreage Properties"],
+    fullService: true,
   },
   {
     city: "La Pine",
-    description: "Specialized services for La Pine's unique high desert environment.",
+    description: "Landscaping and one-time services for La Pine's unique high desert environment. Commercial and HOA properties can get full maintenance service.",
     highlights: ["La Pine State Park Area", "Newberry Estates", "Wickiup Junction"],
+    fullService: false,
   },
 ];
 
@@ -89,7 +95,11 @@ export default function ServiceAreaPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-white">{area.city}, Oregon</h3>
-                      <p className="text-sm text-gray-400">Full lawn care services available</p>
+                      <p className="text-sm text-gray-400">
+                        {area.fullService
+                          ? "Full lawn care service available"
+                          : "Landscaping & one-time services (full maintenance for commercial & HOA properties)"}
+                      </p>
                     </div>
                   </div>
                 ))}
