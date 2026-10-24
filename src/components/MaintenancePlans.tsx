@@ -8,8 +8,10 @@ interface MaintenancePlansProps {
 const maintenanceServices = [
   {
     title: "Basic Maintenance",
-    description: "Weekly mowing, edging as needed, and blowing of driveways, walkways, and patios. Starting at $60 per visit.",
+    description: "Weekly mowing, edging as needed, and blowing of driveways, walkways, and patios.",
     href: "/services/lawn-mowing",
+    startingPrice: "$60",
+    priceUnit: "/ visit",
   },
   {
     title: "Lawn Fertilization",
@@ -23,13 +25,17 @@ const maintenanceServices = [
   },
   {
     title: "Aeration",
-    description: "Spring and/or fall core aeration to relieve soil compaction. Starting at $199 per service.",
+    description: "Spring and/or fall core aeration to relieve soil compaction.",
     href: "/services/aeration",
+    startingPrice: "$199",
+    priceUnit: "/ service",
   },
   {
     title: "Dethatching",
-    description: "Removes built-up thatch to improve lawn health. Starting at $249 per service.",
+    description: "Removes built-up thatch to improve lawn health.",
     href: "/services/dethatching",
+    startingPrice: "$249",
+    priceUnit: "/ service",
   },
   {
     title: "Spring & Fall Cleanups",
@@ -38,8 +44,10 @@ const maintenanceServices = [
   },
   {
     title: "Cleanup Maintenance",
-    description: "Recurring property cleanups starting at $250 and ranging to $449, once a month and twice a month October-November.",
+    description: "Recurring property cleanups, once a month and twice a month October-November.",
     href: "/services/cleanup-maintenance",
+    startingPrice: "$250",
+    priceUnit: "/ visit",
   },
   {
     title: "Irrigation Services",
@@ -148,7 +156,15 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                 href={service.href}
                 className="block bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors"
               >
-                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                <div className="flex items-start justify-between gap-3 mb-2">
+                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                  {service.startingPrice && (
+                    <span className="flex-shrink-0 text-right">
+                      <span className="text-xl font-extrabold text-green-400">{service.startingPrice}</span>
+                      <span className="block text-xs text-gray-500 leading-tight">{service.priceUnit}</span>
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-400">{service.description}</p>
               </Link>
             ))}
