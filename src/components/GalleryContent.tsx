@@ -10,8 +10,8 @@ const galleryItems = [
   {
     id: 1,
     category: "Lawn Care",
-    title: "Lakeside Lawn Care",
-    description: "Precision striping along a Central Oregon waterfront",
+    title: "Riverside Lawn Care",
+    description: "Precision striping along a Central Oregon riverfront",
     image: "/gallery/lawn-lake.png",
     before: false,
   },
