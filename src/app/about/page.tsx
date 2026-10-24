@@ -91,8 +91,8 @@ export default function AboutPage() {
             <div className="relative">
               <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
                 <Image
-                  src="/gallery/landscape-prep.png"
-                  alt="A Clips Lawncare crew member preparing a yard for landscaping"
+                  src="/about/crew-team-photo.jpg"
+                  alt="The Clips Lawn Care crew"
                   width={800}
                   height={600}
                   className="w-full h-full object-cover"
@@ -160,6 +160,36 @@ export default function AboutPage() {
               <div className="pt-4">
                 <p className="text-white font-semibold">&mdash; Will Carney</p>
                 <p className="text-gray-500">Owner &amp; Founder, Clips Lawn Care</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Crew & Equipment */}
+      <section className="py-20 bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Our Crew & Equipment</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+                A Dedicated Crew, Properly Equipped
+              </h2>
+              <p className="text-gray-300 text-lg">
+                Every property we service is handled by our own trained crew, running our own trucks and trailers - not
+                subcontracted out. That means consistent quality and a team that knows your property from one visit to
+                the next.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
+                <Image
+                  src="/about/clips-truck-trailer.jpg"
+                  alt="A Clips Lawn Care truck and trailer on site"
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

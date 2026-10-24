@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 interface MaintenancePlansProps {
   audience: "residential" | "commercial";
@@ -103,17 +104,28 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
 
       {audience === "commercial" && (
         <section className="py-20 bg-gray-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Custom Contracts</span>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Built Around Your Property</h2>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Custom Contracts</span>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-6">Built Around Your Property</h2>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Commercial, HOA, and property-manager accounts typically involve more than a single maintenance plan -
+                  multiple buildings, common areas, shared landscape beds, and irrigation systems that all need to be
+                  accounted for. Rather than fit every property into a fixed package, we build a maintenance contract
+                  around your property&apos;s specific scope, schedule, and budget from the services below.
+                </p>
+              </div>
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
+                <Image
+                  src="/services/commercial-maintenance-flyer.jpg"
+                  alt="Commercial landscape maintenance for properties, HOAs, office parks, and multi-unit communities"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
             </div>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Commercial, HOA, and property-manager accounts typically involve more than a single maintenance plan - multiple
-              buildings, common areas, shared landscape beds, and irrigation systems that all need to be accounted for. Rather
-              than fit every property into a fixed package, we build a maintenance contract around your property&apos;s specific
-              scope, schedule, and budget from the services below.
-            </p>
           </div>
         </section>
       )}
@@ -151,7 +163,8 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
           <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Landscape Projects</h2>
           <p className="text-gray-300 text-lg leading-relaxed mb-8">
             Beyond recurring maintenance, our landscape crew handles project-based work: mulching, rock installation, garden
-            beds, planting, pressure washing, restoration projects, pine needle removal, and sod installation and removal.
+            beds, planting, pressure washing, restoration projects, pine needle removal, sod installation and removal, gutter
+            installation, and roof & gutter cleaning.
           </p>
           <Link
             href="/services/landscape"

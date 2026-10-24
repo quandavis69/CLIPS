@@ -37,11 +37,11 @@ const divisions = [
   },
   {
     title: "Landscape",
-    description: "A dedicated landscape crew for project-based work: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, and sod.",
+    description: "A dedicated landscape crew for project-based work: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, sod, gutter installation, and roof & gutter cleaning.",
     href: "/services/landscape",
     image: "/gallery/landscape-bed.png",
     imageAlt: "A finished landscape bed with fresh mulch and clean stone edging",
-    features: ["Mulching & rock installation", "Garden beds & planting", "Pressure washing", "Restoration & cleanup projects"],
+    features: ["Mulching & rock installation", "Garden beds & planting", "Pressure washing", "Gutter installation & cleaning"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3l4 5h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8l4-5z" />
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: "What's included in a landscape project?",
-    answer: "Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, and sod installation and removal.",
+    answer: "Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restorations, pine needle removal, sod installation and removal, gutter installation, and roof & gutter cleaning.",
   },
   {
     question: "How is Commercial different from Residential?",

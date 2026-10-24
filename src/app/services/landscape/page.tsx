@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Landscape Installation & Projects in Bend, OR | Clips Lawn Care",
-  description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, and sod.",
+  description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, sod, gutter installation, and roof & gutter cleaning.",
 };
 
 const services = [
@@ -97,6 +98,26 @@ const services = [
     ),
     features: ["Old sod removal & disposal", "Ground leveling & preparation", "Premium quality sod installation", "Soil amendments as needed"],
   },
+  {
+    title: "Gutter Installation",
+    description: "New gutter installation built to protect your home's roofline all season long.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l9-7 9 7M5 10v9a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1v-9" />
+      </svg>
+    ),
+    features: ["Roof drainage protection", "Prevents water damage", "Clean, built-to-last finish", "Residential & commercial"],
+  },
+  {
+    title: "Roof & Gutter Cleaning",
+    description: "Roof and gutter cleaning to prevent water damage and keep your home protected.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21c-4.418 0-8-3.14-8-7 0-4 8-13 8-13s8 9 8 13c0 3.86-3.582 7-8 7z" />
+      </svg>
+    ),
+    features: ["Prevents water damage", "Extends gutter lifespan", "Keeps your home safe", "Clean & hassle-free"],
+  },
 ];
 
 const benefits = [
@@ -177,6 +198,39 @@ export default function LandscapePage() {
                 </ul>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Home Protection Showcase */}
+      <section className="py-20 bg-black border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Recent Work</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Protecting Your Home</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              Sod removal, gutter installation, and roof &amp; gutter cleaning for Central Oregon homes.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-800 shadow-xl">
+              <Image
+                src="/services/sod-gutter-install-flyer.jpg"
+                alt="Sod removal before and after, and a new gutter installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-gray-800 shadow-xl">
+              <Image
+                src="/services/gutter-roof-cleaning-flyer.jpg"
+                alt="Gutter cleaning and roof cleaning for a Central Oregon home"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         </div>
       </section>
