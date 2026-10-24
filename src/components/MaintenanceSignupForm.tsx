@@ -235,7 +235,7 @@ export default function MaintenanceSignupForm() {
             that make the most sense for your property.
           </p>
           <div className="inline-flex items-center bg-green-900/40 border border-green-700 rounded-full px-5 py-2 mt-6 text-green-200 text-sm font-medium">
-            Maintenance season: March 1 – November 30, 2027
+            Maintenance season: March 1 – November 1, 2027
           </div>
         </div>
       </section>
@@ -484,7 +484,7 @@ export default function MaintenanceSignupForm() {
               schedule, and cancellation terms in your service agreement.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              Our regular maintenance season runs from March 1 through November 30. Seasonal treatments and cleanups
+              Our regular maintenance season runs from March 1 through November 1. Seasonal treatments and cleanups
               will be scheduled according to your approved plan and property needs.
             </p>
           </div>
@@ -601,7 +601,7 @@ export default function MaintenanceSignupForm() {
                   className="mt-1 w-4 h-4 accent-green-500"
                 />
                 <span>
-                  I understand this is a service request for the 2027 maintenance season (March 1 – November 30) and
+                  I understand this is a service request for the 2027 maintenance season (March 1 – November 1) and
                   does not automatically enroll me in recurring service. Clips Lawn Care will follow up to confirm
                   pricing, scheduling, and a service agreement before work begins. *
                 </span>
