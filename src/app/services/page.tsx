@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     question: "What's the difference between Spring & Fall Cleanups and Cleanup Maintenance?",
-    answer: "Spring & Fall Cleanups are one-time seasonal services. Cleanup Maintenance is a recurring service, once a month and twice a month from October through November, starting at $250 and ranging to $449 per visit.",
+    answer: "Spring & Fall Cleanups are one-time seasonal services starting at $399 per cleanup. Cleanup Maintenance is a recurring service, once a month and twice a month from October through November, starting at $250 and ranging to $449 per visit.",
   },
 ];
 

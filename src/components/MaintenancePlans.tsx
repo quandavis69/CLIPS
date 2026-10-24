@@ -41,6 +41,8 @@ const maintenanceServices = [
     title: "Spring & Fall Cleanups",
     description: "One-time seasonal cleanups to prepare your property for the growing season or for winter.",
     href: "/services/seasonal-cleanups",
+    startingPrice: "$399",
+    priceUnit: "/ cleanup",
   },
   {
     title: "Cleanup Maintenance",
@@ -53,6 +55,7 @@ const maintenanceServices = [
     title: "Irrigation Services",
     description: "Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring.",
     href: "/services/irrigation",
+    inspectionRequired: true,
   },
   {
     title: "Shrub Pruning & Hedging",
@@ -151,22 +154,37 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {maintenanceServices.map((service) => (
-              <Link
+              <div
                 key={service.href}
-                href={service.href}
-                className="block bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors"
+                className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors"
               >
                 <div className="flex items-start justify-between gap-3 mb-2">
-                  <h3 className="text-xl font-bold text-white">{service.title}</h3>
-                  {service.startingPrice && (
+                  <Link href={service.href} className="text-xl font-bold text-white hover:text-green-400 transition-colors">
+                    {service.title}
+                  </Link>
+                  {service.startingPrice ? (
                     <span className="flex-shrink-0 text-right">
+                      <span className="block text-[10px] font-semibold uppercase tracking-wide text-gray-500">Starting at</span>
                       <span className="text-xl font-extrabold text-green-400">{service.startingPrice}</span>
                       <span className="block text-xs text-gray-500 leading-tight">{service.priceUnit}</span>
                     </span>
+                  ) : service.inspectionRequired ? (
+                    <span className="flex-shrink-0 text-xs font-semibold text-gray-400 text-right pt-1">
+                      Inspection required
+                    </span>
+                  ) : (
+                    <Link
+                      href="/contact"
+                      className="flex-shrink-0 text-sm font-semibold text-green-400 hover:text-green-300 underline text-right"
+                    >
+                      Request Quote
+                    </Link>
                   )}
                 </div>
-                <p className="text-gray-400">{service.description}</p>
-              </Link>
+                <Link href={service.href} className="text-gray-400 hover:text-gray-300 transition-colors block">
+                  {service.description}
+                </Link>
+              </div>
             ))}
           </div>
         </div>

@@ -373,7 +373,7 @@ export default function MaintenanceSignupForm() {
                 body={[
                   "Spring Cleanup prepares your property for the growing season by removing accumulated debris, clearing eligible landscape beds, and addressing seasonal maintenance needs. Fall Cleanup removes seasonal leaves and debris and prepares your property for winter. We'll provide a quote or agreed spending limit before starting - additional work requires your approval.",
                 ]}
-                pricing="Based on the labor required, debris volume, disposal costs, and the approved scope of work."
+                pricing="Starting at $399 per cleanup. Final pricing is based on the labor required, debris volume, disposal costs, and the approved scope of work."
                 learnMoreHref="/services/seasonal-cleanups"
               >
                 <p className="text-white font-medium mb-3">Would you like seasonal cleanups?</p>

@@ -30,7 +30,7 @@ export default function SeasonalCleanupsPage() {
           ],
         },
       ]}
-      pricingNote="Based on the labor required, debris volume, disposal costs, and the approved scope of work."
+      pricingNote="Starting at $399 per cleanup. Final pricing is based on the labor required, debris volume, disposal costs, and the approved scope of work."
       relatedServices={[
         { title: "Basic Maintenance (Mowing, Edging & Blowing)", href: "/services/lawn-mowing" },
         { title: "Weed Control", href: "/services/weed-control" },
