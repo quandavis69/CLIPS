@@ -139,7 +139,7 @@ const faqs = [
   },
   {
     question: "Are you licensed and insured?",
-    answer: "Yes, Clips Lawn Care is licensed and insured.",
+    answer: "Yes. We carry a full All Phase Landscape License (laws & rules, plants & turf, hardscaping, design & grading, and irrigation & backflow) and are fully bonded and insured, including a surety bond, commercial-level liability insurance, and workers' compensation for our field workers.",
   },
   {
     question: "What happens after I request a quote?",

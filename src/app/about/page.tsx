@@ -196,6 +196,49 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Licensing & Insurance */}
+      <section className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Licensing &amp; Insurance</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Fully Licensed, Bonded &amp; Insured</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+              We carry a full All Phase Landscape License and are fully bonded and insured for your protection.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-black rounded-2xl p-8 border border-gray-800">
+              <h3 className="text-xl font-bold text-white mb-5">All Phase Landscape License</h3>
+              <ul className="space-y-3">
+                {["Laws & Rules", "Plants & Turf", "Hardscaping", "Design & Grading", "Irrigation & Backflow"].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-black rounded-2xl p-8 border border-gray-800">
+              <h3 className="text-xl font-bold text-white mb-5">Bonded &amp; Insured</h3>
+              <ul className="space-y-3">
+                {["Surety Bond", "Commercial-Level Liability Insurance", "Workers' Compensation for Field Workers"].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Our Values */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
