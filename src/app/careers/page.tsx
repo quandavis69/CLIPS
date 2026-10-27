@@ -113,10 +113,10 @@ export default function CareersPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl overflow-hidden border border-gray-800 shadow-xl">
             <Image
-              src="/careers/clips-2027-bilingual-hiring.jpg"
+              src="/careers/clips-2027-bilingual-hiring.png"
               alt="Clips Lawn Care LLC 2027 bilingual (English and Spanish) hiring advertisement for lawn care and landscaping field technician positions, including starting wages of $20, $23, and $30 per hour"
-              width={1200}
-              height={1500}
+              width={1024}
+              height={1536}
               className="w-full h-auto"
               sizes="(max-width: 896px) 100vw, 896px"
               priority
