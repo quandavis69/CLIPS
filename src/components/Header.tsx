@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const services = [
   { name: "Residential", href: "/services/residential" },
-  { name: "Commercial", href: "/services/commercial" },
+  { name: "Commercial/Property Managers", href: "/services/commercial" },
   { name: "Landscape", href: "/services/landscape" },
 ];
 
@@ -60,7 +60,7 @@ export default function Header() {
               </button>
 
               {isServicesOpen && (
-                <div className="absolute top-full left-0 pt-2 w-60 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
+                <div className="absolute top-full left-0 pt-2 w-64 bg-gray-900 rounded-lg shadow-lg border border-gray-700 py-2 z-50">
                   {services.map((service) => (
                     <Link
                       key={service.href}

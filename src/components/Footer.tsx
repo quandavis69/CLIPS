@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const services = [
   { name: "Residential", href: "/services/residential" },
-  { name: "Commercial", href: "/services/commercial" },
+  { name: "Commercial/Property Managers", href: "/services/commercial" },
   { name: "Landscape", href: "/services/landscape" },
   { name: "Weekly Sign-Up", href: "/maintenance-signup" },
   { name: "HOA & Commercial Billing", href: "/commercial-property-maintenance" },

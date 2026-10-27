@@ -128,9 +128,12 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                 </p>
                 <Link
                   href="/commercial-property-maintenance"
-                  className="inline-flex items-center gap-1 text-green-400 font-semibold hover:text-green-300 transition-colors mt-4"
+                  className="inline-flex items-center gap-2 border-2 border-green-500 text-green-400 px-6 py-3 rounded-full font-semibold text-lg hover:bg-green-500 hover:text-black transition-colors mt-6"
                 >
-                  See how our seasonal maintenance plans and monthly billing work →
+                  See How Our Seasonal Maintenance Plans &amp; Monthly Billing Work
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </Link>
               </div>
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
