@@ -18,6 +18,8 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/services/irrigation", priority: 0.8, changeFrequency: "monthly" },
   { path: "/services/shrub-pruning", priority: 0.8, changeFrequency: "monthly" },
   { path: "/maintenance-signup", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/commercial-property-maintenance", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/careers", priority: 0.7, changeFrequency: "weekly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/gallery", priority: 0.7, changeFrequency: "monthly" },
   { path: "/testimonials", priority: 0.7, changeFrequency: "weekly" },

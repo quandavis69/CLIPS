@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactForm />;
+  return (
+    <Suspense>
+      <ContactForm />
+    </Suspense>
+  );
 }

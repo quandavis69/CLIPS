@@ -20,6 +20,7 @@ Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residenti
 - [Shrub Pruning & Hedging](https://clipslawncare.com/services/shrub-pruning): Scheduled shrub and hedge trimming.
 - [All Services Overview](https://clipslawncare.com/services): Summary of every division and individual service.
 - [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Build a custom Premium Package by selecting add-on services.
+- [HOA & Commercial Property Maintenance](https://clipslawncare.com/commercial-property-maintenance): Seasonal maintenance plans for HOAs, rental properties, property managers, and commercial properties, billed as 12 equal monthly payments.
 
 ## Company
 
@@ -28,6 +29,7 @@ Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residenti
 - [Gallery](https://clipslawncare.com/gallery): Real before-and-after project photos.
 - [Testimonials](https://clipslawncare.com/testimonials): Customer reviews, including live Google reviews.
 - [Service Area](https://clipslawncare.com/service-area): Details on the cities served - Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.
+- [Careers](https://clipslawncare.com/careers): 2027 lawn care and landscaping field technician job openings and online application.
 - [Contact / Get a Quote](https://clipslawncare.com/contact): Request a free in-person or virtual estimate.
 
 ## Optional

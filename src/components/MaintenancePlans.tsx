@@ -126,6 +126,12 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
                   accounted for. Rather than fit every property into a fixed package, we build a maintenance contract
                   around your property&apos;s specific scope, schedule, and budget from the services below.
                 </p>
+                <Link
+                  href="/commercial-property-maintenance"
+                  className="inline-flex items-center gap-1 text-green-400 font-semibold hover:text-green-300 transition-colors mt-4"
+                >
+                  See how our seasonal maintenance plans and monthly billing work →
+                </Link>
               </div>
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-700 shadow-xl">
                 <Image

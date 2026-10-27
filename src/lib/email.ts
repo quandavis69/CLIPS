@@ -83,3 +83,65 @@ export async function sendQuoteRequestEmail(payload: QuoteRequestPayload, attach
     return false;
   }
 }
+
+interface CareerApplicationPayload {
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  position: string;
+  experience: string;
+  yearsExperience: string;
+  equipment: string;
+  licenses: string;
+  skills: string;
+  startDate: string;
+  availability: string;
+  whyWorkHere: string;
+  relevantSkills: string;
+  additionalInfo: string;
+}
+
+// Emails a new job application (with resume attached) directly from the
+// server via the same Gmail SMTP setup as quote requests. Returns false
+// (rather than throwing) whenever email isn't configured or the send fails.
+export async function sendCareerApplicationEmail(payload: CareerApplicationPayload, resume: EmailAttachment): Promise<boolean> {
+  const transporter = getTransporter();
+  if (!transporter) {
+    return false;
+  }
+
+  const lines: string[] = [
+    `New job application from ${payload.name}`,
+    `Position: ${payload.position}`,
+    `Email: ${payload.email}`,
+    `Phone: ${payload.phone}`,
+    `City: ${payload.city}`,
+  ];
+  if (payload.yearsExperience) lines.push(`Years of experience: ${payload.yearsExperience}`);
+  if (payload.equipment) lines.push(`Equipment experience: ${payload.equipment}`);
+  if (payload.licenses) lines.push(`Licenses/certifications: ${payload.licenses}`);
+  if (payload.skills) lines.push(`Relevant skills: ${payload.skills}`);
+  if (payload.startDate) lines.push(`Earliest start date: ${payload.startDate}`);
+  if (payload.availability) lines.push(`Availability: ${payload.availability}`);
+  if (payload.experience) lines.push("", "Relevant work experience:", payload.experience);
+  lines.push("", "Why they want to work here:", payload.whyWorkHere);
+  lines.push("", "Relevant skills/experience for the role:", payload.relevantSkills);
+  if (payload.additionalInfo) lines.push("", "Additional information:", payload.additionalInfo);
+  lines.push("", "(Resume attached)");
+
+  try {
+    await transporter.sendMail({
+      from: `"Clips Lawn Care Careers" <${process.env.GMAIL_USER}>`,
+      to: DEFAULT_TO_EMAIL,
+      replyTo: payload.email,
+      subject: `Job Application - ${payload.position} - ${payload.name}`,
+      text: lines.join("\n"),
+      attachments: [resume],
+    });
+    return true;
+  } catch (error) {
+    console.error("Career application email send error:", error);
+    return false;
+  }
+}

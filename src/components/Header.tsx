@@ -16,6 +16,7 @@ const navLinks = [
   { name: "Gallery", href: "/gallery" },
   { name: "Service Area", href: "/service-area" },
   { name: "Testimonials", href: "/testimonials" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -98,6 +99,9 @@ export default function Header() {
             </Link>
             <Link href="/testimonials" className="text-gray-300 hover:text-green-400 transition-colors font-medium">
               Testimonials
+            </Link>
+            <Link href="/careers" className="text-gray-300 hover:text-green-400 transition-colors font-medium">
+              Careers
             </Link>
             <Link href="/contact" className="text-gray-300 hover:text-green-400 transition-colors font-medium">
               Contact

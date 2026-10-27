@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 
 const services = [
   "Residential Maintenance",
@@ -61,6 +62,25 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<"sent" | "email-client" | null>(null);
+  const searchParams = useSearchParams();
+
+  // Pre-fills the form when arriving from a link that specifies context,
+  // e.g. the Commercial Property Maintenance page's "Request a Commercial
+  // Quote" buttons (?service=...&propertyType=...&note=...).
+  useEffect(() => {
+    const service = searchParams.get("service");
+    const propertyType = searchParams.get("propertyType");
+    const note = searchParams.get("note");
+    if (!service && !propertyType && !note) return;
+
+    setFormData((prev) => ({
+      ...prev,
+      service: service && services.includes(service) ? service : prev.service,
+      propertyType: propertyType && propertyTypes.includes(propertyType) ? propertyType : prev.propertyType,
+      message: note ? `${note}\n\n${prev.message}`.trim() : prev.message,
+    }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const totalFileBytes = files.reduce((sum, f) => sum + f.size, 0);
 

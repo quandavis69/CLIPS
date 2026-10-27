@@ -6,6 +6,7 @@ const services = [
   { name: "Commercial", href: "/services/commercial" },
   { name: "Landscape", href: "/services/landscape" },
   { name: "Weekly Sign-Up", href: "/maintenance-signup" },
+  { name: "HOA & Commercial Billing", href: "/commercial-property-maintenance" },
 ];
 
 const quickLinks = [
@@ -14,6 +15,7 @@ const quickLinks = [
   { name: "Gallery", href: "/gallery" },
   { name: "Service Area", href: "/service-area" },
   { name: "Testimonials", href: "/testimonials" },
+  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
 ];
 
