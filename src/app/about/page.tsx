@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Clips Lawn Care | Bend, Oregon Lawn Care & Landscaping Crew",
   description: "Meet Clips Lawn Care, a Bend, Oregon-based lawn care and landscaping company serving Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [

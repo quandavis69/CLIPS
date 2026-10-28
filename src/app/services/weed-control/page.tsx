@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Weed Control in Bend, OR | Clips Lawn Care",
   description: "Pre-emergent and seasonal weed control from Clips Lawn Care, available as an add-on to Basic Maintenance in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/weed-control" },
 };
 
 export default function WeedControlPage() {
   return (
     <ServiceDetailLayout
+      path="/services/weed-control"
       eyebrow="Lawn Health & Weed Control"
       title="Weed Control"
       intro="Pre-emergent and seasonal weed control to keep weeds out of your lawn."

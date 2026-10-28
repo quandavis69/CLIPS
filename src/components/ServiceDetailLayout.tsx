@@ -17,7 +17,10 @@ interface ServiceDetailLayoutProps {
   sections: ServiceDetailSection[];
   pricingNote: string;
   relatedServices: RelatedService[];
+  path: string;
 }
+
+const BASE_URL = "https://clipslawncare.com";
 
 export default function ServiceDetailLayout({
   eyebrow,
@@ -26,9 +29,44 @@ export default function ServiceDetailLayout({
   sections,
   pricingNote,
   relatedServices,
+  path,
 }: ServiceDetailLayoutProps) {
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: title,
+    name: title,
+    description: intro,
+    url: `${BASE_URL}${path}`,
+    provider: {
+      "@type": "HomeAndConstructionBusiness",
+      name: "Clips Lawn Care LLC",
+      url: BASE_URL,
+      telephone: "+15413058500",
+    },
+    areaServed: ["Bend, OR", "Redmond, OR", "Sunriver, OR", "Prineville, OR", "Powell Butte, OR", "La Pine, OR"],
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${BASE_URL}/services` },
+      { "@type": "ListItem", position: 3, name: title, item: `${BASE_URL}${path}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen pt-20 bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

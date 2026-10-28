@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Lawn Mowing, Edging & Blowing in Bend, OR | Clips Lawn Care",
   description: "Basic Maintenance from Clips Lawn Care: weekly or bi-weekly mowing, edging, and blowing for homes and businesses in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/lawn-mowing" },
 };
 
 export default function LawnMowingPage() {
   return (
     <ServiceDetailLayout
+      path="/services/lawn-mowing"
       eyebrow="Basic Maintenance"
       title="Lawn Mowing, Edging & Blowing"
       intro="Our straightforward maintenance service keeps your lawn neat, clean, and consistently maintained throughout the season."

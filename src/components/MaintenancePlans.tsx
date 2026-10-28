@@ -70,20 +70,38 @@ const content = {
     title: "Residential Lawn Care & Maintenance",
     subtitle: "Every maintenance and landscape service we offer for homes, from weekly mowing to full landscape projects.",
     primaryCta: { href: "/maintenance-signup", label: "Build Your Package" },
+    path: "/services/residential",
   },
   commercial: {
     eyebrow: "Commercial Services",
     title: "Commercial, HOA & Property Manager Maintenance",
     subtitle: "Every maintenance and landscape service we offer for businesses, HOAs, and properties managed by a property management company throughout Central Oregon.",
     primaryCta: { href: "/contact", label: "Request a Custom Proposal" },
+    path: "/services/commercial",
   },
 };
+
+const BASE_URL = "https://clipslawncare.com";
 
 export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
   const copy = content[audience];
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${BASE_URL}/services` },
+      { "@type": "ListItem", position: 3, name: copy.title, item: `${BASE_URL}${copy.path}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen pt-20 bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

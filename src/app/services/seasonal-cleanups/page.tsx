@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Spring & Fall Cleanups in Bend, OR | Clips Lawn Care",
   description: "Spring and fall seasonal cleanups from Clips Lawn Care for properties in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/seasonal-cleanups" },
 };
 
 export default function SeasonalCleanupsPage() {
   return (
     <ServiceDetailLayout
+      path="/services/seasonal-cleanups"
       eyebrow="Seasonal Cleanups"
       title="Spring & Fall Cleanups"
       intro="Reset your property for the season ahead with a thorough cleanup."

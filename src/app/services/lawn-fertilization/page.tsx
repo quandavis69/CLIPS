@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Lawn Fertilization in Bend, OR | Clips Lawn Care",
   description: "Scheduled spring, midseason, and fall lawn fertilization from Clips Lawn Care, available as an add-on to Basic Maintenance in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/lawn-fertilization" },
 };
 
 export default function LawnFertilizationPage() {
   return (
     <ServiceDetailLayout
+      path="/services/lawn-fertilization"
       eyebrow="Lawn Health & Weed Control"
       title="Lawn Fertilization"
       intro="Help support healthy lawn growth with scheduled fertilizer applications throughout the growing season."

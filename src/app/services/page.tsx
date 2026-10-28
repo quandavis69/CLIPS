@@ -6,6 +6,7 @@ import Accordion from "@/components/Accordion";
 export const metadata: Metadata = {
   title: "Lawn Care & Landscaping Services | Clips Lawn Care - Central Oregon",
   description: "Residential and commercial lawn maintenance plans plus a dedicated landscape crew, serving Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services" },
 };
 
 const divisions = [

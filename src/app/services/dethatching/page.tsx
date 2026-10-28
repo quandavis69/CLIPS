@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Lawn Dethatching in Bend, OR | Clips Lawn Care",
   description: "Dethatching from Clips Lawn Care removes built-up dead grass and organic material to improve lawn health in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/dethatching" },
 };
 
 export default function DethatchingPage() {
   return (
     <ServiceDetailLayout
+      path="/services/dethatching"
       eyebrow="Seasonal Lawn Treatments"
       title="Dethatching"
       intro="Remove accumulated dead grass and organic material when needed to improve lawn condition."

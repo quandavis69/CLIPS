@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Lawn Aeration in Bend, OR | Clips Lawn Care",
   description: "Spring and fall core aeration from Clips Lawn Care to relieve soil compaction and improve lawn health in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/aeration" },
 };
 
 export default function AerationPage() {
   return (
     <ServiceDetailLayout
+      path="/services/aeration"
       eyebrow="Seasonal Lawn Treatments"
       title="Core Aeration"
       intro="Help relieve soil compaction and improve the movement of air, water, and nutrients into the soil."

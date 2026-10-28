@@ -1,8 +1,15 @@
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getGooglePlaceReviews } from "@/lib/googleReviews";
 import { curatedGoogleReviews } from "@/data/googleReviews";
 import Accordion from "@/components/Accordion";
+
+export const metadata: Metadata = {
+  title: "Lawn Care & Landscaping in Bend, OR | Clips Lawn Care",
+  description: "Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/" },
+};
 
 const services = [
   {

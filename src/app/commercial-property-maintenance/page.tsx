@@ -5,6 +5,7 @@ import Accordion from "@/components/Accordion";
 export const metadata: Metadata = {
   title: "HOA & Commercial Property Maintenance | Clips Lawn Care LLC",
   description: "Explore HOA, rental property, property management, and commercial landscaping maintenance in Central Oregon. Learn how Clips Lawn Care LLC structures seasonal maintenance plans with predictable monthly billing.",
+  alternates: { canonical: "/commercial-property-maintenance" },
 };
 
 const billingReasons = [

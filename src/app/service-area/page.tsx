@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Lawn Care Service Area | Bend, Redmond, Sunriver & Central Oregon",
   description: "Clips Lawn Care serves Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon with residential and commercial lawn care and landscaping.",
+  alternates: { canonical: "/service-area" },
 };
 
 const serviceAreas = [
@@ -115,7 +116,11 @@ export default function ServiceAreaPage() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Areas We Serve</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Learn more about our services in each community.
+              Learn more about our{" "}
+              <Link href="/services" className="text-green-400 hover:text-green-300 underline">
+                lawn care and landscaping services
+              </Link>{" "}
+              in each community.
             </p>
           </div>
 

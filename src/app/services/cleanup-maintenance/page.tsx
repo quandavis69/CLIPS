@@ -4,11 +4,13 @@ import ServiceDetailLayout from "@/components/ServiceDetailLayout";
 export const metadata: Metadata = {
   title: "Cleanup Maintenance in Bend, OR | Clips Lawn Care",
   description: "Recurring cleanup maintenance from Clips Lawn Care, keeping properties tidy year-round in Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine, Oregon.",
+  alternates: { canonical: "/services/cleanup-maintenance" },
 };
 
 export default function CleanupMaintenancePage() {
   return (
     <ServiceDetailLayout
+      path="/services/cleanup-maintenance"
       eyebrow="Recurring Service"
       title="Cleanup Maintenance"
       intro="Ongoing property cleanups to keep your property tidy throughout the year, with extra visits during the heaviest leaf-drop months."

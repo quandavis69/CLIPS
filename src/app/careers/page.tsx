@@ -5,6 +5,7 @@ import CareerApplicationForm from "@/components/CareerApplicationForm";
 export const metadata: Metadata = {
   title: "Join the Team | Clips Lawn Care LLC",
   description: "Join Clips Lawn Care LLC in Central Oregon. Explore 2027 lawn care and landscaping technician positions, starting wages, qualifications, and apply online.",
+  alternates: { canonical: "/careers" },
 };
 
 const positions = [

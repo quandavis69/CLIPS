@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms of Service | Clips Lawn Care",
   description: "The terms and conditions that govern your use of the Clips Lawn Care LLC website and services.",
+  alternates: { canonical: "/terms-of-service" },
 };
 
 export default function TermsOfServicePage() {

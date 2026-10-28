@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Landscape Installation & Projects in Bend, OR | Clips Lawn Care",
   description: "Landscape crew services in Central Oregon: mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, sod, gutter installation, and roof & gutter cleaning.",
+  alternates: { canonical: "/services/landscape" },
 };
 
 const services = [
@@ -129,9 +130,23 @@ const benefits = [
   "Satisfaction guaranteed",
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://clipslawncare.com" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://clipslawncare.com/services" },
+    { "@type": "ListItem", position: 3, name: "Landscape", item: "https://clipslawncare.com/services/landscape" },
+  ],
+};
+
 export default function LandscapePage() {
   return (
     <div className="min-h-screen pt-20 bg-black">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
