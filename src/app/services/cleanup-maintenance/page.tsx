@@ -27,6 +27,7 @@ export default function CleanupMaintenancePage() {
         { title: "Spring & Fall Cleanups", href: "/services/seasonal-cleanups" },
         { title: "Basic Maintenance (Mowing, Edging & Blowing)", href: "/services/lawn-mowing" },
         { title: "Landscape Projects", href: "/services/landscape" },
+        { title: "Total Property Clean", href: "/total-property-clean" },
       ]}
     />
   );

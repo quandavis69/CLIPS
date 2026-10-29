@@ -6,6 +6,7 @@ const services = [
   { name: "Commercial/Property Managers", href: "/services/commercial" },
   { name: "Landscape", href: "/services/landscape" },
   { name: "Weekly Sign-Up", href: "/maintenance-signup" },
+  { name: "Total Property Clean", href: "/total-property-clean" },
   { name: "HOA & Commercial Billing", href: "/commercial-property-maintenance" },
 ];
 

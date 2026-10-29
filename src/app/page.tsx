@@ -434,6 +434,26 @@ export default async function Home() {
               </svg>
             </Link>
           </div>
+
+          {/* Total Property Clean Promo */}
+          <div className="mt-16 bg-gradient-to-br from-green-900/40 to-black border border-green-800 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Preparing to Sell?</span>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mt-1 mb-2">
+                Total Property Clean — A Complete Exterior Refresh
+              </h3>
+              <p className="text-gray-300">
+                Pressure washing, landscape cleanup, plant &amp; lawn care, and irrigation adjustments in one
+                coordinated service. Starting at $2,500.
+              </p>
+            </div>
+            <Link
+              href="/total-property-clean"
+              className="flex-shrink-0 inline-flex items-center justify-center bg-green-500 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-400 transition-colors"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
       </section>
 

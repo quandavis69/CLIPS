@@ -7,6 +7,7 @@ type YesNo = "yes" | "no";
 type AerationChoice = "spring" | "fall" | "both" | "no";
 type DethatchChoice = "yes" | "no" | "recommend";
 type CleanupChoice = "spring" | "fall" | "both" | "assess";
+type FallDebrisChoice = "blow" | "mulch" | "bag" | "mow";
 
 interface Selections {
   fertilization: YesNo | "";
@@ -14,6 +15,7 @@ interface Selections {
   aeration: AerationChoice | "";
   dethatching: DethatchChoice | "";
   cleanups: CleanupChoice | "";
+  fallDebris: FallDebrisChoice | "";
   sprinklerStartup: YesNo | "";
   sprinklerBlowOut: YesNo | "";
   irrigationMonitoring: YesNo | "";
@@ -26,11 +28,39 @@ const initialSelections: Selections = {
   aeration: "",
   dethatching: "",
   cleanups: "",
+  fallDebris: "",
   sprinklerStartup: "",
   sprinklerBlowOut: "",
   irrigationMonitoring: "",
   shrubPruning: "",
 };
+
+const fallDebrisOptions: { value: FallDebrisChoice; title: string; price: string; description: string }[] = [
+  {
+    value: "blow",
+    title: "Blow Off",
+    price: "Free",
+    description: "Blow leaves and pine needles off the lawn and into an appropriate designated area on the property.",
+  },
+  {
+    value: "mulch",
+    title: "Double-Cut & Mulch",
+    price: "$20–$30",
+    description: "Double-cut the lawn to mulch leaves and pine needles into smaller pieces where appropriate. Price depends on lawn size.",
+  },
+  {
+    value: "bag",
+    title: "Bag & Remove Debris",
+    price: "$30–$60",
+    description: "Collect, bag, and remove accumulated leaves and pine needles from the lawn. Price depends on debris volume and disposal requirements.",
+  },
+  {
+    value: "mow",
+    title: "Standard Mowing Only",
+    price: "Free",
+    description: "Proceed with standard mowing and mow over the leaves or pine needles, leaving them in place. Does not include additional leaf cleanup.",
+  },
+];
 
 function ChoiceButtons<T extends string>({
   options,
@@ -61,6 +91,50 @@ function ChoiceButtons<T extends string>({
   );
 }
 
+function RadioOptionList<T extends string>({
+  name,
+  options,
+  value,
+  onChange,
+}: {
+  name: string;
+  options: { value: T; title: string; price: string; description: string }[];
+  value: T | "";
+  onChange: (v: T) => void;
+}) {
+  return (
+    <div className="space-y-3">
+      {options.map((opt) => {
+        const isSelected = value === opt.value;
+        return (
+          <label
+            key={opt.value}
+            className={`flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-colors ${
+              isSelected ? "border-green-500 bg-green-900/10" : "border-gray-700 bg-gray-800 hover:border-gray-600"
+            }`}
+          >
+            <input
+              type="radio"
+              name={name}
+              value={opt.value}
+              checked={isSelected}
+              onChange={() => onChange(opt.value)}
+              className="mt-1 w-4 h-4 accent-green-500 flex-shrink-0"
+            />
+            <div className="flex-1">
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-semibold text-white">{opt.title}</span>
+                <span className="text-green-400 font-semibold text-sm flex-shrink-0">{opt.price}</span>
+              </div>
+              <p className="text-gray-400 text-sm mt-1">{opt.description}</p>
+            </div>
+          </label>
+        );
+      })}
+    </div>
+  );
+}
+
 function AddOnSection({
   eyebrow,
   title,
@@ -73,7 +147,7 @@ function AddOnSection({
   title: string;
   body: string[];
   pricing: string;
-  learnMoreHref: string;
+  learnMoreHref?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -86,9 +160,11 @@ function AddOnSection({
         </p>
       ))}
       <p className="text-green-300 text-sm mb-2">Pricing: {pricing}</p>
-      <Link href={learnMoreHref} className="text-green-400 hover:text-green-300 text-sm underline">
-        Learn more about this service →
-      </Link>
+      {learnMoreHref && (
+        <Link href={learnMoreHref} className="text-green-400 hover:text-green-300 text-sm underline">
+          Learn more about this service →
+        </Link>
+      )}
       <div className="mt-6">{children}</div>
     </div>
   );
@@ -128,6 +204,10 @@ export default function MaintenanceSignupForm() {
     if (selections.cleanups) {
       const label = { spring: "Spring cleanup", fall: "Fall cleanup", both: "Both", assess: "Please assess my property first" }[selections.cleanups];
       lines.push(`Seasonal Cleanups: ${label}`);
+    }
+    if (selections.fallDebris) {
+      const opt = fallDebrisOptions.find((o) => o.value === selections.fallDebris);
+      if (opt) lines.push(`Fall Leaf & Pine Needle Handling: ${opt.title} (${opt.price})`);
     }
     if (selections.sprinklerStartup) lines.push(`Sprinkler System Startup: ${selections.sprinklerStartup === "yes" ? "Yes" : "No"}`);
     if (selections.sprinklerBlowOut) lines.push(`Sprinkler System Blow-Out: ${selections.sprinklerBlowOut === "yes" ? "Yes" : "No"}`);
@@ -387,6 +467,30 @@ export default function MaintenanceSignupForm() {
                   value={selections.cleanups}
                   onChange={(v) => update("cleanups", v)}
                 />
+              </AddOnSection>
+
+              <AddOnSection
+                eyebrow="Seasonal Cleanups"
+                title="Fall Leaf & Pine Needle Management"
+                body={[
+                  "When seasonal leaves and pine needles accumulate on your lawn in the fall, you can choose how you'd like our team to handle them. Additional charges apply to certain options.",
+                ]}
+                pricing="Blow Off and Standard Mowing Only are free. Double-Cut & Mulch is $20–$30, and Bag & Remove Debris is $30–$60, depending on lawn size and debris volume."
+              >
+                <p className="text-white font-medium mb-3">
+                  When leaves or pine needles accumulate on your lawn in the fall, how would you like our team to
+                  handle them?
+                </p>
+                <RadioOptionList<FallDebrisChoice>
+                  name="fallDebris"
+                  options={fallDebrisOptions}
+                  value={selections.fallDebris}
+                  onChange={(v) => update("fallDebris", v)}
+                />
+                <p className="text-gray-500 text-xs mt-4">
+                  Listed amounts are estimates within the stated ranges. Final pricing depends on lawn size or debris
+                  volume, as applicable, and will be confirmed in your final quote.
+                </p>
               </AddOnSection>
 
               <AddOnSection

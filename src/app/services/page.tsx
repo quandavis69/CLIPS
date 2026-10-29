@@ -62,6 +62,7 @@ const individualServices = [
   { title: "Irrigation Services", href: "/services/irrigation" },
   { title: "Shrub Pruning & Hedging", href: "/services/shrub-pruning" },
   { title: "Landscape Projects", href: "/services/landscape" },
+  { title: "Total Property Clean", href: "/total-property-clean" },
 ];
 
 const faqs = [
@@ -101,6 +102,30 @@ export default function ServicesPage() {
             <p className="text-xl text-green-100">
               We organize our work into three divisions - Residential, Commercial, and Landscape - so every property gets a crew and a plan built for it.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Total Property Clean Promo */}
+      <section className="py-12 bg-gray-900 border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-green-900/40 to-black border border-green-800 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Preparing to Sell?</span>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mt-1 mb-2">
+                Total Property Clean — A Complete Exterior Refresh
+              </h2>
+              <p className="text-gray-300">
+                Pressure washing, landscape cleanup, plant &amp; lawn care, and irrigation adjustments in one
+                coordinated service. Starting at $2,500.
+              </p>
+            </div>
+            <Link
+              href="/total-property-clean"
+              className="flex-shrink-0 inline-flex items-center justify-center bg-green-500 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-400 transition-colors"
+            >
+              Learn More
+            </Link>
           </div>
         </div>
       </section>

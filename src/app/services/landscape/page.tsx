@@ -297,6 +297,28 @@ export default function LandscapePage() {
         </div>
       </section>
 
+      {/* Project Options & Warranty */}
+      <section className="py-16 bg-black">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-2xl font-bold text-white mb-4">Choosing a Project Option</h2>
+          <p className="text-gray-400 text-lg mb-6">
+            For landscape installations, restorations, and irrigation projects, we offer two quotes for the same
+            project - a cost-effective option and a premium option with a multi-year warranty.{" "}
+            <Link href="/landscaping-projects-warranty" className="text-green-400 hover:text-green-300 underline">
+              Learn about our landscaping project options and warranties
+            </Link>
+            .
+          </p>
+          <p className="text-gray-400 text-lg">
+            Preparing a property for sale or need a complete exterior refresh?{" "}
+            <Link href="/total-property-clean" className="text-green-400 hover:text-green-300 underline">
+              Explore our Total Property Clean service
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-green-800 to-green-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

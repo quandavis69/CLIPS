@@ -78,6 +78,12 @@ export default function Header() {
                       Weekly Maintenance Sign-Up
                     </Link>
                     <Link
+                      href="/total-property-clean"
+                      className="block px-4 py-2 text-gray-300 hover:bg-gray-800 hover:text-green-400 transition-colors"
+                    >
+                      Total Property Clean
+                    </Link>
+                    <Link
                       href="/services"
                       className="block px-4 py-2 text-green-400 font-medium hover:bg-gray-800 transition-colors"
                     >
@@ -189,6 +195,13 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Weekly Maintenance Sign-Up
+                </Link>
+                <Link
+                  href="/total-property-clean"
+                  className="block text-gray-400 hover:text-green-400 transition-colors py-1.5 pl-4"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Total Property Clean
                 </Link>
               </div>
 
