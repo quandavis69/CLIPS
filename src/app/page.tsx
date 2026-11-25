@@ -465,11 +465,11 @@ export default async function Home() {
             A Healthier Lawn Starts at Just $17/Week!
           </h2>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-3">
-            Add fertilization, weed control, and irrigation monitoring to your weekly lawn maintenance starting at
-            just $17 per week.
+            Add fertilization, weed control, and irrigation monitoring to your weekly lawn maintenance for just $17
+            per week in add-ons.
           </p>
           <p className="text-gray-500 text-sm max-w-2xl mx-auto mb-8">
-            $17/week is a starting price for qualifying add-on selections, combined, in addition to your base weekly
+            $17/week is a starting price for these add-ons, combined, and is in addition to your base weekly
             maintenance price. Exact pricing depends on property size and treatment plan.
           </p>
           <Link
