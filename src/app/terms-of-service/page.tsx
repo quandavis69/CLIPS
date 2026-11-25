@@ -15,7 +15,7 @@ export default function TermsOfServicePage() {
           <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Legal</span>
           <h1 className="text-4xl md:text-5xl font-bold text-white mt-2 mb-4">Terms of Service</h1>
           <p className="text-green-100">
-            Effective Date: August 31, 2026 &nbsp;•&nbsp; Last Updated: August 31, 2026
+            Effective Date: August 31, 2026 &nbsp;•&nbsp; Last Updated: November 24, 2026
           </p>
         </div>
       </section>
