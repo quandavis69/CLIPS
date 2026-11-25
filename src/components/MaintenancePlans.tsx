@@ -7,11 +7,14 @@ interface MaintenancePlansProps {
 
 const maintenanceServices = [
   {
-    title: "Basic Maintenance",
-    description: "Weekly mowing, edging as needed, and blowing of driveways, walkways, and patios.",
+    title: "Weekly Lawn Maintenance",
+    description: "Weekly mowing, edging as needed, and blowing of driveways, walkways, and patios - the included base of every package.",
     href: "/services/lawn-mowing",
-    startingPrice: "$60",
-    priceUnit: "/ visit",
+  },
+  {
+    title: "Irrigation Control",
+    description: "Spring startup, system testing, free inspections, seasonal monitoring, call-outs, and fall/winter blowout, bundled into one add-on.",
+    href: "/services/irrigation",
   },
   {
     title: "Lawn Fertilization",
@@ -24,42 +27,28 @@ const maintenanceServices = [
     href: "/services/weed-control",
   },
   {
-    title: "Aeration",
-    description: "Spring and/or fall core aeration to relieve soil compaction.",
+    title: "Lawn Aeration",
+    description: "Spring and/or fall core aeration to relieve soil compaction - a one-time service.",
     href: "/services/aeration",
-    startingPrice: "$199",
-    priceUnit: "/ service",
   },
   {
-    title: "Dethatching",
-    description: "Removes built-up thatch to improve lawn health.",
+    title: "Lawn Dethatching",
+    description: "Removes built-up thatch to improve lawn health - a one-time service.",
     href: "/services/dethatching",
-    startingPrice: "$249",
-    priceUnit: "/ service",
   },
   {
     title: "Spring & Fall Cleanups",
     description: "One-time seasonal cleanups to prepare your property for the growing season or for winter.",
     href: "/services/seasonal-cleanups",
-    startingPrice: "$399",
-    priceUnit: "/ cleanup",
   },
   {
-    title: "Cleanup Maintenance",
-    description: "Recurring property cleanups, once a month and twice a month October-November.",
+    title: "Bi-Weekly Property Cleanup",
+    description: "Recurring landscape trimming, weeding, and debris cleanup every two weeks - billed separately.",
     href: "/services/cleanup-maintenance",
-    startingPrice: "$250",
-    priceUnit: "/ visit",
-  },
-  {
-    title: "Irrigation Services",
-    description: "Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring.",
-    href: "/services/irrigation",
-    inspectionRequired: true,
   },
   {
     title: "Shrub Pruning & Hedging",
-    description: "Scheduled trimming and pruning to keep shrubs and hedges neat.",
+    description: "Scheduled trimming and pruning for larger or specialized shrub and hedge projects.",
     href: "/services/shrub-pruning",
   },
 ];
@@ -175,43 +164,21 @@ export default function MaintenancePlans({ audience }: MaintenancePlansProps) {
             <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Maintenance</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Every Maintenance Service We Offer</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Each service below has its own page with a full description and pricing.
+              Each service below has its own page with a full description. Pricing is confirmed in your personalized
+              quote.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {maintenanceServices.map((service) => (
-              <div
+              <Link
                 key={service.href}
-                className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors"
+                href={service.href}
+                className="block bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors"
               >
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <Link href={service.href} className="text-xl font-bold text-white hover:text-green-400 transition-colors">
-                    {service.title}
-                  </Link>
-                  {service.startingPrice ? (
-                    <span className="flex-shrink-0 text-right">
-                      <span className="block text-[10px] font-semibold uppercase tracking-wide text-gray-500">Starting at</span>
-                      <span className="text-xl font-extrabold text-green-400">{service.startingPrice}</span>
-                      <span className="block text-xs text-gray-500 leading-tight">{service.priceUnit}</span>
-                    </span>
-                  ) : service.inspectionRequired ? (
-                    <span className="flex-shrink-0 text-xs font-semibold text-gray-400 text-right pt-1">
-                      Inspection required
-                    </span>
-                  ) : (
-                    <Link
-                      href="/contact"
-                      className="flex-shrink-0 text-sm font-semibold text-green-400 hover:text-green-300 underline text-right"
-                    >
-                      Request Quote
-                    </Link>
-                  )}
-                </div>
-                <Link href={service.href} className="text-gray-400 hover:text-gray-300 transition-colors block">
-                  {service.description}
-                </Link>
-              </div>
+                <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                <p className="text-gray-400">{service.description}</p>
+              </Link>
             ))}
           </div>
         </div>

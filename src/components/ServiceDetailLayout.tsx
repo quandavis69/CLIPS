@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Accordion from "@/components/Accordion";
 
 interface ServiceDetailSection {
   heading: string;
@@ -10,6 +11,11 @@ interface RelatedService {
   href: string;
 }
 
+interface ServiceFaq {
+  question: string;
+  answer: string;
+}
+
 interface ServiceDetailLayoutProps {
   eyebrow: string;
   title: string;
@@ -18,6 +24,7 @@ interface ServiceDetailLayoutProps {
   pricingNote: string;
   relatedServices: RelatedService[];
   path: string;
+  faqs?: ServiceFaq[];
 }
 
 const BASE_URL = "https://clipslawncare.com";
@@ -30,6 +37,7 @@ export default function ServiceDetailLayout({
   pricingNote,
   relatedServices,
   path,
+  faqs,
 }: ServiceDetailLayoutProps) {
   const serviceJsonLd = {
     "@context": "https://schema.org",
@@ -57,6 +65,16 @@ export default function ServiceDetailLayout({
     ],
   };
 
+  const faqJsonLd = faqs && faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  } : null;
+
   return (
     <div className="min-h-screen pt-20 bg-black">
       <script
@@ -67,6 +85,12 @@ export default function ServiceDetailLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -133,6 +157,16 @@ export default function ServiceDetailLayout({
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ Section */}
+      {faqs && faqs.length > 0 && (
+        <section className="py-20 bg-black border-t border-gray-800">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Frequently Asked Questions</h2>
+            <Accordion items={faqs} />
           </div>
         </section>
       )}

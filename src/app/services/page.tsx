@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 const divisions = [
   {
     title: "Residential",
-    description: "Home lawn care built around Basic Maintenance, with a Build Your Own Premium Package of add-on services for fertilization, weed control, aeration, dethatching, cleanups, irrigation, and shrub pruning.",
+    description: "Weekly lawn maintenance starting at $60/week, with a Premium Build-Your-Own Maintenance Package of add-on services for fertilization, weed control, Irrigation Control, aeration, dethatching, and more.",
     href: "/services/residential",
     image: "/gallery/mower-equipment.png",
     imageAlt: "Clips Lawncare mowing equipment on a residential lawn",
-    features: ["Basic Maintenance plan", "Build Your Own Premium Package", "Fertilization, weed control, aeration & dethatching", "Seasonal cleanups, irrigation & shrub pruning"],
+    features: ["Weekly maintenance starting at $60/week", "Premium Build-Your-Own Maintenance Package", "Fertilization, weed control, aeration & dethatching", "Irrigation Control & Bi-Weekly Property Cleanup"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -25,11 +25,11 @@ const divisions = [
   },
   {
     title: "Commercial",
-    description: "Custom maintenance contracts for businesses, HOAs, and properties managed by a property management company throughout Central Oregon - built around Basic Maintenance plus the services your property needs.",
+    description: "Custom maintenance contracts for businesses, HOAs, and properties managed by a property management company throughout Central Oregon - built around weekly lawn maintenance plus the services your property needs.",
     href: "/services/commercial",
     image: "/gallery/commercial-maintenance.png",
     imageAlt: "Clips Lawncare crew member maintaining landscape beds at a commercial HOA entrance",
-    features: ["Custom maintenance contracts", "HOAs & property managers welcome", "Built around Basic Maintenance", "Add-on services scoped to your property"],
+    features: ["Custom maintenance contracts", "HOAs & property managers welcome", "Built around weekly lawn maintenance", "Add-on services scoped to your property"],
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21h18M5 21V7l8-4v18M13 21V11l6 3v7M9 9v.01M9 12v.01M9 15v.01" />
@@ -52,27 +52,33 @@ const divisions = [
 ];
 
 const individualServices = [
-  { title: "Mowing, Edging & Blowing", href: "/services/lawn-mowing" },
+  { title: "Lawn Maintenance", href: "/services/lawn-mowing" },
   { title: "Lawn Fertilization", href: "/services/lawn-fertilization" },
   { title: "Weed Control", href: "/services/weed-control" },
-  { title: "Aeration", href: "/services/aeration" },
-  { title: "Dethatching", href: "/services/dethatching" },
+  { title: "Lawn Aeration", href: "/services/aeration" },
+  { title: "Lawn Dethatching", href: "/services/dethatching" },
   { title: "Spring & Fall Cleanups", href: "/services/seasonal-cleanups" },
-  { title: "Cleanup Maintenance", href: "/services/cleanup-maintenance" },
+  { title: "Bi-Weekly Property Cleanup", href: "/services/cleanup-maintenance" },
   { title: "Irrigation Services", href: "/services/irrigation" },
   { title: "Shrub Pruning & Hedging", href: "/services/shrub-pruning" },
   { title: "Landscape Projects", href: "/services/landscape" },
+  { title: "Sod Installation", href: "/services/sod-installation" },
+  { title: "Mulch Installation", href: "/services/mulch-installation" },
+  { title: "Rock Installation", href: "/services/rock-installation" },
+  { title: "Landscape Installation", href: "/services/landscape-installation" },
+  { title: "Landscape Cleanup", href: "/services/landscape-cleanup" },
+  { title: "Gutter Cleaning", href: "/services/gutter-cleaning" },
   { title: "Total Property Clean", href: "/total-property-clean" },
 ];
 
 const faqs = [
   {
-    question: "What's the difference between Basic Maintenance and a Premium Package?",
-    answer: "Basic Maintenance starts at $60 per visit for mowing, edging, and blowing. A Premium Package starts with Basic Maintenance and adds any combination of fertilization, weed control, aeration, dethatching, cleanups, irrigation, and shrub pruning - each custom quoted for your property. Build one on our Weekly Maintenance Sign-Up page.",
+    question: "What's included in the Premium Build-Your-Own Maintenance Package?",
+    answer: "It starts at $60/week for mowing, edging, and blowing, and you can add any combination of Irrigation Control, fertilization, weed control, aeration, dethatching, and Bi-Weekly Property Cleanup - each custom quoted for your property. Build one on our maintenance sign-up page.",
   },
   {
     question: "Do I need a maintenance plan before adding other services?",
-    answer: "Add-on services like fertilization, weed control, and shrub pruning build on top of Basic Maintenance. Aeration, dethatching, and cleanups can also be requested on their own.",
+    answer: "Add-on services like fertilization, weed control, and Irrigation Control build on top of your weekly maintenance. Aeration and dethatching are one-time services that can also be requested on their own.",
   },
   {
     question: "What's included in a landscape project?",
@@ -80,11 +86,11 @@ const faqs = [
   },
   {
     question: "How is Commercial different from Residential?",
-    answer: "Commercial, HOA, and property-manager accounts are built as custom contracts rather than a self-serve package - every contract still starts with Basic Maintenance, with services scoped to the property.",
+    answer: "Commercial, HOA, and property-manager accounts are built as custom contracts rather than a self-serve package - every contract still starts with weekly lawn maintenance, with services scoped to the property.",
   },
   {
-    question: "What's the difference between Spring & Fall Cleanups and Cleanup Maintenance?",
-    answer: "Spring & Fall Cleanups are one-time seasonal services starting at $399 per cleanup. Cleanup Maintenance is a recurring service, once a month and twice a month from October through November, starting at $250 and ranging to $449 per visit.",
+    question: "What's the difference between Spring & Fall Cleanups and Bi-Weekly Property Cleanup?",
+    answer: "Spring & Fall Cleanups are one-time seasonal services starting at $399 per cleanup. Bi-Weekly Property Cleanup is a recurring service performed every two weeks, starting at $199 per visit.",
   },
 ];
 

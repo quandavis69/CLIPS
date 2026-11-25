@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const services = [
   {
     title: "Residential",
-    description: "Home lawn care built around Basic Maintenance, with a Build Your Own Premium Package for fertilization, weed control, aeration, cleanups, irrigation, and more.",
+    description: "Weekly lawn maintenance starting at $60/week, with a Premium Build-Your-Own Maintenance Package for fertilization, weed control, Irrigation Control, and more.",
     href: "/services/residential",
     image: "/gallery/mower-equipment.png",
   },
@@ -130,7 +130,7 @@ const faqs = [
   },
   {
     question: "Do you offer recurring lawn maintenance?",
-    answer: "Yes. Basic Maintenance covers mowing, edging, and blowing, and you can build a Premium Package on top of it with fertilization, weed control, aeration, cleanups, irrigation, and shrub pruning.",
+    answer: "Yes. Our Premium Build-Your-Own Maintenance Package starts at $60/week for mowing, edging, and blowing, and you can customize it with fertilization, weed control, Irrigation Control, aeration, dethatching, and more.",
   },
   {
     question: "Do you work with commercial properties, HOAs, and property managers?",
@@ -195,7 +195,7 @@ export default async function Home() {
                 Bend, Oregon Based
               </span>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.05] tracking-tight">
-                Central Oregon&apos;s Lawn Care &amp; Landscape Crew
+                Bend, Oregon&apos;s Lawn Care &amp; Landscape Crew
               </h1>
               <p className="text-xl text-gray-300 mb-6 max-w-lg">
                 Residential and commercial lawn maintenance, landscape projects, and property care for Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.
@@ -275,7 +275,7 @@ export default async function Home() {
                 <div className="w-full aspect-square rounded-2xl border border-gray-700 overflow-hidden shadow-2xl shadow-black/50">
                   <Image
                     src="/gallery/lawn-lake.png"
-                    alt="Crisply striped lawn maintained by Clips Lawn Care along a Central Oregon waterfront"
+                    alt="Crisply striped lawn maintained by Clips Lawn Care along a Bend, Oregon waterfront"
                     width={600}
                     height={600}
                     className="w-full h-full object-cover object-center"
@@ -307,7 +307,7 @@ export default async function Home() {
                     </div>
                     <div>
                       <p className="font-bold text-white">Licensed & Insured</p>
-                      <p className="text-sm text-gray-400">Central Oregon owned</p>
+                      <p className="text-sm text-gray-400">Bend, Oregon owned</p>
                     </div>
                   </div>
                 </div>
@@ -386,7 +386,7 @@ export default async function Home() {
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">Our Services</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              From regular maintenance to complete landscape transformations, we provide comprehensive lawn care solutions for Central Oregon homes and businesses.
+              From regular maintenance to complete landscape transformations, we provide comprehensive lawn care solutions for Bend, Oregon homes and businesses.
             </p>
           </div>
 
@@ -454,6 +454,33 @@ export default async function Home() {
               Learn More
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Maintenance Add-On Promo */}
+      <section className="py-20 bg-gradient-to-br from-green-900/60 via-black to-black border-y border-gray-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Maintenance Add-Ons</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">
+            A Healthier Lawn Starts at Just $17/Week!
+          </h2>
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-3">
+            Add fertilization, weed control, and irrigation monitoring to your weekly lawn maintenance starting at
+            just $17 per week.
+          </p>
+          <p className="text-gray-500 text-sm max-w-2xl mx-auto mb-8">
+            $17/week is a starting price for qualifying add-on selections, combined, in addition to your base weekly
+            maintenance price. Exact pricing depends on property size and treatment plan.
+          </p>
+          <Link
+            href="/maintenance-signup"
+            className="inline-flex items-center justify-center bg-green-500 text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-400 transition-colors shadow-lg shadow-green-500/20"
+          >
+            Build Your Maintenance Package
+            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </section>
 
@@ -590,7 +617,7 @@ export default async function Home() {
             </span>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-4">What Our Customers Say</h2>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Don&apos;t just take our word for it - hear from our satisfied customers throughout Central Oregon.
+              Don&apos;t just take our word for it - hear from our satisfied customers throughout Bend and Central Oregon.
             </p>
             <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-400">
               <svg className="w-4 h-4" viewBox="0 0 18 18">
@@ -668,10 +695,10 @@ export default async function Home() {
                 Service Area
               </span>
               <h2 className="text-3xl md:text-5xl font-bold text-white mt-2 mb-6">
-                Proudly Serving Central Oregon
+                Proudly Serving Bend, Oregon
               </h2>
               <p className="text-gray-400 text-lg mb-8">
-                We provide lawn care and landscape services throughout Central Oregon, including:
+                We provide lawn care and landscape services throughout Bend and the surrounding Central Oregon area, including:
               </p>
 
               <div className="grid grid-cols-2 gap-4 mb-8">

@@ -6,33 +6,38 @@ import { useState } from "react";
 type YesNo = "yes" | "no";
 type AerationChoice = "spring" | "fall" | "both" | "no";
 type DethatchChoice = "yes" | "no" | "recommend";
-type CleanupChoice = "spring" | "fall" | "both" | "assess";
 type FallDebrisChoice = "blow" | "mulch" | "bag" | "mow";
 
+const SEASON_WEEKS = 35; // March 1 - November 1
+const BASE_WEEKLY = 60;
+const AERATION_PRICE = 50;
+const DETHATCHING_PRICE = 99;
+const BIWEEKLY_CLEANUP_PRICE = 199;
+
+const weeklyAddOns = [
+  { key: "irrigationControl" as const, label: "Irrigation Control", low: 12, high: 12 },
+  { key: "fertilization" as const, label: "Lawn Fertilization", low: 2, high: 9 },
+  { key: "weedControl" as const, label: "Weed Control", low: 3, high: 40 },
+];
+
 interface Selections {
+  irrigationControl: YesNo | "";
   fertilization: YesNo | "";
   weedControl: YesNo | "";
   aeration: AerationChoice | "";
   dethatching: DethatchChoice | "";
-  cleanups: CleanupChoice | "";
+  biWeeklyCleanup: YesNo | "";
   fallDebris: FallDebrisChoice | "";
-  sprinklerStartup: YesNo | "";
-  sprinklerBlowOut: YesNo | "";
-  irrigationMonitoring: YesNo | "";
-  shrubPruning: YesNo | "";
 }
 
 const initialSelections: Selections = {
+  irrigationControl: "",
   fertilization: "",
   weedControl: "",
   aeration: "",
   dethatching: "",
-  cleanups: "",
+  biWeeklyCleanup: "",
   fallDebris: "",
-  sprinklerStartup: "",
-  sprinklerBlowOut: "",
-  irrigationMonitoring: "",
-  shrubPruning: "",
 };
 
 const fallDebrisOptions: { value: FallDebrisChoice; title: string; price: string; description: string }[] = [
@@ -61,6 +66,18 @@ const fallDebrisOptions: { value: FallDebrisChoice; title: string; price: string
     description: "Proceed with standard mowing and mow over the leaves or pine needles, leaving them in place. Does not include additional leaf cleanup.",
   },
 ];
+
+function navigateTo(url: string) {
+  window.location.href = url;
+}
+
+function formatMoney(n: number) {
+  return `$${n.toLocaleString()}`;
+}
+
+function formatRange(low: number, high: number) {
+  return low === high ? formatMoney(low) : `${formatMoney(low)}–${formatMoney(high)}`;
+}
 
 function ChoiceButtons<T extends string>({
   options,
@@ -172,6 +189,7 @@ function AddOnSection({
 
 export default function MaintenanceSignupForm() {
   const [selections, setSelections] = useState<Selections>(initialSelections);
+  const [fullYearBilling, setFullYearBilling] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -181,6 +199,7 @@ export default function MaintenanceSignupForm() {
     message: "",
   });
   const [agreed, setAgreed] = useState(false);
+  const [smsConsent, setSmsConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [deliveryMethod, setDeliveryMethod] = useState<"sent" | "email-client" | null>(null);
@@ -189,30 +208,60 @@ export default function MaintenanceSignupForm() {
     setSelections((prev) => ({ ...prev, [key]: value }));
   }
 
+  // Weekly recurring total (base + selected weekly add-ons only - never includes one-time
+  // services or Bi-Weekly Property Cleanup, which are billed separately).
+  let weeklyLow = BASE_WEEKLY;
+  let weeklyHigh = BASE_WEEKLY;
+  weeklyAddOns.forEach((addOn) => {
+    if (selections[addOn.key] === "yes") {
+      weeklyLow += addOn.low;
+      weeklyHigh += addOn.high;
+    }
+  });
+
+  const seasonLow = weeklyLow * SEASON_WEEKS;
+  const seasonHigh = weeklyHigh * SEASON_WEEKS;
+  const monthlyLow = Math.round(seasonLow / 12);
+  const monthlyHigh = Math.round(seasonHigh / 12);
+
+  const aerationVisits = selections.aeration === "both" ? 2 : selections.aeration === "spring" || selections.aeration === "fall" ? 1 : 0;
+  const aerationTotal = aerationVisits * AERATION_PRICE;
+  const dethatchingSelected = selections.dethatching === "yes";
+  const oneTimeTotal = aerationTotal + (dethatchingSelected ? DETHATCHING_PRICE : 0);
+
+  const biWeeklyCleanupSelected = selections.biWeeklyCleanup === "yes";
+
   const buildSummary = () => {
-    const lines = ["Basic Maintenance: Included (starting at $60/visit)"];
-    if (selections.fertilization) lines.push(`Lawn Fertilization: ${selections.fertilization === "yes" ? "Yes" : "No"}`);
-    if (selections.weedControl) lines.push(`Weed Control: ${selections.weedControl === "yes" ? "Yes" : "No"}`);
+    const lines = [`Weekly Lawn Maintenance (base): Included (starting at ${formatMoney(BASE_WEEKLY)}/week)`];
+    weeklyAddOns.forEach((addOn) => {
+      const sel = selections[addOn.key];
+      if (sel) lines.push(`${addOn.label}: ${sel === "yes" ? `Yes (${formatRange(addOn.low, addOn.high)}/week)` : "No"}`);
+    });
+    lines.push(`Estimated Weekly Recurring Total: ${formatRange(weeklyLow, weeklyHigh)}/week`);
+
     if (selections.aeration) {
       const label = { spring: "Spring", fall: "Fall", both: "Both spring and fall", no: "No" }[selections.aeration];
-      lines.push(`Aeration: ${label}`);
+      lines.push(`Lawn Aeration (one-time): ${label}${aerationVisits > 0 ? ` - ${formatMoney(aerationTotal)}` : ""}`);
     }
     if (selections.dethatching) {
-      const label = { yes: "Yes", no: "No", recommend: "Please recommend whether my lawn needs it" }[selections.dethatching];
-      lines.push(`Dethatching: ${label}`);
-    }
-    if (selections.cleanups) {
-      const label = { spring: "Spring cleanup", fall: "Fall cleanup", both: "Both", assess: "Please assess my property first" }[selections.cleanups];
-      lines.push(`Seasonal Cleanups: ${label}`);
+      const label = { yes: `Yes - ${formatMoney(DETHATCHING_PRICE)}`, no: "No", recommend: "Please recommend whether my lawn needs it" }[selections.dethatching];
+      lines.push(`Lawn Dethatching (one-time): ${label}`);
     }
     if (selections.fallDebris) {
       const opt = fallDebrisOptions.find((o) => o.value === selections.fallDebris);
       if (opt) lines.push(`Fall Leaf & Pine Needle Handling: ${opt.title} (${opt.price})`);
     }
-    if (selections.sprinklerStartup) lines.push(`Sprinkler System Startup: ${selections.sprinklerStartup === "yes" ? "Yes" : "No"}`);
-    if (selections.sprinklerBlowOut) lines.push(`Sprinkler System Blow-Out: ${selections.sprinklerBlowOut === "yes" ? "Yes" : "No"}`);
-    if (selections.irrigationMonitoring) lines.push(`Seasonal Irrigation Monitoring: ${selections.irrigationMonitoring === "yes" ? "Yes" : "No"}`);
-    if (selections.shrubPruning) lines.push(`Shrub Pruning & Hedging: ${selections.shrubPruning === "yes" ? "Yes" : "No"}`);
+    lines.push(`Bi-Weekly Property Cleanup (separate recurring service): ${biWeeklyCleanupSelected ? `Yes - starting at ${formatMoney(BIWEEKLY_CLEANUP_PRICE)}/visit, every 2 weeks` : "No"}`);
+
+    if (fullYearBilling) {
+      lines.push(
+        `Full-Year Billing: Selected - estimated ${formatRange(monthlyLow, monthlyHigh)}/month for 12 months (based on an estimated ${formatRange(seasonLow, seasonHigh)} season total ÷ 12; one-time services and Bi-Weekly Property Cleanup are billed separately and are not included in this figure)`
+      );
+    } else {
+      lines.push("Full-Year Billing: Not selected (standard weekly-in-advance billing for the season)");
+    }
+
+    lines.push(`SMS/Text & Phone Consent: ${smsConsent ? `Yes (recorded ${new Date().toLocaleString()})` : "Not given"}`);
     return lines;
   };
 
@@ -223,7 +272,7 @@ export default function MaintenanceSignupForm() {
 
     const summaryLines = buildSummary();
     const message = [
-      "2027 Build Your Own Premium Maintenance Package - Service Request",
+      "Premium Build-Your-Own Maintenance Package - Service Request",
       ...summaryLines,
       "",
       formData.message ? `Additional notes: ${formData.message}` : "Additional notes: none",
@@ -235,7 +284,7 @@ export default function MaintenanceSignupForm() {
     submission.append("phone", formData.phone);
     submission.append("address", formData.address);
     submission.append("city", formData.city);
-    submission.append("service", "Weekly Maintenance Signup - Build Your Own Premium Package");
+    submission.append("service", "Weekly Maintenance Signup - Premium Build-Your-Own Maintenance Package");
     submission.append("message", message);
 
     let delivered = false;
@@ -260,7 +309,7 @@ export default function MaintenanceSignupForm() {
         "",
         message,
       ];
-      window.location.href = `mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+      navigateTo(`mailto:clipslawncarebend@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyLines.join("\n"))}`);
     }
 
     setDeliveryMethod(delivered ? "sent" : "email-client");
@@ -301,27 +350,27 @@ export default function MaintenanceSignupForm() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-800 to-green-900 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">2027 Season</span>
+          <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Build Your Package</span>
           <h1 className="text-5xl md:text-6xl font-extrabold text-white mt-2 mb-6 tracking-tight">
-            Build Your Own Premium Maintenance Package
+            Premium Build-Your-Own Maintenance Package
           </h1>
           <p className="text-xl text-green-100 mb-4">
-            Keep your property looking its best with a maintenance plan built around your needs. Start with our Basic
-            Maintenance service, then customize your package with lawn treatments, seasonal cleanups, irrigation
-            services, and other landscape improvements.
+            Keep your property looking its best with a maintenance plan built around your needs. Start with weekly
+            lawn maintenance, then customize your package with lawn treatments, cleanup services, irrigation, and
+            other add-ons.
           </p>
           <p className="text-lg text-green-100">
             Our goal is to give you reliable weekly maintenance while allowing you to choose the additional services
             that make the most sense for your property.
           </p>
           <div className="inline-flex items-center bg-green-900/40 border border-green-700 rounded-full px-5 py-2 mt-6 text-green-200 text-sm font-medium">
-            Maintenance season: March 1 – November 1, 2027
+            Maintenance season: March 1 – November 1
           </div>
         </div>
       </section>
 
       <form onSubmit={handleSubmit}>
-        {/* Basic Maintenance */}
+        {/* Base Maintenance */}
         <section className="py-20 bg-black">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10">
@@ -333,20 +382,19 @@ export default function MaintenanceSignupForm() {
               <span className="inline-block bg-green-900/50 text-green-400 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
                 Included With Every Package
               </span>
-              <h3 className="text-2xl font-bold text-white mb-2">Basic Maintenance</h3>
+              <h3 className="text-2xl font-bold text-white mb-2">Premium Build-Your-Own Maintenance Package</h3>
               <p className="text-3xl font-bold text-white mb-4">
-                Starting at $60 <span className="text-base font-normal text-gray-400">/ visit</span>
+                Starting at {formatMoney(BASE_WEEKLY)} <span className="text-base font-normal text-gray-400">/ week</span>
               </p>
               <p className="text-gray-300 mb-4">
-                Our straightforward maintenance service keeps your lawn neat, clean, and consistently maintained
-                throughout the season. Includes lawn mowing, edging as needed to maintain clean borders, and blowing
-                grass clippings and debris from serviced driveways, walkways, and patios.
+                The {formatMoney(BASE_WEEKLY)}/week starting price includes lawn mowing, edging as needed to maintain
+                clean borders, blowing grass clippings and debris from serviced driveways, walkways, and patios, and
+                standard weekly lawn maintenance.
               </p>
               <p className="text-gray-400 text-sm mb-4">
-                Basic Maintenance does not include fertilization, weed treatments, shrub pruning, seasonal cleanups,
-                irrigation work, or other specialty services. Final pricing depends on lawn size, property condition,
-                accessibility, and expected service time. The starting price applies to qualifying small, efficient
-                properties.
+                This base price does not include fertilization, weed control, irrigation, or other specialty
+                services. Final pricing depends on lawn size, property condition, accessibility, and expected service
+                time. The starting price applies to qualifying small, efficient properties.
               </p>
               <Link href="/services/lawn-mowing" className="text-green-400 hover:text-green-300 text-sm underline">
                 Learn more about this service →
@@ -354,15 +402,37 @@ export default function MaintenanceSignupForm() {
             </div>
 
             <p className="text-gray-300 text-lg leading-relaxed mt-10">
-              Start with Basic Maintenance and select the additional services you&apos;d like Clips to provide. We&apos;ll
-              review your selections and prepare a customized price based on your property and the services requested.
-              Your premium package may include any combination of the services below.
+              Start with weekly maintenance and select the additional services you&apos;d like Clips to provide.
+              We&apos;ll review your selections and prepare a customized price based on your property and the
+              services requested. Your package may include any combination of the services below.
             </p>
           </div>
         </section>
 
+        {/* How Seasonal Add-On Pricing Works */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">How Our Seasonal Add-On Pricing Works</h2>
+            <p className="text-gray-300 leading-relaxed mb-4">
+              To make budgeting easier, many of our optional maintenance services are priced across the entire
+              maintenance season and divided into equal weekly payments. Instead of paying the full seasonal cost
+              upfront, we calculate the total cost of the selected service for the maintenance season and divide it
+              by the number of maintenance weeks. This allows you to enjoy consistent service and predictable weekly
+              payments throughout the season.
+            </p>
+            <ul className="text-gray-400 text-sm space-y-1 list-disc list-inside">
+              <li>Lawn Fertilization is billed as a weekly seasonal add-on.</li>
+              <li>Weed Control is billed as a weekly seasonal add-on.</li>
+              <li>Irrigation Control is billed as a weekly seasonal add-on.</li>
+              <li>Lawn Aeration is a separate one-time charge.</li>
+              <li>Lawn Dethatching is a separate one-time charge.</li>
+              <li>Bi-Weekly Property Cleanup is a separate recurring service starting at {formatMoney(BIWEEKLY_CLEANUP_PRICE)}.</li>
+            </ul>
+          </div>
+        </section>
+
         {/* Customize Your Package */}
-        <section className="py-20 bg-gray-900">
+        <section className="py-20 bg-black">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Step 2</span>
@@ -371,12 +441,29 @@ export default function MaintenanceSignupForm() {
 
             <div className="space-y-8">
               <AddOnSection
-                eyebrow="Lawn Health & Weed Control"
+                eyebrow="Irrigation"
+                title="Irrigation Control"
+                body={[
+                  "Keep your irrigation system operating properly throughout the season with ongoing monitoring and seasonal irrigation services. Includes spring irrigation startup, irrigation system testing, free irrigation inspections, irrigation monitoring, irrigation-related call-outs, and fall/winter sprinkler blowout.",
+                ]}
+                pricing={`${formatMoney(12)}/week, billed as a weekly seasonal add-on.`}
+                learnMoreHref="/services/irrigation"
+              >
+                <p className="text-white font-medium mb-3">Would you like to add Irrigation Control?</p>
+                <ChoiceButtons<YesNo>
+                  options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
+                  value={selections.irrigationControl}
+                  onChange={(v) => update("irrigationControl", v)}
+                />
+              </AddOnSection>
+
+              <AddOnSection
+                eyebrow="Lawn Health"
                 title="Lawn Fertilization"
                 body={[
-                  "Help support healthy lawn growth with scheduled fertilizer applications throughout the growing season (spring, midseason, and fall applications).",
+                  "Help maintain a healthier, greener lawn with scheduled seasonal fertilization treatments.",
                 ]}
-                pricing="Custom quote based on lawn size, product requirements, and application schedule."
+                pricing="$2–$9/week, billed as a weekly seasonal add-on. Exact price depends on property size and treatment plan."
                 learnMoreHref="/services/lawn-fertilization"
               >
                 <p className="text-white font-medium mb-3">Would you like to add lawn fertilization?</p>
@@ -388,12 +475,12 @@ export default function MaintenanceSignupForm() {
               </AddOnSection>
 
               <AddOnSection
-                eyebrow="Lawn Health & Weed Control"
+                eyebrow="Lawn Health"
                 title="Weed Control"
                 body={[
-                  "Pre-emergent and seasonal weed control to keep your lawn healthy: a spring pre-emergent application, two summer herbicide applications, and two fall herbicide applications.",
+                  "Help control unwanted weeds and maintain a cleaner, healthier lawn with scheduled weed control treatments.",
                 ]}
-                pricing="Custom quote based on lawn size and treatment schedule."
+                pricing="$3–$40/week, billed as a weekly seasonal add-on. Exact price depends on property size and treatment plan."
                 learnMoreHref="/services/weed-control"
               >
                 <p className="text-white font-medium mb-3">Would you like to add weed control?</p>
@@ -405,12 +492,12 @@ export default function MaintenanceSignupForm() {
               </AddOnSection>
 
               <AddOnSection
-                eyebrow="Seasonal Lawn Treatments"
-                title="Core Aeration"
+                eyebrow="One-Time Service"
+                title="Lawn Aeration"
                 body={[
-                  "Help relieve soil compaction and improve the movement of air, water, and nutrients into the soil. Soil plugs are generally left on the lawn to break down naturally - plug removal or additional cleanup is quoted separately.",
+                  "Help relieve soil compaction and improve the movement of air, water, and nutrients into the soil.",
                 ]}
-                pricing="Preliminary starting price of $199 per service, subject to confirmation based on lawn size and equipment time."
+                pricing={`Starting at ${formatMoney(AERATION_PRICE)}. This is a one-time service charge, paid on the day the service is performed - it is not divided across the maintenance season.`}
                 learnMoreHref="/services/aeration"
               >
                 <p className="text-white font-medium mb-3">Would you like aeration?</p>
@@ -427,12 +514,12 @@ export default function MaintenanceSignupForm() {
               </AddOnSection>
 
               <AddOnSection
-                eyebrow="Seasonal Lawn Treatments"
-                title="Dethatching"
+                eyebrow="One-Time Service"
+                title="Lawn Dethatching"
                 body={[
-                  "Remove accumulated dead grass and organic material when needed to improve lawn condition. Dethatching requirements vary considerably by property - we'll confirm the scope and price before scheduling.",
+                  "Remove accumulated dead grass and organic material when needed to improve lawn condition.",
                 ]}
-                pricing="Preliminary starting price of $249 per service, subject to confirmation based on lawn size, labor, and debris disposal."
+                pricing={`Starting at ${formatMoney(DETHATCHING_PRICE)}. This is a one-time service charge, paid on the day the service is performed - it is not divided across the maintenance season.`}
                 learnMoreHref="/services/dethatching"
               >
                 <p className="text-white font-medium mb-3">Would you like dethatching?</p>
@@ -448,29 +535,7 @@ export default function MaintenanceSignupForm() {
               </AddOnSection>
 
               <AddOnSection
-                eyebrow="Seasonal Cleanups"
-                title="Spring & Fall Cleanups"
-                body={[
-                  "Spring Cleanup prepares your property for the growing season by removing accumulated debris, clearing eligible landscape beds, and addressing seasonal maintenance needs. Fall Cleanup removes seasonal leaves and debris and prepares your property for winter. We'll provide a quote or agreed spending limit before starting - additional work requires your approval.",
-                ]}
-                pricing="Starting at $399 per cleanup. Final pricing is based on the labor required, debris volume, disposal costs, and the approved scope of work."
-                learnMoreHref="/services/seasonal-cleanups"
-              >
-                <p className="text-white font-medium mb-3">Would you like seasonal cleanups?</p>
-                <ChoiceButtons<CleanupChoice>
-                  options={[
-                    { value: "spring", label: "Spring cleanup" },
-                    { value: "fall", label: "Fall cleanup" },
-                    { value: "both", label: "Both" },
-                    { value: "assess", label: "Please assess my property first" },
-                  ]}
-                  value={selections.cleanups}
-                  onChange={(v) => update("cleanups", v)}
-                />
-              </AddOnSection>
-
-              <AddOnSection
-                eyebrow="Seasonal Cleanups"
+                eyebrow="Fall Season"
                 title="Fall Leaf & Pine Needle Management"
                 body={[
                   "When seasonal leaves and pine needles accumulate on your lawn in the fall, you can choose how you'd like our team to handle them. Additional charges apply to certain options.",
@@ -494,108 +559,188 @@ export default function MaintenanceSignupForm() {
               </AddOnSection>
 
               <AddOnSection
-                eyebrow="Irrigation Services"
-                title="Sprinkler System Startup"
+                eyebrow="Property Cleanup"
+                title="Bi-Weekly Property Cleanup"
                 body={[
-                  "Get your irrigation system ready for the growing season. Where accessible and applicable, startup includes activating the main isolation valve and backflow device, operating and checking irrigation zones, inspecting accessible valves and wiring, making routine sprinkler-head adjustments, checking for visible leaks, and setting the irrigation controller when accessible. Parts, repairs, extensive troubleshooting, and certified backflow testing are excluded unless separately quoted.",
+                  "Keep your property looking its best with scheduled bi-weekly cleanup services, including landscape trimming, general weeding, debris cleanup, and general property maintenance and cleanup.",
                 ]}
-                pricing="Starting at $70 for up to seven zones, plus $5 per additional zone."
-                learnMoreHref="/services/irrigation"
+                pricing={`Starting at ${formatMoney(BIWEEKLY_CLEANUP_PRICE)} per visit, billed every two weeks. This is a separate recurring service and is not part of your weekly maintenance total.`}
+                learnMoreHref="/services/cleanup-maintenance"
               >
-                <p className="text-white font-medium mb-3">Would you like sprinkler startup?</p>
+                <p className="text-white font-medium mb-3">Would you like to add Bi-Weekly Property Cleanup?</p>
                 <ChoiceButtons<YesNo>
                   options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
-                  value={selections.sprinklerStartup}
-                  onChange={(v) => update("sprinklerStartup", v)}
-                />
-              </AddOnSection>
-
-              <AddOnSection
-                eyebrow="Irrigation Services"
-                title="Sprinkler System Blow-Out"
-                body={[
-                  "Clear water from your irrigation lines before winter to help protect your system from freeze damage.",
-                ]}
-                pricing="Starting at $60."
-                learnMoreHref="/services/irrigation"
-              >
-                <p className="text-white font-medium mb-3">Would you like sprinkler blow-out?</p>
-                <ChoiceButtons<YesNo>
-                  options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
-                  value={selections.sprinklerBlowOut}
-                  onChange={(v) => update("sprinklerBlowOut", v)}
-                />
-              </AddOnSection>
-
-              <AddOnSection
-                eyebrow="Irrigation Services"
-                title="Seasonal Irrigation Monitoring"
-                body={[
-                  "Routine inspections during the growing season can help identify visible leaks, poorly adjusted heads, and timer issues. Repairs, replacement parts, and specialized troubleshooting are quoted separately. Backflow testing is not included.",
-                ]}
-                pricing="Customized according to the inspection schedule and scope of service."
-                learnMoreHref="/services/irrigation"
-              >
-                <p className="text-white font-medium mb-3">Would you like seasonal irrigation monitoring?</p>
-                <ChoiceButtons<YesNo>
-                  options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
-                  value={selections.irrigationMonitoring}
-                  onChange={(v) => update("irrigationMonitoring", v)}
-                />
-              </AddOnSection>
-
-              <AddOnSection
-                eyebrow="Shrub Pruning & Hedging"
-                title="Shrub Pruning & Hedging"
-                body={[
-                  "Keep shrubs and hedges neat with scheduled trimming and pruning. This service is not unlimited - your quote will specify the included plants, service frequency, and scope of work.",
-                ]}
-                pricing="Custom quote based on the number, size, condition, and accessibility of plants, as well as the required frequency."
-                learnMoreHref="/services/shrub-pruning"
-              >
-                <p className="text-white font-medium mb-3">Would you like pruning and hedging?</p>
-                <ChoiceButtons<YesNo>
-                  options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
-                  value={selections.shrubPruning}
-                  onChange={(v) => update("shrubPruning", v)}
+                  value={selections.biWeeklyCleanup}
+                  onChange={(v) => update("biWeeklyCleanup", v)}
                 />
               </AddOnSection>
             </div>
           </div>
         </section>
 
-        {/* Your Customized Price */}
+        {/* Your Estimated Pricing */}
+        <section className="py-20 bg-gray-900">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Live Estimate</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Your Estimated Pricing</h2>
+              <p className="text-gray-400">
+                Updates automatically as you make selections above. Final pricing is confirmed in your quote.
+              </p>
+            </div>
+
+            <div className="bg-black border border-gray-800 rounded-2xl p-8 space-y-6">
+              <div>
+                <h3 className="text-white font-semibold mb-3">Weekly Recurring Services</h3>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between text-gray-300">
+                    <span>Weekly Lawn Maintenance (base)</span>
+                    <span>{formatMoney(BASE_WEEKLY)}/week</span>
+                  </div>
+                  {weeklyAddOns.map((addOn) =>
+                    selections[addOn.key] === "yes" ? (
+                      <div key={addOn.key} className="flex justify-between text-gray-300">
+                        <span>{addOn.label}</span>
+                        <span>{formatRange(addOn.low, addOn.high)}/week</span>
+                      </div>
+                    ) : null
+                  )}
+                  <div className="flex justify-between text-white font-semibold border-t border-gray-800 pt-2 mt-2">
+                    <span>Estimated Weekly Total</span>
+                    <span>{formatRange(weeklyLow, weeklyHigh)}/week</span>
+                  </div>
+                </div>
+              </div>
+
+              {oneTimeTotal > 0 && (
+                <div className="border-t border-gray-800 pt-6">
+                  <h3 className="text-white font-semibold mb-3">One-Time Services (separate from weekly total)</h3>
+                  <div className="space-y-2 text-sm">
+                    {aerationTotal > 0 && (
+                      <div className="flex justify-between text-gray-300">
+                        <span>Lawn Aeration ({selections.aeration === "both" ? "spring & fall" : selections.aeration})</span>
+                        <span>{formatMoney(aerationTotal)}</span>
+                      </div>
+                    )}
+                    {dethatchingSelected && (
+                      <div className="flex justify-between text-gray-300">
+                        <span>Lawn Dethatching</span>
+                        <span>{formatMoney(DETHATCHING_PRICE)}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {biWeeklyCleanupSelected && (
+                <div className="border-t border-gray-800 pt-6">
+                  <h3 className="text-white font-semibold mb-3">Separate Recurring Service</h3>
+                  <div className="flex justify-between text-gray-300 text-sm">
+                    <span>Bi-Weekly Property Cleanup (every 2 weeks)</span>
+                    <span>Starting at {formatMoney(BIWEEKLY_CLEANUP_PRICE)}/visit</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="border-t border-gray-800 pt-6">
+                <p className="text-gray-400 text-sm">
+                  Estimated maintenance season total ({SEASON_WEEKS} weeks): <span className="text-white font-semibold">{formatRange(seasonLow, seasonHigh)}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Full-Year Pricing Option */}
         <section className="py-16 bg-black">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Your Customized Price</h2>
-            <p className="text-gray-300 leading-relaxed mb-4">
-              Once you submit your selections, our team will review your property and prepare a quote showing your
-              weekly Basic Maintenance price, the additional services you&apos;ve selected, the schedule and frequency of
-              those services, any applicable material, disposal, or specialty-service charges, and your total recurring
-              price plus any separately scheduled seasonal charges.
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Save with Full-Year Maintenance Pricing</h2>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Want a lower monthly payment? Choose our full-year maintenance option. Instead of paying for your
+              maintenance only during the active season, we divide your total seasonal maintenance cost into 12
+              equal monthly payments. This allows you to spread the cost throughout the entire year while securing
+              your maintenance service for the season.
             </p>
-            <p className="text-gray-400">No additional services will be performed without your approval.</p>
+            <label className="flex items-start gap-3 bg-gray-900 border border-gray-800 rounded-xl p-5 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={fullYearBilling}
+                onChange={(e) => setFullYearBilling(e.target.checked)}
+                className="mt-1 w-4 h-4 accent-green-500"
+              />
+              <span className="text-gray-300">
+                <span className="font-semibold text-white block mb-1">
+                  Yes, spread my seasonal maintenance cost over 12 monthly payments
+                </span>
+                This is optional and does not change your total seasonal price. It does not apply to one-time
+                services (aeration, dethatching) or to Bi-Weekly Property Cleanup, which are billed separately.
+              </span>
+            </label>
+            {fullYearBilling && (
+              <div className="mt-4 bg-green-900/20 border border-green-800 rounded-xl p-5 text-green-100 text-sm">
+                <p className="mb-1">
+                  {formatRange(weeklyLow, weeklyHigh)}/week × {SEASON_WEEKS} weeks = {formatRange(seasonLow, seasonHigh)} season total
+                </p>
+                <p className="font-semibold text-white">
+                  {formatRange(seasonLow, seasonHigh)} ÷ 12 = {formatRange(monthlyLow, monthlyHigh)}/month for 12 months
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Recommendation */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Our Recommendation: Complete Property Maintenance</h2>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Want to keep your entire property looking its best? We recommend pairing your weekly lawn maintenance
+              with our Bi-Weekly Property Cleanup service, including trimming, weeding, debris cleanup, and general
+              property cleanup. Starting at {formatMoney(BIWEEKLY_CLEANUP_PRICE)}.
+            </p>
+            {biWeeklyCleanupSelected ? (
+              <div className="bg-black border border-green-800 rounded-xl p-5 text-green-300 text-sm">
+                You&apos;ve already added Bi-Weekly Property Cleanup to your package above - no need to add it again
+                here.
+              </div>
+            ) : (
+              <label className="flex items-start gap-3 bg-black border border-gray-800 rounded-xl p-5 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={false}
+                  onChange={(e) => update("biWeeklyCleanup", e.target.checked ? "yes" : "")}
+                  className="mt-1 w-4 h-4 accent-green-500"
+                />
+                <span className="text-gray-300">
+                  <span className="font-semibold text-white block mb-1">
+                    Add Bi-Weekly Property Cleanup to my inquiry
+                  </span>
+                  This is a recommendation, not a requirement - leave unchecked if you&apos;d rather not add it.
+                </span>
+              </label>
+            )}
           </div>
         </section>
 
         {/* Billing & Scheduling */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-black">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Weekly Billing & Scheduling</h2>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Our preferred payment schedule for 2027 is weekly billing in advance, with a standardized weekly payment
-              day. Before recurring service begins, we&apos;ll confirm your service price, payment authorization, service
-              schedule, and cancellation terms in your service agreement.
+              Our preferred payment schedule is weekly billing in advance, with a standardized weekly payment day
+              (or monthly, if you select Full-Year Maintenance Pricing above). Before recurring service begins,
+              we&apos;ll confirm your service price, payment authorization, service schedule, and cancellation terms
+              in your service agreement.
             </p>
             <p className="text-gray-300 leading-relaxed">
-              Our regular maintenance season runs from March 1 through November 1. Seasonal treatments and cleanups
-              will be scheduled according to your approved plan and property needs.
+              Our regular maintenance season runs from March 1 through November 1. Add-on services will be scheduled
+              according to your approved plan and property needs.
             </p>
           </div>
         </section>
 
         {/* Contact Details */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-gray-900">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <span className="text-green-400 font-semibold text-sm uppercase tracking-wider">Step 3</span>
@@ -606,7 +751,7 @@ export default function MaintenanceSignupForm() {
               </p>
             </div>
 
-            <div className="bg-gray-900 rounded-2xl p-8 border border-gray-800 space-y-6">
+            <div className="bg-black rounded-2xl p-8 border border-gray-800 space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Full Name *</label>
@@ -705,9 +850,24 @@ export default function MaintenanceSignupForm() {
                   className="mt-1 w-4 h-4 accent-green-500"
                 />
                 <span>
-                  I understand this is a service request for the 2027 maintenance season (March 1 – November 1) and
+                  I understand this is a service request for the maintenance season (March 1 – November 1) and
                   does not automatically enroll me in recurring service. Clips Lawn Care will follow up to confirm
                   pricing, scheduling, and a service agreement before work begins. *
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3 text-sm text-gray-400">
+                <input
+                  type="checkbox"
+                  checked={smsConsent}
+                  onChange={(e) => setSmsConsent(e.target.checked)}
+                  className="mt-1 w-4 h-4 accent-green-500"
+                />
+                <span>
+                  I consent to receive calls and/or text messages from Clips Lawn Care LLC regarding my inquiry,
+                  estimates, scheduling, and requested services. Message frequency may vary. Message and data rates
+                  may apply. Reply STOP to opt out of text messages or HELP for assistance. Consent is not a
+                  condition of purchasing services.
                 </span>
               </label>
 

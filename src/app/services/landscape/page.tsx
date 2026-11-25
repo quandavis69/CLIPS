@@ -12,6 +12,7 @@ const services = [
   {
     title: "Mulching",
     description: "Fresh mulch beds that lock in moisture, suppress weeds, and finish off your landscape design.",
+    href: "/services/mulch-installation",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -22,6 +23,7 @@ const services = [
   {
     title: "Rock Installation",
     description: "Decorative rock beds and borders that hold up to Central Oregon's wind and weather.",
+    href: "/services/rock-installation",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 20l5-9 4 5 3-4 6 8H3z" />
@@ -32,6 +34,7 @@ const services = [
   {
     title: "Garden Beds",
     description: "New garden beds designed and installed to fit your property and plant choices.",
+    href: "/services/landscape-installation",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 20h16M8 20V10a4 4 0 018 0v10" />
@@ -42,6 +45,7 @@ const services = [
   {
     title: "Planting",
     description: "Trees, shrubs, and perennials selected and installed for Central Oregon's high desert climate.",
+    href: "/services/landscape-installation",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -62,6 +66,7 @@ const services = [
   {
     title: "Cleanups",
     description: "One-time or seasonal cleanups to reset a yard that's gotten overgrown or neglected.",
+    href: "/services/landscape-cleanup",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -72,6 +77,7 @@ const services = [
   {
     title: "Restoration Projects",
     description: "Bring a neglected or storm-damaged landscape back to life with a full property restoration.",
+    href: "/services/landscape-cleanup",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -82,6 +88,7 @@ const services = [
   {
     title: "Pine Needle Removal",
     description: "Thorough pine needle removal to protect your lawn, clear roofs and gutters, and reduce fire hazards.",
+    href: "/services/landscape-cleanup",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3l4 5h-2.5l3.5 5h-3l3 5H7l3-5H7l3.5-5H8l4-5z" />
@@ -92,6 +99,7 @@ const services = [
   {
     title: "Sod Installation & Removal",
     description: "Complete sod replacement services, from removing old grass to installing a fresh, lush lawn.",
+    href: "/services/sod-installation",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4h6v6H4V4zm10 0h6v6h-6V4zM4 14h6v6H4v-6zm10 0h6v6h-6v-6z" />
@@ -102,6 +110,7 @@ const services = [
   {
     title: "Gutter Installation",
     description: "New gutter installation built to protect your home's roofline all season long.",
+    href: "/services/gutter-cleaning",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l9-7 9 7M5 10v9a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1v-9" />
@@ -112,6 +121,7 @@ const services = [
   {
     title: "Roof & Gutter Cleaning",
     description: "Roof and gutter cleaning to prevent water damage and keep your home protected.",
+    href: "/services/gutter-cleaning",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21c-4.418 0-8-3.14-8-7 0-4 8-13 8-13s8 9 8 13c0 3.86-3.582 7-8 7z" />
@@ -194,14 +204,14 @@ export default function LandscapePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
-              <div key={service.title} className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors">
+              <div key={service.title} className="bg-gray-900 rounded-2xl p-8 border border-gray-800 hover:border-green-500 transition-colors flex flex-col">
                 <div className="w-16 h-16 bg-green-900/50 rounded-xl flex items-center justify-center text-green-400 mb-6">
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
                 <p className="text-gray-400 mb-6">{service.description}</p>
 
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-6">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
                       <svg className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,6 +221,18 @@ export default function LandscapePage() {
                     </li>
                   ))}
                 </ul>
+
+                {service.href && (
+                  <Link
+                    href={service.href}
+                    className="mt-auto inline-flex items-center text-green-400 font-semibold hover:text-green-300 transition-colors"
+                  >
+                    Learn More
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                )}
               </div>
             ))}
           </div>

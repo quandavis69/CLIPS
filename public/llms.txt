@@ -2,27 +2,34 @@
 
 > Clips Lawn Care LLC is a residential and commercial lawn care and landscaping company based in Bend, Oregon, serving Bend, Redmond, Sunriver, Prineville, Powell Butte, and La Pine.
 
-Clips Lawn Care offers Basic Maintenance (mowing, edging, blowing) for residential and commercial/HOA/property-manager properties, a Build Your Own Premium Package of add-on services (lawn fertilization, weed control, aeration, dethatching, seasonal cleanups, irrigation, shrub pruning), each with its own detailed service page, a weekly maintenance sign-up/package-builder form, and project-based landscape work including mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, sod installation/removal, gutter installation, and roof & gutter cleaning.
+Clips Lawn Care offers a single Premium Build-Your-Own Maintenance Package (weekly mowing, edging, and blowing) starting at $60/week for residential and commercial/HOA/property-manager properties, with optional add-ons (Irrigation Control, lawn fertilization, weed control, aeration, dethatching, and Bi-Weekly Property Cleanup) selected through a weekly maintenance sign-up/package-builder form, each with its own detailed service page, plus project-based landscape work including sod installation, mulch installation, rock installation, landscape installation (garden beds & planting), landscape cleanup/restoration, and gutter cleaning. A blog provides lawn care and landscaping tips and guides.
 
 ## Services
 
 - [Residential Lawn Care](https://clipslawncare.com/services/residential): Overview of every maintenance and landscape service available for homes.
-- [Commercial, HOA & Property Manager Lawn Care](https://clipslawncare.com/services/commercial): Custom maintenance contracts for businesses, HOAs, and property managers, built around Basic Maintenance.
-- [Landscape Projects](https://clipslawncare.com/services/landscape): Mulching, rock installation, garden beds, planting, pressure washing, cleanups, restoration projects, pine needle removal, sod installation/removal, gutter installation, and roof & gutter cleaning.
-- [Lawn Mowing, Edging & Blowing](https://clipslawncare.com/services/lawn-mowing): Basic Maintenance detail page.
-- [Lawn Fertilization](https://clipslawncare.com/services/lawn-fertilization): Spring, midseason, and fall fertilization add-on.
-- [Weed Control](https://clipslawncare.com/services/weed-control): Spring pre-emergent plus seasonal summer and fall herbicide treatments.
-- [Aeration](https://clipslawncare.com/services/aeration): Spring and fall core aeration.
-- [Dethatching](https://clipslawncare.com/services/dethatching): Removal of built-up thatch.
+- [Commercial, HOA & Property Manager Lawn Care](https://clipslawncare.com/services/commercial): Custom maintenance contracts for businesses, HOAs, and property managers, built around the Premium Build-Your-Own Maintenance Package.
+- [Landscape Projects](https://clipslawncare.com/services/landscape): Sod installation, mulch installation, rock installation, landscape installation, landscape cleanup, gutter cleaning, pressure washing, and more.
+- [Weekly Lawn Maintenance](https://clipslawncare.com/services/lawn-mowing): Mowing, edging, and blowing off hard surfaces - the base weekly maintenance service.
+- [Lawn Fertilization](https://clipslawncare.com/services/lawn-fertilization): Scheduled seasonal fertilization treatments add-on, $2-$9/week.
+- [Weed Control](https://clipslawncare.com/services/weed-control): Scheduled weed control treatments add-on, $3-$40/week.
+- [Lawn Aeration](https://clipslawncare.com/services/aeration): One-time core aeration service, $50 per visit.
+- [Lawn Dethatching](https://clipslawncare.com/services/dethatching): One-time thatch removal service, $99 per visit.
 - [Spring & Fall Cleanups](https://clipslawncare.com/services/seasonal-cleanups): One-time seasonal property cleanups.
-- [Cleanup Maintenance](https://clipslawncare.com/services/cleanup-maintenance): Recurring monthly cleanups, twice a month October-November.
-- [Irrigation Services](https://clipslawncare.com/services/irrigation): Sprinkler system startup, fall blow-out, and seasonal irrigation monitoring.
-- [Shrub Pruning & Hedging](https://clipslawncare.com/services/shrub-pruning): Scheduled shrub and hedge trimming.
+- [Bi-Weekly Property Cleanup](https://clipslawncare.com/services/cleanup-maintenance): Recurring cleanup every two weeks - landscape trimming, weeding, and debris removal, starting at $199.
+- [Irrigation Control](https://clipslawncare.com/services/irrigation): Spring startup, seasonal monitoring, and fall blow-out bundled into one add-on, $12/week.
+- [Shrub Pruning (Specialized Projects)](https://clipslawncare.com/services/shrub-pruning): Larger or specialized shrub and hedge pruning projects (routine trimming is included in Bi-Weekly Property Cleanup).
+- [Sod Installation](https://clipslawncare.com/services/sod-installation): New sod lawn installation.
+- [Mulch Installation](https://clipslawncare.com/services/mulch-installation): Mulch bed installation and refresh.
+- [Rock Installation](https://clipslawncare.com/services/rock-installation): Decorative rock and gravel landscaping.
+- [Landscape Installation](https://clipslawncare.com/services/landscape-installation): Garden beds and planting design/installation.
+- [Landscape Cleanup](https://clipslawncare.com/services/landscape-cleanup): Property cleanup, restoration, and pine needle removal.
+- [Gutter Cleaning](https://clipslawncare.com/services/gutter-cleaning): Gutter installation and roof & gutter cleaning.
 - [All Services Overview](https://clipslawncare.com/services): Summary of every division and individual service.
-- [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Build a custom Premium Package by selecting add-on services.
+- [Weekly Maintenance Sign-Up](https://clipslawncare.com/maintenance-signup): Build a custom maintenance package starting at $60/week by selecting optional add-ons.
 - [Total Property Clean](https://clipslawncare.com/total-property-clean): Comprehensive exterior property cleanup (pressure washing, landscape cleanup, plant & lawn care, irrigation inspection) for pre-sale and listing prep, starting at $2,500.
 - [Landscaping Projects & Warranty Options](https://clipslawncare.com/landscaping-projects-warranty): Compares a cost-effective landscaping project (no warranty) with a premium project (multi-year warranty).
 - [HOA & Commercial Property Maintenance](https://clipslawncare.com/commercial-property-maintenance): Seasonal maintenance plans for HOAs, rental properties, property managers, and commercial properties, billed as 12 equal monthly payments.
+- [Blog](https://clipslawncare.com/blog): Lawn care and landscaping tips, guides, and seasonal advice for Central Oregon homeowners.
 
 ## Company
 
